@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Definición del tema de colores personalizado para Tailwind v4+ */
 @theme {
   --color-brand-pink: #FF2D92;
   --color-brand-purple: #8B5CF6;
@@ -15,11 +14,14 @@
   --color-text-muted: #94a3b8; /* slate-400 */
 }
 
-/* Estilos base y efecto de fondo */
+
+
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-brand-darker text-text-light font-sans;
-    scroll-behavior: smooth;
   }
 
   body::before {
