@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+/* Definición del tema de colores personalizado para Tailwind v4+ */
+@theme {
+  --color-brand-pink: #FF2D92;
+  --color-brand-purple: #8B5CF6;
+  --color-brand-cyan: #06B6D4;
+  --color-brand-dark: #0F0F23;
+  --color-brand-darker: #0A0A1A;
+  --color-brand-card: #1A1A2E;
+  --color-brand-red: #DC2B50;
+
+  /* Colores para texto para consistencia */
+  --color-text-light: #f1f5f9; /* slate-100 */
+  --color-text-muted: #94a3b8; /* slate-400 */
+}
+
+/* Estilos base y efecto de fondo */
+@layer base {
+  body {
+    @apply bg-brand-darker text-text-light font-sans;
+    scroll-behavior: smooth;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at 10% 10%, rgba(139, 92, 246, 0.1), transparent 35%),
+                radial-gradient(circle at 90% 80%, rgba(255, 45, 146, 0.1), transparent 35%);
+    pointer-events: none;
+  }
+}
