@@ -1,0 +1,66 @@
+<svg width="180" height="40" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradiente para el efecto de color -->
+  <defs>
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF2D92;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF2D92;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:0.8" />
+    </linearGradient>
+    
+    <!-- Filtro para el glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Elemento decorativo de fondo -->
+  <circle cx="15" cy="20" r="8" fill="url(#accentGradient)" opacity="0.3"/>
+  
+  <!-- Letra S estilizada -->
+  <path d="M24 12 C24 8, 20 6, 16 6 C12 6, 8 8, 8 12 C8 16, 12 18, 16 18 C20 18, 24 20, 24 24 C24 28, 20 30, 16 30 C12 30, 8 28, 8 24" 
+        stroke="url(#mainGradient)" 
+        stroke-width="3" 
+        stroke-linecap="round" 
+        fill="none" 
+        filter="url(#glow)"/>
+  
+  <!-- Letra B estilizada -->
+  <path d="M35 8 L35 32 M35 8 L45 8 C49 8, 52 11, 52 15 C52 19, 49 20, 45 20 L35 20 M35 20 L47 20 C51 20, 54 23, 54 27 C54 31, 51 32, 47 32 L35 32" 
+        stroke="url(#mainGradient)" 
+        stroke-width="3" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none" 
+        filter="url(#glow)"/>
+  
+  <!-- Texto "Stream Boosters" -->
+  <text x="68" y="16" font-family="Sora, Arial, sans-serif" font-size="12" font-weight="700" fill="#f1f5f9">
+    Stream
+  </text>
+  <text x="68" y="30" font-family="Sora, Arial, sans-serif" font-size="12" font-weight="400" fill="#94a3b8">
+    Boosters
+  </text>
+  
+  <!-- Elementos decorativos -->
+  <circle cx="160" cy="12" r="2" fill="#FF2D92" opacity="0.6">
+    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="168" cy="18" r="1.5" fill="#8B5CF6" opacity="0.4">
+    <animate attributeName="opacity" values="0.2;0.6;0.2" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="172" cy="28" r="1" fill="#06B6D4" opacity="0.5">
+    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Línea de conexión sutil -->
+  <line x1="58" y1="20" x2="65" y2="20" stroke="url(#accentGradient)" stroke-width="1" opacity="0.4"/>
+</svg>

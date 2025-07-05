@@ -63,7 +63,7 @@ export default function CustomPlanForm() {
     setSubmitting(true)
     setStatus("Enviando...")
     try {
-      const response = await fetch("/enviar_formulario.php", {
+      const response = await fetch("/custom_plan_submit.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(result.data),
