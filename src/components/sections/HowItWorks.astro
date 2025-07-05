@@ -1,40 +1,48 @@
 ---
 // How It Works section for the landing page
+import { Icon } from 'astro-icon/components';
+
+const steps = [
+  {
+    icon: 'material-symbols:upload-file-outline-rounded',
+    title: 'Paso 1: Comparte tu Juego',
+    description: 'Nos envías la información y el acceso a tu juego o producto. Nosotros nos encargamos del resto.',
+  },
+  {
+    icon: 'material-symbols:groups-outline-rounded',
+    title: 'Paso 2: Seleccionamos Streamers',
+    description: 'Buscamos en nuestra red los perfiles más activos y comprometidos que encajen con tu audiencia.',
+  },
+  {
+    icon: 'material-symbols:rocket-launch-outline-rounded',
+    title: 'Paso 3: Tu Marca al Aire',
+    description: 'Coordinamos y lanzamos la campaña, dándote seguimiento personalizado y métricas en tiempo real.',
+  },
+];
 ---
-<section id='how-it-works' class='py-20 px-4 animate-fade-in'>
-  <div class='max-w-6xl mx-auto'>
-    <div class='text-center mb-12'>
-      <h2 class='text-3xl md:text-4xl font-bold text-text-light'>¿Cómo funciona?</h2>
-      <p class='text-text-muted mt-2'>En solo 3 pasos, tu juego estará en vivo.</p>
+
+<section id="how-it-works" class="py-20 px-4 animate-fade-in">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-text-light">¿Cómo funciona?</h2>
+      <p class="text-text-muted mt-2">En solo 3 pasos, tu proyecto estará en vivo.</p>
     </div>
-    <div class='grid md:grid-cols-3 gap-8 text-center'>
-      <div class='bg-brand-dark p-8 rounded-xl border border-brand-card transition-transform duration-300 hover:scale-105 animate-fade-in'>
-        <div class='flex items-center justify-center h-16 w-16 rounded-full bg-brand-darker mx-auto mb-6'>
-          <svg xmlns='http://www.w3.org/2000/svg' class='h-8 w-8 text-brand-pink' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13'></path>
-          </svg>
+    <div class="grid md:grid-cols-3 gap-8 text-center relative">
+      <!-- Línea de conexión (decorativa) -->
+      <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-brand-card/30 transform -translate-y-1/2"></div>
+
+      {steps.map((step, index) => (
+        <div class="bg-brand-dark p-8 rounded-xl border border-brand-card transition-transform duration-300 hover:scale-105 hover:-translate-y-2 animate-fade-in relative z-10" style={`animation-delay:${index * 150}ms;`}>
+          <div class="relative mb-6">
+            <span class="absolute -top-4 -left-4 text-6xl font-black text-brand-card select-none">0{index + 1}</span>
+            <div class="flex items-center justify-center h-20 w-20 rounded-full bg-brand-purple/20 mx-auto shadow-lg">
+              <Icon name={step.icon} class="h-10 w-10 text-brand-pink" />
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-2 text-text-light">{step.title}</h3>
+          <p class="text-text-muted">{step.description}</p>
         </div>
-        <h3 class='text-xl font-bold mb-2'>Paso 1: Comparte tu Juego</h3>
-        <p class='text-text-muted'>Nos envías la información y el acceso a tu juego o producto. Nosotros nos encargamos del resto.</p>
-      </div>
-      <div class='bg-brand-dark p-8 rounded-xl border border-brand-card transition-transform duration-300 hover:scale-105 animate-fade-in' style='animation-delay:0.15s;'>
-        <div class='flex items-center justify-center h-16 w-16 rounded-full bg-brand-darker mx-auto mb-6'>
-          <svg xmlns='http://www.w3.org/2000/svg' class='h-8 w-8 text-brand-pink' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z'></path>
-          </svg>
-        </div>
-        <h3 class='text-xl font-bold mb-2'>Paso 2: Seleccionamos Streamers</h3>
-        <p class='text-text-muted'>Buscamos en nuestra red los perfiles más activos y comprometidos que encajen con tu audiencia.</p>
-      </div>
-      <div class='bg-brand-dark p-8 rounded-xl border border-brand-card transition-transform duration-300 hover:scale-105 animate-fade-in' style='animation-delay:0.3s;'>
-        <div class='flex items-center justify-center h-16 w-16 rounded-full bg-brand-darker mx-auto mb-6'>
-          <svg xmlns='http://www.w3.org/2000/svg' class='h-8 w-8 text-brand-pink' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z'></path>
-          </svg>
-        </div>
-        <h3 class='text-xl font-bold mb-2'>Paso 3: Tu Marca al Aire</h3>
-        <p class='text-text-muted'>Coordinamos y lanzamos la campaña, dándote seguimiento personalizado y métricas en tiempo real.</p>
-      </div>
+      ))}
     </div>
   </div>
 </section>
