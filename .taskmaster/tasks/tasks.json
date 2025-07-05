@@ -1,5 +1,5 @@
 {
-  "development": {
+  "master": {
     "tasks": [
       {
         "id": 1,
@@ -88,11 +88,88 @@
             "testStrategy": "Submit the form and verify that the form data is collected and sent to the placeholder backend endpoint. Simulate submission errors (e.g., by using an invalid URL) and verify that error messages are displayed correctly to the user."
           }
         ]
+      },
+      {
+        "id": 3,
+        "title": "Optimize Responsive Design for Mobile Devices",
+        "description": "Optimize the responsive design for mobile devices to ensure a seamless and visually appealing user experience. This involves adjusting the layout and typography of key components for screens with a width less than 768px.",
+        "details": "1.  Implement media queries in the CSS to target mobile devices (screen width < 768px).\n2.  Adjust the font sizes of headings, paragraphs, and other text elements to ensure readability on smaller screens.\n3.  Optimize the layout of key components (e.g., forms, navigation menus, images) to fit within the mobile screen dimensions.\n4.  Ensure that interactive elements (e.g., buttons, links) are easily tappable on touchscreens.\n5.  Test the design on a variety of mobile devices and browsers to ensure cross-device compatibility.\n6.  Refactor CustomPlan.astro to use mobile-first design principles, ensuring a smooth transition from mobile to larger screens.\n7.  Optimize images for mobile devices to reduce loading times and improve performance.",
+        "testStrategy": "1.  Use browser developer tools to simulate mobile devices with different screen sizes and resolutions.\n2.  Manually test the design on physical mobile devices (e.g., smartphones, tablets) to ensure accurate rendering and functionality.\n3.  Verify that all text elements are legible and that interactive elements are easily tappable.\n4.  Check that the layout adapts correctly to different screen orientations (portrait and landscape).\n5.  Measure the loading times of the page on mobile devices and optimize images and other assets as needed.\n6.  Run automated tests to verify the responsive behavior of key components.",
+        "status": "pending",
+        "dependencies": [
+          2
+        ],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Ajustes Globales de Tipografía y Espaciado",
+            "description": "Revisar y ajustar global.css y paddings generales para mejorar la experiencia móvil.",
+            "details": "1.1: Revisar global.css para asegurar que no haya estilos que impidan la fluidez en móviles.\n1.2: Considerar si el px-4 general es suficiente o si algunas secciones necesitan un px-2 o px-3 en móviles para un mejor uso del espacio.",
+            "status": "done",
+            "dependencies": [],
+            "parentTaskId": 3
+          },
+          {
+            "id": 2,
+            "title": "Header: Optimizar Logo y Navegación en Móviles",
+            "description": "Reducir tamaño de fuente del logo y asegurar navegación óptima en móviles.",
+            "details": "2.1: Reducir el tamaño de la fuente del logo 'Stream Boosters' en móviles para evitar desbordamientos.",
+            "status": "done",
+            "dependencies": [],
+            "parentTaskId": 3
+          },
+          {
+            "id": 3,
+            "title": "Hero: Ajustar SVGs y Párrafo Principal",
+            "description": "Optimizar tamaño de SVGs decorativos y asegurar legibilidad del texto principal en móviles.",
+            "details": "3.1: Ajustar el tamaño de los SVGs de fondo para móviles.\n3.2: Asegurar que el max-w-3xl del párrafo principal no cause problemas en pantallas pequeñas.",
+            "status": "done",
+            "dependencies": [],
+            "parentTaskId": 3
+          },
+          {
+            "id": 4,
+            "title": "How It Works: Mejorar Escalado de Números",
+            "description": "Reducir tamaño de fuente de los números de paso en móviles.",
+            "details": "4.1: Reducir el tamaño de la fuente de los números de paso (01, 02, 03) en móviles.",
+            "status": "pending",
+            "dependencies": [],
+            "parentTaskId": 3
+          },
+          {
+            "id": 5,
+            "title": "Packages: Ajustar Tipografía de Precios",
+            "description": "Reducir tamaño de fuente del precio en el plan PRO para móviles.",
+            "details": "5.1: Reducir el tamaño de la fuente del precio ($XXX) en el plan PRO en móviles.",
+            "status": "pending",
+            "dependencies": [],
+            "parentTaskId": 3
+          },
+          {
+            "id": 6,
+            "title": "Custom Plan: Mejorar Adaptabilidad de Botones y Radios",
+            "description": "Asegurar que los botones de selección de flujo y radios se adapten bien a móviles.",
+            "details": "6.1: Asegurar que los botones de selección de flujo y los botones de radio se adapten bien a pantallas pequeñas, apilándose o reduciendo padding si es necesario.",
+            "status": "pending",
+            "dependencies": [],
+            "parentTaskId": 3
+          },
+          {
+            "id": 7,
+            "title": "Founders: Optimizar Tamaño de Imágenes de Perfil",
+            "description": "Reducir tamaño de imágenes de perfil de fundadores en móviles.",
+            "details": "7.1: Reducir el tamaño de las imágenes de perfil de los fundadores en móviles para que no ocupen demasiado espacio vertical.",
+            "status": "pending",
+            "dependencies": [],
+            "parentTaskId": 3
+          }
+        ]
       }
     ],
     "metadata": {
       "created": "2025-07-04T03:50:05.421Z",
-      "updated": "2025-07-05T00:40:06.914Z",
+      "updated": "2025-07-05T04:04:42.949Z",
       "description": "Development tasks"
     }
   }

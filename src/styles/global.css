@@ -50,4 +50,9 @@
   .animate-fade-in {
     animation: fade-in 1s cubic-bezier(0.4,0,0.2,1) both;
   }
+
+  /* Responsive padding for sections */
+  section, .section {
+    @apply px-3 sm:px-4;
+  }
 }
