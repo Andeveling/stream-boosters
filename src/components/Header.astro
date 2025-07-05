@@ -1,43 +1,99 @@
----
+--- 
 // Header navigation for Stream Boosters landing
+const navLinks = [
+  { href: "#how-it-works", text: "¿Cómo funciona?" },
+  { href: "#packages", text: "Paquetes" },
+  { href: "#custom-plan", text: "Personalizado" },
+  { href: "#testimonials", text: "Testimonios" },
+  { href: "#genres", text: "Géneros" },
+  { href: "#founders", text: "Fundadores" },
+  { href: "#contact", text: "Contacto" },
+];
 ---
-<header class="fixed top-0 left-0 w-full z-50 bg-brand-darker/80 backdrop-blur border-b border-brand-card">
-  <nav class="max-w-6xl mx-auto flex flex-wrap items-center justify-between px-4 py-3">
-    <a href="#hero" class="flex items-center">
+
+<header class="fixed top-0 left-0 w-full z-50 bg-brand-darker/80 backdrop-blur-sm border-b border-brand-card/50">
+  <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+    <a href="#hero" class="flex items-center focus:outline-none focus:ring-2 focus:ring-brand-cyan rounded-lg">
       <span class="font-black text-2xl tracking-tight bg-gradient-to-r from-brand-pink via-brand-cyan to-brand-pink bg-clip-text text-transparent select-none whitespace-nowrap">Stream Boosters</span>
     </a>
+    
     <button id="mobile-menu-btn" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-brand-pink rounded-lg md:hidden hover:bg-brand-card focus:outline-none focus:ring-2 focus:ring-brand-pink" aria-controls="mobile-menu" aria-expanded="false">
       <span class="sr-only">Abrir menú principal</span>
-      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+      <!-- Icono de Hamburguesa -->
+      <svg id="icon-open" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+      <!-- Icono de Cerrar (X) -->
+      <svg id="icon-close" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
     </button>
-    <div id="mobile-menu" class="hidden w-full md:flex md:w-auto md:order-1 mt-4 md:mt-0">
-      <ul class="flex flex-col md:flex-row md:space-x-8 md:mt-0 font-semibold text-text-light bg-brand-darker md:bg-transparent rounded-lg md:rounded-none px-4 md:px-0 py-4 md:py-0">
-        <li><a href="#how-it-works" class="block py-2 pr-4 pl-3 hover:text-brand-pink transition-colors">¿Cómo funciona?</a></li>
-        <li><a href="#packages" class="block py-2 pr-4 pl-3 hover:text-brand-pink transition-colors">Paquetes</a></li>
-        <li><a href="#custom-plan" class="block py-2 pr-4 pl-3 hover:text-brand-pink transition-colors">Personalizado</a></li>
-        <li><a href="#testimonials" class="block py-2 pr-4 pl-3 hover:text-brand-pink transition-colors">Testimonios</a></li>
-        <li><a href="#genres" class="block py-2 pr-4 pl-3 hover:text-brand-pink transition-colors">Géneros</a></li>
-        <li><a href="#founders" class="block py-2 pr-4 pl-3 hover:text-brand-pink transition-colors">Fundadores</a></li>
-        <li><a href="#contact" class="block py-2 pr-4 pl-3 hover:text-brand-pink transition-colors">Contacto</a></li>
+
+    <div id="mobile-menu" class="absolute top-full left-0 w-full md:static md:w-auto md:flex transition-all duration-300 ease-in-out origin-top scale-y-0 opacity-0 md:scale-y-100 md:opacity-100">
+      <ul class="flex flex-col md:flex-row md:space-x-1 font-semibold text-text-light bg-brand-darker md:bg-transparent rounded-lg md:rounded-none px-4 md:px-0 py-4 md:py-0 mx-2 md:mx-0 border md:border-none border-brand-card/50">
+        {navLinks.map(link => (
+          <li>
+            <a 
+              href={link.href} 
+              class="nav-link block py-2 px-3 hover:text-brand-pink transition-colors duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-pink"
+              data-section={link.href.substring(1)}
+            >
+              {link.text}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   </nav>
-  <script is:inline>
-    // Mobile menu toggle
+</header>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    // --- Mobile Menu Toggle ---
     btn?.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !isExpanded);
+      menu.classList.toggle('scale-y-0');
+      menu.classList.toggle('opacity-0');
+      menu.classList.toggle('scale-y-100');
+      menu.classList.toggle('opacity-100');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
     });
-    // Cierra el menú al hacer click en un enlace (solo mobile)
-    menu?.querySelectorAll('a').forEach(link => {
+
+    // --- Active Link Highlighting ---
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.4, // 40% of the section must be visible
+    };
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.remove('text-brand-pink', 'font-bold');
+            if (link.dataset.section === entry.target.id) {
+              link.classList.add('text-brand-pink', 'font-bold');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(sec => observer.observe(sec));
+
+    // --- Close menu on link click (mobile) ---
+    navLinks.forEach(link => {
       link.addEventListener('click', () => {
-        if (window.innerWidth < 768) menu.classList.add('hidden');
+        if (window.innerWidth < 768 && btn.getAttribute('aria-expanded') === 'true') {
+          btn.click();
+        }
       });
     });
-    // Cierra el menú al cambiar a desktop
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 768) menu.classList.add('hidden');
-    });
-  </script>
-</header>
+  });
+</script>
