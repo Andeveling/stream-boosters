@@ -1,5 +1,6 @@
 ---
 // Genres and Next section for the landing page
+import { Icon } from 'astro-icon/components';
 ---
 <section id="genres" class='py-20 px-4 animate-fade-in'>
   <div class='max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center'>
@@ -8,27 +9,27 @@
       <p class='text-text-muted mb-6'>Trabajamos con una amplia variedad de géneros y productos:</p>
       <div class='grid grid-cols-2 gap-4 text-center'>
         <div class='bg-brand-dark p-4 rounded-lg border border-brand-card col-span-2 flex items-center justify-center gap-2'>
-          <svg class='w-5 h-5 text-brand-cyan' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><path d='M12 4v16m8-8H4'></path></svg>
+          <Icon name="material-symbols:shopping-bag-outline" class="w-5 h-5 text-brand-cyan" />
           Productos para Gamers
         </div>
         <div class='bg-brand-dark p-4 rounded-lg border border-brand-card flex items-center justify-center gap-2'>
-          <svg class='w-5 h-5 text-brand-pink' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10'></circle></svg>
+          <Icon name="material-symbols:stadia-controller-outline" class="w-5 h-5 text-brand-pink" />
           Juegos Indie
         </div>
         <div class='bg-brand-dark p-4 rounded-lg border border-brand-card flex items-center justify-center gap-2'>
-          <svg class='w-5 h-5 text-brand-purple' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><rect x='4' y='4' width='16' height='16' rx='4'></rect></svg>
+          <Icon name="material-symbols:explore-outline" class="w-5 h-5 text-brand-purple" />
           RPG & Aventura
         </div>
         <div class='bg-brand-dark p-4 rounded-lg border border-brand-card flex items-center justify-center gap-2'>
-          <svg class='w-5 h-5 text-brand-red' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><polygon points='12,2 22,22 2,22'></polygon></svg>
+          <Icon name="material-symbols:chess-pawn-outline" class="w-5 h-5 text-brand-red" />
           Estrategia
         </div>
         <div class='bg-brand-dark p-4 rounded-lg border border-brand-card flex items-center justify-center gap-2'>
-          <svg class='w-5 h-5 text-brand-pink' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><path d='M12 20v-6'></path><circle cx='12' cy='10' r='4'></circle></svg>
+          <Icon name="material-symbols:home" class="w-5 h-5 text-brand-pink" />
           Juegos de Terror
         </div>
         <div class='bg-brand-dark p-4 rounded-lg border border-brand-card col-span-2 flex items-center justify-center gap-2'>
-          <svg class='w-5 h-5 text-brand-purple' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><rect x='4' y='4' width='16' height='16' rx='4'></rect></svg>
+          <Icon name="material-symbols:label-outline" class="w-5 h-5 text-brand-purple" />
           Marcas
         </div>
       </div>
