@@ -107,7 +107,7 @@ export const FormRadioGroup: React.FC<RadioGroupProps> = ({
       <label className="block text-left text-text-light mb-4 font-medium">
         {label}
       </label>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {options.map((option) => (
           <button
             key={option.value}
@@ -162,7 +162,10 @@ export const FormButtonGrid: React.FC<ButtonGridProps> = ({
       <label className="block text-left text-text-light mb-4 font-medium">
         {label}
       </label>
-      <div className={`grid ${gridClass} gap-4`}>
+      <div className={`grid ${gridClass} gap-4
+        sm:grid-cols-2
+        grid-cols-1
+      `}>
         {options.map((option) => (
           <button
             key={option.value}

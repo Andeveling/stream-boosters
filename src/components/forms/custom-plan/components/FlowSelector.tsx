@@ -23,7 +23,7 @@ type Props = {
 export default function FlowSelector({ onSelect }: Props) {
   return (
     <div className='flex flex-col items-center'>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-xl'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-xl'>
         {flowOptions.map((opt) => (
           <button
             key={opt.value}

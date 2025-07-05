@@ -151,7 +151,7 @@
             "title": "Custom Plan: Mejorar Adaptabilidad de Botones y Radios",
             "description": "Asegurar que los botones de selección de flujo y radios se adapten bien a móviles.",
             "details": "6.1: Asegurar que los botones de selección de flujo y los botones de radio se adapten bien a pantallas pequeñas, apilándose o reduciendo padding si es necesario.",
-            "status": "pending",
+            "status": "done",
             "dependencies": [],
             "parentTaskId": 3
           },
@@ -160,7 +160,25 @@
             "title": "Founders: Optimizar Tamaño de Imágenes de Perfil",
             "description": "Reducir tamaño de imágenes de perfil de fundadores en móviles.",
             "details": "7.1: Reducir el tamaño de las imágenes de perfil de los fundadores en móviles para que no ocupen demasiado espacio vertical.",
+            "status": "done",
+            "dependencies": [],
+            "parentTaskId": 3
+          },
+          {
+            "id": 8,
+            "title": "Revisar y mejorar el menú/header en pantallas medianas (768-1024px)",
+            "description": "Analizar y optimizar el comportamiento y distribución del menú de navegación en el header para pantallas medianas (md: 768-1024px). Asegurarse de que los links estén bien distribuidos, no se solapen y la experiencia sea óptima. Ajustar estilos, espaciados y lógica si es necesario.",
+            "details": "<info added on 2025-07-05T04:14:54.278Z>\nInicio la revisión del header en pantallas medianas. Analizaré el archivo Header.astro y los estilos globales para identificar problemas de distribución y navegación en el rango md (768-1024px). Me enfocaré en la disposición de los links, el logo y el menú, asegurando que no haya solapamientos y que la experiencia sea óptima. Realizaré los ajustes necesarios en estilos y lógica para mejorar la usabilidad y el diseño en este breakpoint.\n</info added on 2025-07-05T04:14:54.278Z>",
             "status": "pending",
+            "dependencies": [],
+            "parentTaskId": 3
+          },
+          {
+            "id": 9,
+            "title": "Header: Mejorar comportamiento y layout en pantallas medianas",
+            "description": "Revisar y optimizar el menú/header para que la lista de navegación no se desborde ni se solape en pantallas md (>=768px y <1024px).",
+            "details": "Analizar el layout del header y la lista de navegación en breakpoints md. Ajustar espaciados, tamaño de fuente, padding, o el comportamiento del menú para evitar solapamientos o desbordes. Considerar soluciones como scroll horizontal, reducción de padding, o menú hamburguesa extendido en md si es necesario.",
+            "status": "done",
             "dependencies": [],
             "parentTaskId": 3
           }
@@ -169,7 +187,7 @@
     ],
     "metadata": {
       "created": "2025-07-04T03:50:05.421Z",
-      "updated": "2025-07-05T04:08:13.977Z",
+      "updated": "2025-07-05T04:17:58.455Z",
       "description": "Development tasks"
     }
   }

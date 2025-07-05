@@ -13,9 +13,9 @@ const navLinks = [
 ---
 
 <header class="fixed top-0 left-0 w-full z-50 bg-brand-darker/80 backdrop-blur-sm border-b border-brand-card/50">
-  <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
-    <a href="#hero" class="flex items-center focus:outline-none focus:ring-2 focus:ring-brand-cyan rounded-lg">
-      <span class="font-black text-xl md:text-2xl tracking-normal md:tracking-tight bg-gradient-to-r from-brand-pink via-brand-cyan to-brand-pink bg-clip-text text-transparent select-none whitespace-nowrap">Stream Boosters</span>
+  <nav class="max-w-6xl mx-auto flex items-center justify-between px-2 md:px-4 py-3 gap-2 md:gap-4">
+    <a href="#hero" class="flex items-center focus:outline-none focus:ring-2 focus:ring-brand-cyan rounded-lg min-w-0">
+      <span class="font-black text-base sm:text-xl md:text-2xl tracking-normal md:tracking-tight bg-gradient-to-r from-brand-pink via-brand-cyan to-brand-pink bg-clip-text text-transparent select-none whitespace-nowrap truncate max-w-[120px] sm:max-w-xs md:max-w-sm lg:max-w-none">Stream Boosters</span>
     </a>
     
     <button id="mobile-menu-btn" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-brand-pink rounded-lg md:hidden hover:bg-brand-card focus:outline-none focus:ring-2 focus:ring-brand-pink" aria-controls="mobile-menu" aria-expanded="false">
@@ -25,12 +25,12 @@ const navLinks = [
     </button>
 
     <div id="mobile-menu" class="absolute top-full left-0 w-full md:static md:w-auto md:flex transition-all duration-300 ease-in-out origin-top scale-y-0 opacity-0 md:scale-y-100 md:opacity-100">
-      <ul class="flex flex-col md:flex-row md:space-x-4 font-semibold text-text-light bg-brand-darker md:bg-transparent rounded-lg md:rounded-none px-4 md:px-0 py-4 md:py-0 mx-2 md:mx-0 border md:border-none border-brand-card/50">
+      <ul class="flex flex-col md:flex-row md:space-x-2 lg:space-x-4 font-semibold text-text-light bg-brand-darker md:bg-transparent rounded-lg md:rounded-none px-4 md:px-0 py-4 md:py-0 mx-2 md:mx-0 border md:border-none border-brand-card/50 overflow-x-auto md:overflow-visible whitespace-nowrap">
         {navLinks.map(link => (
-          <li>
+          <li class="flex-shrink-0">
             <a 
               href={link.href} 
-              class="nav-link block py-2 px-3 text-sm hover:text-brand-pink transition-colors duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-pink"
+              class="nav-link block py-2 px-2 md:px-3 text-sm md:text-xs lg:text-sm hover:text-brand-pink transition-colors duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-pink"
               data-section={link.href.substring(1)}
             >
               {link.text}
