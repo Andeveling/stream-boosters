@@ -133,7 +133,7 @@
             "title": "How It Works: Mejorar Escalado de Números",
             "description": "Reducir tamaño de fuente de los números de paso en móviles.",
             "details": "4.1: Reducir el tamaño de la fuente de los números de paso (01, 02, 03) en móviles.",
-            "status": "pending",
+            "status": "done",
             "dependencies": [],
             "parentTaskId": 3
           },
@@ -142,7 +142,7 @@
             "title": "Packages: Ajustar Tipografía de Precios",
             "description": "Reducir tamaño de fuente del precio en el plan PRO para móviles.",
             "details": "5.1: Reducir el tamaño de la fuente del precio ($XXX) en el plan PRO en móviles.",
-            "status": "pending",
+            "status": "done",
             "dependencies": [],
             "parentTaskId": 3
           },
@@ -169,7 +169,7 @@
     ],
     "metadata": {
       "created": "2025-07-04T03:50:05.421Z",
-      "updated": "2025-07-05T04:04:42.949Z",
+      "updated": "2025-07-05T04:08:13.977Z",
       "description": "Development tasks"
     }
   }
