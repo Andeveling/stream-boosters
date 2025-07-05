@@ -18,7 +18,7 @@
         "description": "Implement a dynamic form in CustomPlan.astro with two distinct flows: one for video games and another for brands, each with specific fields and validation rules. Include navigation logic between the two flows.",
         "details": "1.  Create the CustomPlan.astro component.\n2.  Define two distinct form flows: 'videoGames' and 'brands'.\n3.  For the 'videoGames' flow, include fields for: description (text), simultaneous broadcast (boolean), number of streamers (number), and campaign duration (number).\n4.  For the 'brands' flow, include fields for: description (text), promotion type (select), number of streamers (number), and duration (number).\n5.  Implement form validation for all fields, ensuring data integrity.\n6.  Implement navigation logic to allow users to switch between the 'videoGames' and 'brands' flows.\n7.  Use Astro's form handling capabilities to manage form state and submission.\n8.  Ensure the form is responsive and accessible.\n9.  Implement error handling and user feedback for invalid form inputs.\n10. Consider using a state management library (e.g., nanostores) for complex form state management.",
         "testStrategy": "1.  Verify that the CustomPlan.astro component renders correctly.\n2.  Test the 'videoGames' flow by inputting valid and invalid data into each field and verifying that validation rules are enforced.\n3.  Test the 'brands' flow by inputting valid and invalid data into each field and verifying that validation rules are enforced.\n4.  Verify that the navigation logic between the two flows works correctly.\n5.  Ensure that error messages are displayed correctly for invalid form inputs.\n6.  Test the form on different devices and screen sizes to ensure responsiveness.\n7.  Perform accessibility testing to ensure the form is usable by people with disabilities.\n8.  Submit the form with valid data and verify that the data is handled correctly (e.g., logged to the console).",
-        "status": "pending",
+        "status": "done",
         "dependencies": [
           1
         ],
@@ -30,7 +30,7 @@
             "description": "Create the CustomPlan.astro component and set up the basic HTML structure for the dynamic form. Include placeholders for the two flows (videoGames and brands) and a mechanism to switch between them (e.g., radio buttons or a select dropdown).",
             "dependencies": [],
             "details": "Create a new file `CustomPlan.astro` in the appropriate directory. Use Astro's component syntax to define the basic structure. Include a state variable to track the currently active flow (default to 'videoGames'). Implement a simple UI element (e.g., radio buttons) to allow the user to switch between the 'videoGames' and 'brands' flows. Initially, display only the 'videoGames' flow fields.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Manually verify that the CustomPlan.astro component is created and displays the initial form structure with the 'videoGames' flow visible. Check that the flow selection mechanism (e.g., radio buttons) is present."
           },
           {
@@ -39,7 +39,7 @@
             "description": "Add the specific fields for the 'videoGames' flow: description (text), simultaneous broadcast (boolean), number of streamers (number), and campaign duration (number). Implement a basic layout for these fields using HTML and Astro's templating capabilities.",
             "dependencies": [],
             "details": "Within the CustomPlan.astro component, create HTML input elements for each of the 'videoGames' flow fields. Use appropriate input types (e.g., `<textarea>` for description, `<input type=\"checkbox\">` for simultaneous broadcast, `<input type=\"number\">` for number of streamers and campaign duration). Add labels for each field. Use CSS or a CSS framework (if available) to style the layout.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Manually verify that all 'videoGames' flow fields are displayed correctly with appropriate input types and labels. Check the layout and styling."
           },
           {
@@ -48,7 +48,7 @@
             "description": "Add the specific fields for the 'brands' flow: description (text), promotion type (select), number of streamers (number), and duration (number). Implement a basic layout for these fields using HTML and Astro's templating capabilities.",
             "dependencies": [],
             "details": "Within the CustomPlan.astro component, create HTML input elements for each of the 'brands' flow fields. Use appropriate input types (e.g., `<textarea>` for description, `<select>` for promotion type, `<input type=\"number\">` for number of streamers and duration). Populate the `<select>` element with appropriate options for promotion type (e.g., 'Product Placement', 'Influencer Marketing', 'Giveaway'). Add labels for each field. Use CSS or a CSS framework (if available) to style the layout. Initially hide this flow.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Manually verify that all 'brands' flow fields are displayed correctly with appropriate input types and labels. Check the layout and styling. Ensure the flow is initially hidden."
           },
           {
@@ -57,7 +57,7 @@
             "description": "Implement conditional rendering logic to display either the 'videoGames' or 'brands' flow based on the user's selection. Use Astro's templating syntax to achieve this.",
             "dependencies": [],
             "details": "Use Astro's `Astro.props` or a state variable to track the currently selected flow. Use `if` statements or ternary operators in the template to conditionally render the HTML elements for the 'videoGames' or 'brands' flow based on the selected flow. Update the state variable when the user changes the flow selection.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Manually verify that only the selected flow's fields are displayed when the user switches between the 'videoGames' and 'brands' flows. Check that the correct fields are displayed for each flow."
           },
           {
@@ -66,7 +66,7 @@
             "description": "Implement basic form validation for all fields in both flows. Ensure that required fields are not empty and that number fields contain valid numbers. Display error messages to the user for invalid inputs.",
             "dependencies": [],
             "details": "Use JavaScript to validate the form fields on form submission. Check if required fields are empty. Use `isNaN()` to check if number fields contain valid numbers. Display error messages next to the corresponding fields using HTML elements (e.g., `<span>`) and CSS styling. Prevent form submission if there are validation errors.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Manually submit the form with empty required fields and invalid number fields. Verify that error messages are displayed correctly next to the corresponding fields and that the form is not submitted."
           },
           {
@@ -75,7 +75,7 @@
             "description": "Integrate nanostores to manage the form state. Create separate stores for each flow and bind the form fields to the corresponding store values. Update the store values when the user changes the form fields.",
             "dependencies": [],
             "details": "Install the `nanostores` package. Create separate stores for the 'videoGames' and 'brands' flows, each containing the initial values for the corresponding fields. Use nanostores' `useStore` hook to bind the form fields to the store values. Update the store values in the `onChange` event handlers of the form fields. Use the store values to populate the form fields.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Verify that the form fields are correctly bound to the nanostores stores. Check that the store values are updated when the user changes the form fields. Verify that the form fields are populated with the store values."
           },
           {
@@ -84,7 +84,7 @@
             "description": "Implement the form submission logic. Handle the form submission event and send the form data to a backend endpoint (placeholder for now). Implement error handling to display appropriate messages to the user in case of submission errors.",
             "dependencies": [],
             "details": "Add an event listener to the form's `onSubmit` event. Prevent the default form submission behavior. Collect the form data from the nanostores stores. Send the form data to a backend endpoint using `fetch` (replace with a placeholder URL for now). Handle potential errors during the submission process (e.g., network errors, server errors) and display appropriate error messages to the user.",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Submit the form and verify that the form data is collected and sent to the placeholder backend endpoint. Simulate submission errors (e.g., by using an invalid URL) and verify that error messages are displayed correctly to the user."
           }
         ]
@@ -92,7 +92,7 @@
     ],
     "metadata": {
       "created": "2025-07-04T03:50:05.421Z",
-      "updated": "2025-07-04T04:02:32.583Z",
+      "updated": "2025-07-05T00:40:06.914Z",
       "description": "Development tasks"
     }
   }

@@ -1,0 +1,71 @@
+<context>
+  # Overview  
+  Stream Boosters es una plataforma digital que conecta a desarrolladores de videojuegos y marcas con streamers para realizar campañas de publicidad auténticas y directas. Resuelve la dificultad y el alto coste de encontrar canales de marketing efectivos en el nicho del gaming, ofreciendo una alternativa a las agencias tradicionales.
+
+  # Core Features  
+  - **Presentación de Paquetes:**  
+    - **Qué hace:** Muestra paquetes de publicidad (Starter, Pro, Elite) con precios y alcances definidos.  
+    - **Por qué importa:** Permite una compra rápida y transparente.  
+    - **Cómo funciona:** Cada paquete es un componente estático en la landing, con datos codificados en JSON.  
+  - **Formulario de Plan Personalizado:**  
+    - **Qué hace:** Permite a los clientes solicitar campañas a medida en un flujo multi‑paso.  
+    - **Por qué importa:** Captura leads con precisión sobre necesidades específicas.  
+    - **Cómo funciona:** Vanilla JS gestiona los pasos y envía la petición al backend PHP.  
+  - **Landing Page Informativa:**  
+    - **Qué hace:** Comunica propuesta de valor y testimonios.  
+    - **Por qué importa:** Genera confianza y reduce la fricción de compra.  
+    - **Cómo funciona:** Sección estática con componentes Astro y CSS de Tailwind.
+
+  # User Experience  
+  - **User Personas:**  
+    - **Ana, la Dev Indie:** Necesita visibilidad con presupuesto ajustado.  
+    - **Carlos, Gerente de Marketing:** Busca campañas medibles y ROI claro.  
+  - **Key User Flows:**  
+    1. **Cliente Decidido:** Aterriza → Ve Paquetes → Compra.  
+    2. **Cliente Explorador:** Aterriza → Explora → Cotiza con formulario.  
+  - **UI/UX Consideraciones:**  
+    - Tema oscuro y moderno.  
+    - CTAs vibrantes para maximizar conversión.  
+    - Tipografía clara y sección de testimonios destacada.
+</context>
+
+<PRD>
+  # Technical Architecture  
+  - **Frontend:** Astro (estático) + Tailwind CSS + Vanilla JS.  
+  - **Backend:** PHP puro alojado en Hostinger (sin Node.js).  
+  - **Database:** MySQL (solo en Fase 2).  
+  - **Data Models:** Objeto JS temporal en frontend; luego tablas SQL.  
+  - **APIs & Integraciones:**  
+    - Inicialmente ninguna externa.  
+    - Futuras integraciones con Stripe/PayPal via SDK PHP.  
+  - **Infraestructura (¡CRÍTICO!):**  
+    - Hosting básico de Hostinger que **solo acepta HTML estático, CSS, JS y PHP**.  
+    - Todo el proyecto debe funcionar bajo estas limitaciones (<https://www.hostinger.com/co/tutoriales/subir-sitio-web>, <https://streamboosters.online/>).  
+
+  # Development Roadmap  
+  - **MVP (Fase 1 – Completada):** Landing + formulario PHP.  
+  - **Fase 2 – Enhancements:**  
+    1. Arquitectura PHP MVC + MySQL.  
+    2. Autenticación de usuarios (sesiones PHP, contraseñas hasheadas).  
+    3. Dashboard privado para clientes.  
+    4. Pasarela de pagos (Stripe/PayPal).  
+    5. Registro y panel para streamers.
+
+  # Logical Dependency Chain  
+  1. **Reestructurar Backend:** MVC PHP + BD MySQL.  
+  2. **Autenticación:** Registro/login.  
+  3. **Dashboard Cliente:** Envío y visualización de propuestas.  
+  4. **Pagos:** Tras tener cuentas activas.  
+  5. **Panel Streamers:** Al estabilizar el flujo de clientes.
+
+  # Risks and Mitigations  
+  - **Desarrollo Seguro en PHP Puro:**  
+    - *Mitigación:* Prepared statements + sanitización + patrones de diseño.  
+  - **Ser un Equipo de Uno:**  
+    - *Mitigación:* Seguir la “Logical Dependency Chain” y tareas atómicas.  
+  - **Alcance de la Fase 2:**  
+    - *Mitigación:* Incremental, validación tras cada gran entrega.
+
+  # Appendix  
+  No hay información adicional por ahora.
+</PRD>

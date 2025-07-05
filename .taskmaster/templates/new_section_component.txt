@@ -1,0 +1,16 @@
+---
+// {{componentName}} section for the landing page
+---
+<section id="{{componentId}}" class='relative text-center py-20 md:py-32 px-4 overflow-hidden animate-fade-in'>
+  <div class='relative z-10 max-w-4xl mx-auto'>
+    <h2 class='text-3xl md:text-5xl font-black tracking-tighter text-text-light mb-4'>
+      {{componentTitle}}
+    </h2>
+    <p class='text-lg md:text-xl text-text-muted max-w-2xl mx-auto mb-8'>
+      {{componentDescription}}
+    </p>
+    <a href='{{componentButtonLink}}' class='bg-brand-pink text-white font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-pink'>
+      {{componentButtonText}}
+    </a>
+  </div>
+</section>
