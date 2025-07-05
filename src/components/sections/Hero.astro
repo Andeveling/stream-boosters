@@ -1,14 +1,32 @@
 ---
-// Hero section for the landing page
+import { Icon } from "astro-icon/components";
 ---
-<section id="hero" class='relative text-center py-20 md:py-32 px-4 overflow-hidden animate-fade-in'>
-  <div class='relative z-10 max-w-4xl mx-auto'>
-    <h1 class='text-4xl md:text-6xl font-black tracking-tighter text-text-light mb-4'>
-      Lleva tu videojuego frente a una <span class='text-brand-pink'>audiencia real</span> en Twitch
+
+<section id="hero" class="relative text-center py-20 md:py-32 px-4 overflow-hidden animate-fade-in">
+  <div class="relative z-10 max-w-4xl mx-auto">
+    <div class="inline-flex items-center justify-center bg-brand-darker border border-brand-card rounded-full px-4 py-1 mb-4">
+      <div class="relative flex items-center justify-center w-3 h-3 mr-2">
+        <div class="absolute inline-flex w-full h-full rounded-full bg-brand-cyan opacity-75 animate-ping"></div>
+        <div class="relative inline-flex w-2 h-2 rounded-full bg-brand-cyan"></div>
+      </div>
+      <span class="text-sm text-text-muted">Conectando marcas con audiencias en vivo</span>
+    </div>
+
+    <h1 class="text-4xl md:text-6xl font-black tracking-tighter text-text-light mb-4">
+      Tu proyecto frente a una <span class="text-brand-pink">audiencia real</span>
     </h1>
-    <p class='text-lg md:text-xl text-text-muted max-w-2xl mx-auto mb-8'>
-      Conecta con una red de streamers activos, sin complicaciones, sin agencias. Solo resultados y visibilidad auténtica para tu proyecto.
+    <p class="text-lg md:text-xl text-text-muted max-w-3xl mx-auto mb-8">
+      Conecta con una red de streamers activos, sin complicaciones ni agencias. Solo resultados y visibilidad auténtica para tu marca o videojuego.
     </p>
-    <a href='#packages' class='bg-brand-pink text-white font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-pink'> Ver Paquetes </a>
+    
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="#packages" class="w-full sm:w-auto bg-brand-pink text-white font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-pink">
+        Ver Paquetes
+      </a>
+      <a href="#how-it-works" class="w-full sm:w-auto flex items-center justify-center gap-2 border-2 border-brand-card text-text-muted font-semibold py-3 px-6 rounded-lg text-lg hover:bg-brand-card hover:text-text-light transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-card">
+        <Icon name="material-symbols:rocket-launch-outline-rounded" class="w-5 h-5" />
+        Cómo Funciona
+      </a>
+    </div>
   </div>
 </section>
