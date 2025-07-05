@@ -6,7 +6,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "clean": "rimraf dist",
+    "build:local": "rimraf dist && astro build && cp src/php/* dist/",
+    "copy:xampp": "cp -r dist/* /opt/lampp/htdocs/stream-boosters/"
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
