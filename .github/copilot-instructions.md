@@ -1,5 +1,14 @@
 # Copilot Instructions for Stream Boosters
 
+## Copilot main instructions
+
+- **Project Name:** Stream Boosters
+- **Project Description:** A modular landing page built with Astro, integrating React, Tailwind CSS
+- **Language:** Spanish
+- **Focus:** The project connects game developers and brands with streamers for direct, authentic marketing
+  campaigns.
+- **Response Chat Language:** Spanish
+
 ## Project Overview
 - **Stream Boosters** is a modular landing page built with [Astro](https://astro.build/), integrating React, Tailwind CSS, and PHP for campaign submission.
 - The site connects game developers and brands with streamers for direct, authentic marketing campaigns.
