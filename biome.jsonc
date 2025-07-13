@@ -10,7 +10,8 @@
       "linter": {
         "rules": {
           "correctness": {
-            "noUnusedImports": "off"
+            "noUnusedImports": "off",
+            "noUnusedVariables": "off"
           },
           "style": {
             "useFilenamingConvention": "off"
