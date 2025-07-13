@@ -9,15 +9,19 @@ interface Props {
   price: string
   features: string[]
   isPopular?: boolean
+  glass?: boolean // Permite forzar efecto glass
 }
 
-const { name, description, price, features, isPopular = false } = Astro.props as Props
+const { name, description, price, features, isPopular = false, glass = false } = Astro.props as Props
+
+const glassEffect = isPopular || glass
 ---
 
 <div
   class:list={[
-    "bg-brand-card p-8 rounded-xl border flex flex-col transition-all duration-300 hover:shadow-lg relative",
-    { "border-brand-pink shadow-[0_0_25px_0_rgba(255,45,146,0.3)] scale-105": isPopular, "border-brand-card/50 hover:border-brand-card": !isPopular },
+    "p-8 rounded-xl border flex flex-col transition-all duration-300 hover:shadow-lg relative",
+    glassEffect ? "bg-brand-card/30 backdrop-blur-md border-brand-card/50" : "bg-brand-card border-brand-card/50 hover:border-brand-card",
+    isPopular ? "border-brand-pink shadow-[0_0_25px_0_rgba(255,45,146,0.3)] scale-105" : "",
   ]}
 >
   {
