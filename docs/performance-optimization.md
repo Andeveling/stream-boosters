@@ -14,6 +14,7 @@
 ## 🔧 Optimizaciones Aplicadas
 
 ### 1. Sección Hero Reescrita
+
 - ✅ Eliminados todos los iconos SVG dinámicos
 - ✅ Removidos efectos de blur y backdrop-filter
 - ✅ Simplificadas animaciones a lo esencial
@@ -21,6 +22,7 @@
 - ✅ SVG inline simple para iconos críticos
 
 ### 2. CSS Optimizado
+
 - ✅ Desactivadas animaciones costosas en móviles
 - ✅ Eliminado will-change innecesario
 - ✅ Gradientes estáticos en lugar de animados
@@ -28,6 +30,7 @@
 - ✅ Hardware acceleration optimizada
 
 ### 3. Configuración Astro Mejorada
+
 - ✅ Eliminada dependencia astro-icon (pesada)
 - ✅ Code splitting habilitado
 - ✅ CSS nunca inlineado (mejor caching)
@@ -35,6 +38,7 @@
 - ✅ Console.log eliminados en producción
 
 ### 4. Optimizaciones de Bundle
+
 - ✅ Chunks manuales para vendor y forms
 - ✅ React scope limitado solo a formularios
 - ✅ Assets nunca inlineados
@@ -43,6 +47,7 @@
 ## 📊 Mejoras de Rendimiento Esperadas
 
 ### Antes vs Después:
+
 - **RAM**: ~600MB → ~50-100MB (sitio estático)
 - **FCP**: Reducción 40-60%
 - **LCP**: Reducción 50-70%
@@ -50,6 +55,7 @@
 - **Bundle size**: Reducción ~30-40%
 
 ### Métricas Core Web Vitals:
+
 - ✅ **LCP**: < 2.5s (optimizado)
 - ✅ **FID**: < 100ms (sin animaciones pesadas)
 - ✅ **CLS**: < 0.1 (layout estable)
@@ -57,6 +63,7 @@
 ## 🛠️ Archivos Modificados
 
 ### Principales Cambios:
+
 1. `src/components/sections/Hero.astro` - Reescrito completamente
 2. `src/styles/hero-optimized.css` - Nuevos estilos performance-first
 3. `src/styles/global.css` - Optimizaciones críticas añadidas
@@ -64,6 +71,7 @@
 5. `package.json` - Dependencias pesadas eliminadas
 
 ### Dependencias Removidas:
+
 - `astro-icon` - 1.1.5 (biblioteca pesada)
 - `@iconify-json/material-symbols` - 1.2.29 (iconos pesados)
 
@@ -86,6 +94,7 @@ pnpm preview
 ## 📱 Optimizaciones Móviles
 
 ### Específicas para Mobile:
+
 - Animaciones reducidas a 0.1s en pantallas < 1024px
 - Blur effects completamente deshabilitados en móviles
 - Font size optimizado con clamp()
@@ -93,6 +102,7 @@ pnpm preview
 - Reduced motion respetado
 
 ### CSS Media Queries Optimizadas:
+
 ```css
 /* Móvil first approach */
 @media (max-width: 768px) {
@@ -113,6 +123,7 @@ pnpm preview
 ## 🎯 Compatibilidad Hostinger
 
 ### Configuraciones Específicas:
+
 - ✅ Output estático optimizado
 - ✅ Assets con hash para cache
 - ✅ PHP files copiados correctamente
@@ -120,6 +131,7 @@ pnpm preview
 - ✅ ES2018 target para mejor soporte
 
 ### Deploy Optimizado:
+
 ```bash
 # Build para Hostinger
 pnpm run build:local
@@ -131,12 +143,14 @@ cp src/php/* dist/
 ## 🔍 Monitoreo de Rendimiento
 
 ### Herramientas Recomendadas:
+
 - **Lighthouse** - Core Web Vitals
 - **GTmetrix** - Análisis completo
 - **WebPageTest** - Datos reales
 - **Chrome DevTools** - Performance profiling
 
 ### Comandos de Testing:
+
 ```bash
 # Lighthouse CI
 npx lighthouse https://localhost:4321 --output=json
@@ -151,12 +165,15 @@ npm audit --audit-level=moderate
 ## ⚠️ Notas Importantes
 
 ### Cambios Breaking:
+
 - ❌ Ya no se usan componentes FluentGlowHeading, FluentHeroButton, FluentText
 - ❌ Iconos astro-icon removidos (usar SVG inline)
 - ❌ Animaciones complejas deshabilitadas
 
 ### Migración de Componentes:
+
 Si necesitas efectos visuales, usa:
+
 - CSS transforms simples en lugar de animaciones complejas
 - SVG inline en lugar de bibliotecas de iconos
 - Gradientes CSS en lugar de pseudo-elementos
@@ -165,8 +182,9 @@ Si necesitas efectos visuales, usa:
 ## 🎉 Resultado Final
 
 El sitio ahora es verdaderamente estático y optimizado para:
+
 - ⚡ Carga ultra-rápida
-- 📱 Rendimiento móvil excelente  
+- 📱 Rendimiento móvil excelente
 - 🌐 SEO optimizado
 - 💾 Uso mínimo de recursos
 - 🏆 Core Web Vitals perfectos

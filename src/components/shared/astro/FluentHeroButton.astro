@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 
 interface Props {
   /**
@@ -10,12 +10,12 @@ interface Props {
   /**
    * Button variant following Fluent Design principles
    */
-  variant?: 'hero-primary' | 'hero-secondary' | 'hero-ghost' | 'hero-glow';
+  variant?: "hero-primary" | "hero-secondary" | "hero-ghost" | "hero-glow";
 
   /**
    * Size variant
    */
-  size?: 'md' | 'lg' | 'xl';
+  size?: "md" | "lg" | "xl";
 
   /**
    * Icon name (optional)
@@ -25,7 +25,7 @@ interface Props {
   /**
    * Icon position
    */
-  iconPosition?: 'left' | 'right';
+  iconPosition?: "left" | "right";
 
   /**
    * Button text content
@@ -35,7 +35,7 @@ interface Props {
   /**
    * Special effect variant
    */
-  effect?: 'none' | 'float' | 'glow-pulse' | 'magnetic' | 'ripple';
+  effect?: "none" | "float" | "glow-pulse" | "magnetic" | "ripple";
 
   /**
    * Animation delay
@@ -50,19 +50,19 @@ interface Props {
 
 const {
   href,
-  variant = 'hero-primary',
-  size = 'lg',
+  variant = "hero-primary",
+  size = "lg",
   icon,
-  iconPosition = 'left',
+  iconPosition = "left",
   text,
-  effect = 'glow-pulse',
+  effect = "glow-pulse",
   delay = 0,
-  class: className = '',
+  class: className = "",
 } = Astro.props as Props;
 
 // Variant classes following Fluent Design with enhanced effects
 const variantClasses = {
-  'hero-primary': `
+  "hero-primary": `
     relative overflow-hidden
     bg-gradient-to-r from-brand-pink via-brand-purple to-brand-pink bg-size-200
     hover:bg-gradient-to-r hover:from-brand-purple hover:via-brand-pink hover:to-brand-purple
@@ -72,7 +72,7 @@ const variantClasses = {
     border-2 border-transparent
     hover:border-brand-cyan/30
   `,
-  'hero-secondary': `
+  "hero-secondary": `
     relative overflow-hidden
     bg-gradient-to-r from-brand-purple via-brand-cyan to-brand-purple bg-size-200
     hover:bg-gradient-to-r hover:from-brand-cyan hover:via-brand-purple hover:to-brand-cyan
@@ -82,7 +82,7 @@ const variantClasses = {
     border-2 border-brand-purple/20
     hover:border-brand-cyan/50
   `,
-  'hero-ghost': `
+  "hero-ghost": `
     relative overflow-hidden
     bg-transparent backdrop-blur-sm
     border-2 border-brand-card
@@ -93,7 +93,7 @@ const variantClasses = {
     shadow-lg shadow-brand-dark/20
     hover:shadow-xl hover:shadow-brand-purple/20
   `,
-  'hero-glow': `
+  "hero-glow": `
     relative overflow-hidden
     bg-gradient-to-r from-brand-cyan via-brand-pink to-brand-purple bg-size-200
     text-white font-bold
@@ -107,47 +107,47 @@ const variantClasses = {
 
 // Size classes with better width control and text handling
 const sizeClasses = {
-  md: 'py-3 px-6 text-base min-w-[180px] max-w-[240px]',
-  lg: 'py-4 px-8 text-lg min-w-[200px] max-w-[280px]',
-  xl: 'py-5 px-10 text-xl min-w-[220px] max-w-[320px]',
+  md: "py-3 px-6 text-base min-w-[180px] max-w-[240px]",
+  lg: "py-4 px-8 text-lg min-w-[200px] max-w-[280px]",
+  xl: "py-5 px-10 text-xl min-w-[220px] max-w-[320px]",
 };
 
 // Icon size classes
 const iconSizeClasses = {
-  md: 'w-5 h-5',
-  lg: 'w-6 h-6',
-  xl: 'w-7 h-7',
+  md: "w-5 h-5",
+  lg: "w-6 h-6",
+  xl: "w-7 h-7",
 };
 
 // Effect classes
 const effectClasses = {
-  none: '',
-  float: 'animate-float-gentle',
-  'glow-pulse': 'animate-glow-pulse-button',
-  magnetic: 'animate-magnetic',
-  ripple: 'animate-ripple-effect',
+  none: "",
+  float: "animate-float-gentle",
+  "glow-pulse": "animate-glow-pulse-button",
+  magnetic: "animate-magnetic",
+  ripple: "animate-ripple-effect",
 };
 
 const buttonClasses = [
-  'inline-flex items-center justify-center gap-3',
-  'rounded-xl',
-  'transition-all duration-500',
-  'hover:scale-105 hover:-translate-y-1',
-  'focus:outline-none focus:ring-4 focus:ring-brand-pink/30',
-  'transform-gpu',
-  'group',
-  'whitespace-nowrap', // Prevent text wrapping
-  'text-center', // Center text alignment
-  'flex-shrink-0', // Prevent button shrinking
+  "inline-flex items-center justify-center gap-3",
+  "rounded-xl",
+  "transition-all duration-500",
+  "hover:scale-105 hover:-translate-y-1",
+  "focus:outline-none focus:ring-4 focus:ring-brand-pink/30",
+  "transform-gpu",
+  "group",
+  "whitespace-nowrap", // Prevent text wrapping
+  "text-center", // Center text alignment
+  "flex-shrink-0", // Prevent button shrinking
   variantClasses[variant],
   sizeClasses[size],
   effectClasses[effect],
   className,
 ]
   .filter(Boolean)
-  .join(' ');
+  .join(" ");
 
-const Element = href ? 'a' : 'button';
+const Element = href ? "a" : "button";
 const elementProps = href ? { href } : {};
 ---
 

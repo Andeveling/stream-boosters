@@ -6,8 +6,8 @@
 
 1. “Lleva tu videojuego frente a una audiencia real en Twitch”
 2. “Conecta con una red de streamers activos, sin complicaciones, sin agencias. Solo resultados y visibilidad auténtica para tu proyecto.”
-**Erick:**  Punto 2 Me gustaría que este texto se enfocara más en explicar lo de la "audiencia real" explicando que nos enfocamos en una red de streamers con audiencias pequeñas y medianas para maximizar el impacto de las promociones.
-1. **Botón:** “Ver Paquetes”
+   **Erick:** Punto 2 Me gustaría que este texto se enfocara más en explicar lo de la "audiencia real" explicando que nos enfocamos en una red de streamers con audiencias pequeñas y medianas para maximizar el impacto de las promociones.
+3. **Botón:** “Ver Paquetes”
 
 **Objetivo:**
 
@@ -15,7 +15,6 @@ Captar la atención, comunicar la propuesta de valor y motivar a explorar los se
 **Erick:** Aquí también podríamos hacer hincapié en nuestra propuesta para el cliente, enfocándonos siempre en comunidades pequeñas para maximizar el impacto de las campañas.
 
 ### Feedback
-
 
 ---
 
@@ -26,7 +25,7 @@ Captar la atención, comunicar la propuesta de valor y motivar a explorar los se
 - **Título:** “¿Cómo funciona?”
 - **Subtítulo:** “En solo 3 pasos, tu juego estará en vivo.”
 - **Paso 1:** “Comparte tu Juego” – Nos envías la información y el acceso a tu juego o producto. Nosotros nos encargamos del resto.
-- **Erick:** 1 selecciona tu paquete cuéntanos los detalles de tu proyecto Escoge un plan y presupuesto que mejor se adapte a tu campaña. 
+- **Erick:** 1 selecciona tu paquete cuéntanos los detalles de tu proyecto Escoge un plan y presupuesto que mejor se adapte a tu campaña.
 - **Paso 2:** “Seleccionamos Streamers” – Buscamos en nuestra red los perfiles más activos y comprometidos que encajen con tu audiencia.
 - **Erick:** Seleccionamos a los streamers Te brindaremos una selección de streamers que mejor se adapten a tus condiciones (de esta forma le damos a entender al cliente que será él quien autorice a los streamers que nosotros seleccionamos).
 - **Paso 3:** “Tu Marca al Aire” – Coordinamos y lanzamos la campaña, dándote seguimiento personalizado y métricas en tiempo real.

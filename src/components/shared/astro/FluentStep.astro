@@ -3,44 +3,52 @@ interface Props {
   /**
    * Step icon name
    */
-  icon: string
+  icon: string;
 
   /**
    * Step number (displays as overlay)
    */
-  number: number
+  number: number;
 
   /**
    * Step title
    */
-  title: string
+  title: string;
 
   /**
    * Step description
    */
-  description: string
+  description: string;
 
   /**
    * Animation delay in milliseconds
    */
-  delay?: number
+  delay?: number;
 
   /**
    * Step variant for styling
    */
-  variant?: "default" | "glass" | "elevated"
+  variant?: "default" | "glass" | "elevated";
 }
 
-const { icon, number, title, description, delay = 0, variant = "default" } = Astro.props as Props
+const {
+  icon,
+  number,
+  title,
+  description,
+  delay = 0,
+  variant = "default",
+} = Astro.props as Props;
 
-import { Icon } from "astro-icon/components"
+import { Icon } from "astro-icon/components";
 
 // Variant classes
 const variantClasses = {
   default: "bg-brand-dark border-brand-card",
   glass: "bg-brand-card/30 border-brand-card/50", // quitado backdrop-blur-sm
-  elevated: "bg-gradient-to-br from-brand-dark to-brand-darker border-brand-purple/20 shadow-lg shadow-brand-purple/10", // sombra más ligera
-}
+  elevated:
+    "bg-gradient-to-br from-brand-dark to-brand-darker border-brand-purple/20 shadow-lg shadow-brand-purple/10", // sombra más ligera
+};
 
 const cardClasses = [
   "relative z-10 flex flex-col items-center justify-start p-6 md:p-8 rounded-xl border text-center",
@@ -50,7 +58,7 @@ const cardClasses = [
   "hover:shadow-xl hover:shadow-brand-purple/20",
   "animate-fade-in",
   variantClasses[variant],
-].join(" ")
+].join(" ");
 ---
 
 <div class={cardClasses} style={`animation-delay: ${delay}ms;`}>

@@ -1,20 +1,27 @@
 ---
-import { Icon } from "astro-icon/components"
-import FluentBadge from "./FluentBadge.astro"
-import FluentButton from "./FluentButton.astro"
+import { Icon } from "astro-icon/components";
+import FluentBadge from "./FluentBadge.astro";
+import FluentButton from "./FluentButton.astro";
 
 interface Props {
-  name: string
-  description: string
-  price: string
-  features: string[]
-  isPopular?: boolean
-  glass?: boolean // Permite forzar efecto glass
+  name: string;
+  description: string;
+  price: string;
+  features: string[];
+  isPopular?: boolean;
+  glass?: boolean; // Permite forzar efecto glass
 }
 
-const { name, description, price, features, isPopular = false, glass = false } = Astro.props as Props
+const {
+  name,
+  description,
+  price,
+  features,
+  isPopular = false,
+  glass = false,
+} = Astro.props as Props;
 
-const glassEffect = isPopular || glass
+const glassEffect = isPopular || glass;
 ---
 
 <div

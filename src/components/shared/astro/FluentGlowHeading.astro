@@ -3,45 +3,54 @@ interface Props {
   /**
    * Heading level (h1-h6)
    */
-  level?: 1 | 2 | 3 | 4 | 5 | 6
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
 
   /**
    * Size variant independent of heading level
    */
-  size?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl"
+  size?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl";
 
   /**
    * Glow effect variant
    */
-  glow?: "none" | "subtle" | "medium" | "intense"
+  glow?: "none" | "subtle" | "medium" | "intense";
 
   /**
    * Animation variant
    */
-  animation?: "none" | "fade-in" | "slide-up" | "type-effect" | "glow-pulse"
+  animation?: "none" | "fade-in" | "slide-up" | "type-effect" | "glow-pulse";
 
   /**
    * Gradient variant for text
    */
-  gradient?: "primary" | "secondary" | "rainbow" | "none"
+  gradient?: "primary" | "secondary" | "rainbow" | "none";
 
   /**
    * Text alignment
    */
-  align?: "left" | "center" | "right"
+  align?: "left" | "center" | "right";
 
   /**
    * Animation delay in milliseconds
    */
-  delay?: number
+  delay?: number;
 
   /**
    * Additional CSS classes
    */
-  class?: string
+  class?: string;
 }
 
-const { level = 1, size = "xl", glow = "medium", animation = "fade-in", gradient = "none", align = "center", delay = 0, class: className = "" } = Astro.props as Props
+const {
+  level = 1,
+  size = "xl",
+  glow = "medium",
+  animation = "fade-in",
+  gradient = "none",
+  align = "center",
+  delay = 0,
+  class: className = "",
+} = Astro.props as Props;
 
 // Mobile-first responsive size classes following Tailwind CSS best practices
 const sizeClasses = {
@@ -54,7 +63,7 @@ const sizeClasses = {
   "4xl": "text-5xl sm:text-6xl md:text-7xl lg:text-8xl",
   "5xl": "text-6xl sm:text-7xl md:text-8xl lg:text-9xl",
   "6xl": "text-7xl sm:text-8xl md:text-9xl lg:text-[10rem]",
-}
+};
 
 // Glow classes - Pure text-shadow approach (eliminates filter bleeding)
 const glowClasses = {
@@ -62,7 +71,7 @@ const glowClasses = {
   subtle: "glow-text-subtle",
   medium: "glow-text-medium",
   intense: "glow-text-intense",
-}
+};
 
 // Animation classes
 const animationClasses = {
@@ -71,22 +80,25 @@ const animationClasses = {
   "slide-up": "animate-slide-up",
   "type-effect": "animate-type-effect",
   "glow-pulse": "animate-glow-pulse",
-}
+};
 
 // Gradient classes
 const gradientClasses = {
-  primary: "bg-gradient-to-r from-brand-pink to-brand-purple bg-clip-text text-transparent",
-  secondary: "bg-gradient-to-r from-brand-purple to-brand-cyan bg-clip-text text-transparent",
-  rainbow: "bg-gradient-to-r from-brand-pink via-brand-cyan to-brand-purple bg-clip-text text-transparent",
+  primary:
+    "bg-gradient-to-r from-brand-pink to-brand-purple bg-clip-text text-transparent",
+  secondary:
+    "bg-gradient-to-r from-brand-purple to-brand-cyan bg-clip-text text-transparent",
+  rainbow:
+    "bg-gradient-to-r from-brand-pink via-brand-cyan to-brand-purple bg-clip-text text-transparent",
   none: "text-text-light",
-}
+};
 
 // Alignment classes
 const alignClasses = {
   left: "text-left",
   center: "text-center",
   right: "text-right",
-}
+};
 
 const headingClasses = [
   "font-black tracking-tighter",
@@ -101,9 +113,9 @@ const headingClasses = [
   className,
 ]
   .filter(Boolean)
-  .join(" ")
+  .join(" ");
 
-const Element = `h${level}` as keyof HTMLElementTagNameMap
+const Element = `h${level}` as keyof HTMLElementTagNameMap;
 ---
 
 <Element class={headingClasses} style={delay > 0 ? `animation-delay: ${delay}ms` : undefined}>

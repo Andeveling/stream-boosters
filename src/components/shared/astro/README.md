@@ -5,26 +5,31 @@ Este directorio contiene los componentes compartidos que implementan los princip
 ## 🎨 Principios del Fluent Design Implementados
 
 ### 1. **Light (Illuminación)**
+
 - Gradientes y sombras para crear jerarquía visual
 - Efectos de brillo y luminosidad en elementos importantes
 - Paleta de colores cálidos y fríos estratégicamente aplicados
 
 ### 2. **Depth (Profundidad)**
+
 - Sistema de elevación usando sombras y efectos de desenfoque
 - Capas visuales con diferentes niveles de opacidad
 - Efectos de `backdrop-blur` para elementos flotantes
 
 ### 3. **Motion (Movimiento)**
+
 - Transiciones fluidas de 200-300ms
 - Animaciones con `cubic-bezier(0.4,0,0.2,1)` para naturalidad
 - Estados hover con escalado y transformaciones suaves
 
 ### 4. **Material (Superficie)**
+
 - Efectos de cristal (Glass Morphism) con transparencias
 - Múltiples niveles de transparencia para crear profundidad
 - Texturas visuales mediante gradientes y fondos
 
 ### 5. **Scale (Escala)**
+
 - Diseño responsive y mobile-first
 - Jerarquía tipográfica proporcional
 - Sistema de espaciado basado en grid de 4px
@@ -32,6 +37,7 @@ Este directorio contiene los componentes compartidos que implementan los princip
 ## 📦 Componentes Disponibles
 
 ### `<FluentSection>`
+
 Contenedor principal para secciones con fondos configurables y iconos decorativos.
 
 ```astro
@@ -59,6 +65,7 @@ Contenedor principal para secciones con fondos configurables y iconos decorativo
 ```
 
 **Props:**
+
 - `backgroundVariant`: `'default' | 'gradient' | 'glass' | 'abstract' | 'geometric'`
 - `depth`: `'shallow' | 'medium' | 'deep'`
 - `animation`: `'fade-in' | 'slide-up' | 'scale-in' | 'none'`
@@ -66,6 +73,7 @@ Contenedor principal para secciones con fondos configurables y iconos decorativo
 - `backgroundIcons`: Array de configuración de iconos de fondo
 
 ### `<FluentBadge>`
+
 Etiquetas/badges con indicadores de estado animados.
 
 ```astro
@@ -79,12 +87,14 @@ Etiquetas/badges con indicadores de estado animados.
 ```
 
 **Props:**
+
 - `variant`: `'default' | 'success' | 'warning' | 'info' | 'glass'`
 - `size`: `'sm' | 'md' | 'lg'`
 - `showPulse`: `boolean`
 - `pulseColor`: `'pink' | 'purple' | 'cyan' | 'green' | 'yellow'`
 
 ### `<FluentButton>`
+
 Botones siguiendo los principios del Fluent Design con gradientes y estados hover.
 
 ```astro
@@ -100,6 +110,7 @@ Botones siguiendo los principios del Fluent Design con gradientes y estados hove
 ```
 
 **Props:**
+
 - `variant`: `'primary' | 'secondary' | 'ghost' | 'glass' | 'outline'`
 - `size`: `'sm' | 'md' | 'lg' | 'xl'`
 - `icon`: Nombre del icono (opcional)
@@ -107,6 +118,7 @@ Botones siguiendo los principios del Fluent Design con gradientes y estados hove
 - `loading`: Estado de carga con spinner
 
 ### `<FluentHeading>`
+
 Títulos con soporte para gradientes y diferentes tamaños.
 
 ```astro
@@ -121,11 +133,13 @@ Títulos con soporte para gradientes y diferentes tamaños.
 ```
 
 **Props:**
+
 - `level`: `1 | 2 | 3 | 4 | 5 | 6`
 - `size`: `'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl'`
 - `gradient`: `'primary' | 'secondary' | 'accent' | 'none'`
 
 ### `<FluentText>`
+
 Párrafos con diferentes variantes de estilo y tamaño.
 
 ```astro
@@ -141,11 +155,13 @@ Párrafos con diferentes variantes de estilo y tamaño.
 ```
 
 **Props:**
+
 - `size`: `'xs' | 'sm' | 'base' | 'lg' | 'xl'`
 - `variant`: `'light' | 'muted' | 'accent' | 'gradient'`
 - `maxWidth`: `'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 'full' | 'none'`
 
 ### `<FluentStep>`
+
 Componente especializado para mostrar pasos en procesos.
 
 ```astro
@@ -160,6 +176,7 @@ Componente especializado para mostrar pasos en procesos.
 ```
 
 **Props:**
+
 - `variant`: `'default' | 'glass' | 'elevated'`
 - `delay`: Retraso de animación en milisegundos
 - `number`: Número del paso (se muestra como overlay)
@@ -167,22 +184,26 @@ Componente especializado para mostrar pasos en procesos.
 ## 🎨 Sistema de Colores
 
 ### Colores de Marca
+
 - **`brand-pink`**: `#FF2D92` - Energía, acción, CTAs primarios
-- **`brand-purple`**: `#8B5CF6` - Creatividad, tecnología, elementos secundarios  
+- **`brand-purple`**: `#8B5CF6` - Creatividad, tecnología, elementos secundarios
 - **`brand-cyan`**: `#06B6D4` - Confianza, modernidad, elementos informativos
 
 ### Colores de Fondo
+
 - **`brand-dark`**: `#0F0F23` - Fondos principales
 - **`brand-darker`**: `#0A0A1A` - Fondos más oscuros
 - **`brand-card`**: `#1A1A2E` - Tarjetas y separadores
 
 ### Colores de Texto
+
 - **`text-light`**: `#f1f5f9` - Texto principal
 - **`text-muted`**: `#94a3b8` - Texto secundario
 
 ## 🔧 Uso y Mejores Prácticas
 
 ### 1. Importación
+
 ```astro
 ---
 import FluentSection from "../shared/astro/FluentSection.astro";
@@ -192,19 +213,23 @@ import FluentHeading from "../shared/astro/FluentHeading.astro";
 ```
 
 ### 2. Composición de Secciones
+
 Cada sección debe usar `FluentSection` como contenedor base y componer los demás elementos dentro.
 
 ### 3. Consistencia Visual
+
 - Usar siempre los mismos colores de marca
 - Mantener el espaciado consistente usando las props de `padding` y `margin`
 - Seguir la jerarquía tipográfica establecida
 
 ### 4. Accesibilidad
+
 - Todos los componentes incluyen `focus:ring` para navegación por teclado
 - Contraste WCAG AA cumplido en todos los colores
 - Texto alternativo y ARIA labels donde sea necesario
 
 ### 5. Responsive Design
+
 - Todos los componentes son mobile-first
 - Breakpoints consistentes usando las clases de Tailwind
 - Textos y espaciados que se adaptan automáticamente

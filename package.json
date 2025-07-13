@@ -12,9 +12,8 @@
     "copy:xampp": "cp -r dist/* /opt/lampp/htdocs/stream-boosters/",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "lint": "npx ultracite lint",
-    "format": "npx ultracite format",
-    "format:unsafe": "npx ultracite format --unsafe"
+    "lint": "npx biome check --apply-unsafe ./src",
+    "format": "npx biome format --write ./src && npx prettier --write ."
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
@@ -39,8 +38,8 @@
     "@testing-library/user-event": "^14.6.1",
     "husky": "^9.1.7",
     "jsdom": "^26.1.0",
+    "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
-    "ultracite": "5.0.32",
     "vitest": "^3.2.4"
   }
 }

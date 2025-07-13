@@ -1,7 +1,7 @@
-@import "@fontsource/sora/400.css";
-@import "@fontsource/sora/700.css";
+@import '@fontsource/sora/400.css';
+@import '@fontsource/sora/700.css';
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-brand-pink: #ff2d92;
@@ -23,20 +23,30 @@
   }
   body {
     @apply bg-brand-darker text-text-light font-sans;
-    font-family: "Sora", "Inter", Arial, sans-serif;
+    font-family: 'Sora', 'Inter', Arial, sans-serif;
     /* Optimización de rendering para efectos de texto */
     text-rendering: optimizeLegibility;
   }
 
   body::before {
-    content: "";
+    content: '';
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: radial-gradient(circle at 10% 10%, rgba(139, 92, 246, 0.1), transparent 35%), radial-gradient(circle at 90% 80%, rgba(255, 45, 146, 0.1), transparent 35%);
+    background:
+      radial-gradient(
+        circle at 10% 10%,
+        rgba(139, 92, 246, 0.1),
+        transparent 35%
+      ),
+      radial-gradient(
+        circle at 90% 80%,
+        rgba(255, 45, 146, 0.1),
+        transparent 35%
+      );
     pointer-events: none;
   }
 
@@ -96,8 +106,27 @@
 
   /* Enhanced radial gradient patterns - Seamless integration */
   .bg-hero-radial {
-    background: radial-gradient(circle at 20% 20%, rgba(255, 45, 146, 0.12), transparent 45%), radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.12), transparent 45%),
-      radial-gradient(circle at 50% 10%, rgba(6, 182, 212, 0.08), transparent 35%), radial-gradient(circle at 10% 80%, rgba(255, 45, 146, 0.06), transparent 40%);
+    background:
+      radial-gradient(
+        circle at 20% 20%,
+        rgba(255, 45, 146, 0.12),
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 80% 80%,
+        rgba(139, 92, 246, 0.12),
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 50% 10%,
+        rgba(6, 182, 212, 0.08),
+        transparent 35%
+      ),
+      radial-gradient(
+        circle at 10% 80%,
+        rgba(255, 45, 146, 0.06),
+        transparent 40%
+      );
     /* Ensure seamless integration with global background */
     position: relative;
     isolation: isolate;
@@ -134,11 +163,15 @@
   @keyframes pulse-glow {
     0%,
     100% {
-      box-shadow: 0 0 20px rgba(255, 45, 146, 0.4), 0 0 40px rgba(139, 92, 246, 0.2);
+      box-shadow:
+        0 0 20px rgba(255, 45, 146, 0.4),
+        0 0 40px rgba(139, 92, 246, 0.2);
       opacity: 0.8;
     }
     50% {
-      box-shadow: 0 0 40px rgba(255, 45, 146, 0.6), 0 0 80px rgba(139, 92, 246, 0.4);
+      box-shadow:
+        0 0 40px rgba(255, 45, 146, 0.6),
+        0 0 80px rgba(139, 92, 246, 0.4);
       opacity: 1;
     }
   }
@@ -853,7 +886,9 @@
   .hero-with-header {
     /* Account for fixed header height */
     min-height: calc(100vh - var(--header-height-mobile));
-    min-height: calc(100dvh - var(--header-height-mobile)); /* Dynamic viewport */
+    min-height: calc(
+      100dvh - var(--header-height-mobile)
+    ); /* Dynamic viewport */
     padding-top: var(--header-height-mobile);
   }
 
@@ -914,7 +949,9 @@
     /* Mobile menu dropdown positioning */
     #mobile-menu {
       top: calc(var(--header-height-mobile) - 1px);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
   }
 
@@ -964,7 +1001,9 @@
   /* Clase de accesibilidad para spans con glow - Contraste mejorado */
   .glow-accessibility-safe {
     /* Glow sutil que no afecta la legibilidad del gradiente */
-    text-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(6, 182, 212, 0.1);
+    text-shadow:
+      0 0 20px rgba(139, 92, 246, 0.3),
+      0 0 40px rgba(6, 182, 212, 0.1);
 
     /* Asegurar contraste óptimo */
     filter: brightness(1.1) saturate(1.2);
@@ -984,7 +1023,7 @@
   }
 
   /* Ensure all sections with padding='none' have no padding */
-  section[data-padding="none"] {
+  section[data-padding='none'] {
     padding: 0 !important;
   }
 }

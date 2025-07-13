@@ -8,24 +8,24 @@ interface Props {
   /**
    * Animation speed variant
    */
-  speed?: 'slow' | 'medium' | 'fast';
+  speed?: "slow" | "medium" | "fast";
 
   /**
    * Particle colors
    */
-  colors?: ('pink' | 'purple' | 'cyan')[];
+  colors?: ("pink" | "purple" | "cyan")[];
 
   /**
    * Particle sizes
    */
-  sizes?: ('sm' | 'md' | 'lg')[];
+  sizes?: ("sm" | "md" | "lg")[];
 }
 
 const {
   count = 8,
-  speed = 'medium',
-  colors = ['pink', 'purple', 'cyan'],
-  sizes = ['sm', 'md', 'lg'],
+  speed = "medium",
+  colors = ["pink", "purple", "cyan"],
+  sizes = ["sm", "md", "lg"],
 } = Astro.props as Props;
 
 // Generate random particles
@@ -42,21 +42,21 @@ const particles = Array.from({ length: count }, (_, i) => ({
 }));
 
 const colorClasses = {
-  pink: 'bg-brand-pink',
-  purple: 'bg-brand-purple',
-  cyan: 'bg-brand-cyan',
+  pink: "bg-brand-pink",
+  purple: "bg-brand-purple",
+  cyan: "bg-brand-cyan",
 };
 
 const sizeClasses = {
-  sm: 'w-1 h-1',
-  md: 'w-2 h-2',
-  lg: 'w-3 h-3',
+  sm: "w-1 h-1",
+  md: "w-2 h-2",
+  lg: "w-3 h-3",
 };
 
 const speedClasses = {
-  slow: 'animate-float-slow',
-  medium: 'animate-float-medium',
-  fast: 'animate-float-fast',
+  slow: "animate-float-slow",
+  medium: "animate-float-medium",
+  fast: "animate-float-fast",
 };
 ---
 
