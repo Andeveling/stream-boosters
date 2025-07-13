@@ -249,24 +249,25 @@
   .text-glow-container {
     /* Eliminar cualquier clipping que pueda crear bordes */
     overflow: visible;
-
-    /* Crear espacio para la expansión del glow */
-    padding: 1rem;
-    margin: -1rem;
-
-    /* Optimización de rendering */
+    
+    /* Espacio reducido para mejor performance */
+    padding: 0.5rem;
+    margin: -0.5rem;
+    
+    /* Performance-first optimización */
     transform: translateZ(0);
     isolation: isolate;
+    contain: layout; /* Optimize reflow */
   }
 
   /* Mejoras para el contenedor de animaciones de texto */
   .animate-text-reveal {
     /* Permitir que el glow se expanda libremente */
     overflow: visible;
-
-    /* Padding adicional para dar espacio al glow */
-    padding: 0.5rem;
-    margin: -0.5rem;
+    
+    /* Padding optimizado */
+    padding: 0.25rem;
+    margin: -0.25rem;
 
     /* Isolation para mejor composición */
     isolation: isolate;
@@ -954,5 +955,20 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+  }
+
+  /* Clase de accesibilidad para spans con glow - Contraste mejorado */
+  .glow-accessibility-safe {
+    /* Glow sutil que no afecta la legibilidad del gradiente */
+    text-shadow: 
+      0 0 20px rgba(139, 92, 246, 0.3),
+      0 0 40px rgba(6, 182, 212, 0.1);
+    
+    /* Asegurar contraste óptimo */
+    filter: brightness(1.1) saturate(1.2);
+    
+    /* Performance optimizado */
+    will-change: filter;
+    transform: translateZ(0);
   }
 }
