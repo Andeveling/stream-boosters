@@ -105,11 +105,11 @@ const variantClasses = {
   `
 };
 
-// Size classes
+// Size classes with better width control and text handling
 const sizeClasses = {
-  md: 'py-3 px-6 text-base',
-  lg: 'py-4 px-8 text-lg',
-  xl: 'py-5 px-10 text-xl'
+  md: 'py-3 px-6 text-base min-w-[180px] max-w-[240px]',
+  lg: 'py-4 px-8 text-lg min-w-[200px] max-w-[280px]',
+  xl: 'py-5 px-10 text-xl min-w-[220px] max-w-[320px]'
 };
 
 // Icon size classes
@@ -136,6 +136,9 @@ const buttonClasses = [
   'focus:outline-none focus:ring-4 focus:ring-brand-pink/30',
   'transform-gpu',
   'group',
+  'whitespace-nowrap', // Prevent text wrapping
+  'text-center',       // Center text alignment
+  'flex-shrink-0',     // Prevent button shrinking
   variantClasses[variant],
   sizeClasses[size],
   effectClasses[effect],
@@ -164,7 +167,7 @@ const elementProps = href ? { href } : {};
     />
   )}
   
-  <span class="relative z-10 transition-all duration-300 group-hover:tracking-wide">
+  <span class="relative z-10 transition-all duration-300 group-hover:tracking-wide whitespace-nowrap overflow-hidden text-ellipsis">
     {text}
   </span>
   
