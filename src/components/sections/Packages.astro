@@ -1,104 +1,48 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components"
+import FluentHeading from "../shared/astro/FluentHeading.astro"
+import FluentPackageCard from "../shared/astro/FluentPackageCard.astro"
+import FluentSection from "../shared/astro/FluentSection.astro"
+import FluentText from "../shared/astro/FluentText.astro"
 
 const packages = [
   {
-    name: 'STARTER',
-    description: 'Ideal para estudios indie y marcas emergentes.',
-    price: '175',
-    features: [
-      '5 streamers',
-      '1 hora de transmisión',
-      '30-70 viewers simultáneos',
-      'Alcance: 150 - 350 únicos',
-      'Story en red social',
-    ],
+    name: "STARTER",
+    description: "Ideal para estudios indie y marcas emergentes.",
+    price: "175",
+    features: ["5 streamers", "1 hora de transmisión", "30-70 viewers simultáneos", "Alcance: 150 - 350 únicos", "Story en red social"],
     isPopular: false,
   },
   {
-    name: 'PRO',
-    description:
-      'Para campañas de visibilidad media y activaciones específicas.',
-    price: '320',
-    features: [
-      '10 streamers',
-      '1 hora de transmisión',
-      '30-70 viewers simultáneos',
-      'Alcance: 300 - 700 únicos',
-      'Story en red social',
-    ],
+    name: "PRO",
+    description: "Para campañas de visibilidad media y activaciones específicas.",
+    price: "320",
+    features: ["10 streamers", "1 hora de transmisión", "30-70 viewers simultáneos", "Alcance: 300 - 700 únicos", "Story en red social"],
     isPopular: true,
   },
   {
-    name: 'ELITE',
-    description: 'Para grandes lanzamientos y campañas de alto impacto.',
-    price: '600',
-    features: [
-      '20 streamers',
-      '1 hora de transmisión',
-      '30-70 viewers simultáneos',
-      'Alcance: 600 - 1400 únicos',
-      'Story en red social',
-    ],
+    name: "ELITE",
+    description: "Para grandes lanzamientos y campañas de alto impacto.",
+    price: "600",
+    features: ["20 streamers", "1 hora de transmisión", "30-70 viewers simultáneos", "Alcance: 600 - 1400 únicos", "Story en red social"],
     isPopular: false,
   },
-];
+]
 ---
 
-<section id="packages" class="relative py-20 px-4 bg-brand-dark animate-fade-in overflow-hidden">
-  <!-- Glow Effect -->
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-brand-purple/30 rounded-full blur-3xl -z-0"></div>
-
-  <div class="relative z-10 max-w-6xl mx-auto">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-text-light">Paquetes de Publicidad</h2>
-      <p class="text-text-muted mt-2">Soluciones directas para un impacto real. Elige el que mejor se adapte a ti.</p>
+<FluentSection id='packages' animation='fade-in' padding='lg' align='center'>
+  <div class='max-w-6xl mx-auto'>
+    <div class='mb-16'>
+      <FluentHeading level={2} size='2xl' align='center'>Paquetes de Publicidad</FluentHeading>
+      <FluentText size='lg' variant='muted' align='center' margin='sm'> Soluciones directas para un impacto real. Elige el que mejor se adapte a ti. </FluentText>
     </div>
-    <div class="grid md:grid-cols-3 gap-8 items-stretch">
-      {packages.map((pkg, index) => (
-        <div
-          class:list={[
-            "bg-brand-card p-8 rounded-xl border flex flex-col transition-all duration-300 hover:shadow-lg",
-            {
-              "border-brand-pink shadow-[0_0_25px_0_rgba(255,45,146,0.3)] scale-105 relative": pkg.isPopular,
-              "border-brand-card/50 hover:border-brand-card": !pkg.isPopular,
-            },
-          ]}
-          style={`animation-delay:${index * 150}ms;`}
-        >
-          {pkg.isPopular && (
-            <span class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-brand-pink text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Más Popular</span>
-          )}
-          <h3 class="text-2xl font-bold text-text-light mb-2">{pkg.name}</h3>
-          <p class="text-text-muted mb-6 flex-grow">{pkg.description}</p>
-          <p class:list={["font-black text-text-light mb-6", { "text-4xl md:text-5xl": pkg.isPopular, "text-3xl md:text-4xl": !pkg.isPopular }]}> 
-            <span class="text-2xl md:text-3xl font-medium">$</span>{pkg.price}
-          </p>
-          <ul class="text-text-muted space-y-3 mb-8 flex-grow">
-            {pkg.features.map(feature => (
-              <li class="flex items-center">
-                <Icon name="material-symbols:check-circle-outline-rounded" class="w-5 h-5 text-brand-cyan mr-3" />
-                {feature}
-              </li>
-            ))}
-          </ul>
-          <a 
-            href="#contact"
-            class:list={[
-              "w-full text-center font-bold py-3 px-6 rounded-lg hover:scale-105 transition-all duration-300 mt-auto focus:outline-none focus:ring-2",
-              {
-                "bg-brand-pink text-white hover:opacity-90 focus:ring-brand-pink": pkg.isPopular,
-                "bg-brand-purple/20 text-text-light hover:bg-brand-purple/40 focus:ring-brand-purple": !pkg.isPopular,
-              }
-            ]}
-          >
-            Contratar Plan
-          </a>
-        </div>
-      ))}
+    <div class='grid md:grid-cols-3 gap-8 items-stretch'>
+      {packages.map((pkg) => <FluentPackageCard {...pkg} />)}
     </div>
-    <div class="text-center mt-12">
-        <p class="text-text-muted">¿Ninguno se ajusta a tu visión? <a href="#custom-plan" class="text-brand-cyan font-semibold hover:underline">Crea una campaña personalizada</a>.</p>
+    <div class='text-center mt-12'>
+      <FluentText size='base' variant='muted' align='center'>
+        ¿Ninguno se ajusta a tu visión? <a href='#custom-plan' class='text-brand-cyan font-semibold hover:underline'>Crea una campaña personalizada</a>.
+      </FluentText>
     </div>
   </div>
-</section>
+</FluentSection>
