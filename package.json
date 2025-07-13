@@ -9,6 +9,7 @@
     "astro": "astro",
     "clean": "rimraf dist",
     "build:local": "rimraf dist && astro build && cp src/php/* dist/ && cp .env dist/",
+    "zip:deploy": "cd dist && zip -r ../stream-boosters-deploy.zip . -x '*.DS_Store' '*.git*'",
     "copy:xampp": "cp -r dist/* /opt/lampp/htdocs/stream-boosters/",
     "test": "vitest",
     "test:ui": "vitest --ui",
