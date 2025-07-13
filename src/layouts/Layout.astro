@@ -1,6 +1,6 @@
 ---
-import Header from "../components/Header.astro";
-import "../styles/global.css";
+import Header from '../components/Header.astro';
+import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
@@ -9,27 +9,30 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<html lang='es'>
+<html lang="es">
   <head>
-    <meta charset='UTF-8' />
-    <meta name='description' content={description} />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <meta name='keywords' content='twitch, streamers, videojuegos, marketing, gaming, publicidad, indie, campañas, visibilidad, marcas' />
-    <meta property='og:title' content={title} />
-    <meta property='og:description' content={description} />
-    <meta property='og:type' content='website' />
-    <meta property='og:locale' content='es_ES' />
-    <meta property='og:image' content='/favicon.svg' />
-    <meta name='twitter:card' content='summary_large_image' />
-    <meta name='twitter:title' content={title} />
-    <meta name='twitter:description' content={description} />
-    <meta name='twitter:image' content='/favicon.svg' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <meta name='generator' content={Astro.generator} />
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="twitch, streamers, videojuegos, marketing, gaming, publicidad, indie, campañas, visibilidad, marcas"
+    />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:image" content="/favicon.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
     <!-- Fuentes locales: Sora via @fontsource en global.css -->
-    <link rel='stylesheet' href='/src/styles/global.css' />
+    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body>
     <Header />

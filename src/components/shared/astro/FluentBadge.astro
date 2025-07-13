@@ -1,16 +1,16 @@
 ---
-import type { HTMLAttributes } from "astro/types";
+import type { HTMLAttributes } from 'astro/types';
 
-interface Props extends HTMLAttributes<"div"> {
+interface Props extends HTMLAttributes<'div'> {
   /**
    * Badge variant for different styles
    */
-  variant?: "default" | "success" | "warning" | "info" | "glass";
+  variant?: 'default' | 'success' | 'warning' | 'info' | 'glass';
 
   /**
    * Size variant
    */
-  size?: "sm" | "md" | "lg";
+  size?: 'sm' | 'md' | 'lg';
 
   /**
    * Show animated pulse indicator
@@ -20,7 +20,7 @@ interface Props extends HTMLAttributes<"div"> {
   /**
    * Pulse color variant
    */
-  pulseColor?: "pink" | "purple" | "cyan" | "green" | "yellow";
+  pulseColor?: 'pink' | 'purple' | 'cyan' | 'green' | 'yellow';
 
   /**
    * Badge text content
@@ -29,64 +29,67 @@ interface Props extends HTMLAttributes<"div"> {
 }
 
 const {
-  variant = "default",
-  size = "md",
+  variant = 'default',
+  size = 'md',
   showPulse = false,
-  pulseColor = "cyan",
+  pulseColor = 'cyan',
   text,
-  class: className = "",
+  class: className = '',
   ...props
 } = Astro.props as Props;
 
 // Variant classes
 const variantClasses = {
-  default: "bg-brand-darker border-brand-card",
-  success: "bg-green-900/20 border-green-500/30",
-  warning: "bg-yellow-900/20 border-yellow-500/30",
-  info: "bg-blue-900/20 border-blue-500/30",
-  glass: "bg-brand-card/30 backdrop-blur-sm border-brand-card/50",
+  default: 'bg-brand-darker border-brand-card',
+  success: 'bg-green-900/20 border-green-500/30',
+  warning: 'bg-yellow-900/20 border-yellow-500/30',
+  info: 'bg-blue-900/20 border-blue-500/30',
+  glass: 'bg-brand-card/30 backdrop-blur-sm border-brand-card/50',
 };
 
 // Size classes
 const sizeClasses = {
-  sm: "px-3 py-1 text-xs",
-  md: "px-4 py-1 text-xs sm:text-sm",
-  lg: "px-6 py-2 text-sm sm:text-base",
+  sm: 'px-3 py-1 text-xs',
+  md: 'px-4 py-1 text-xs sm:text-sm',
+  lg: 'px-6 py-2 text-sm sm:text-base',
 };
 
 // Pulse color classes
 const pulseColors = {
-  pink: "bg-brand-pink",
-  purple: "bg-brand-purple",
-  cyan: "bg-brand-cyan",
-  green: "bg-green-500",
-  yellow: "bg-yellow-500",
+  pink: 'bg-brand-pink',
+  purple: 'bg-brand-purple',
+  cyan: 'bg-brand-cyan',
+  green: 'bg-green-500',
+  yellow: 'bg-yellow-500',
 };
 
 const badgeClasses = [
-  "inline-flex items-center justify-center",
-  "border rounded-full",
-  "transition-all duration-300",
-  "hover:scale-105",
-  "focus:outline-none focus:ring-2 focus:ring-brand-pink/50",
+  'inline-flex items-center justify-center',
+  'border rounded-full',
+  'transition-all duration-300',
+  'hover:scale-105',
+  'focus:outline-none focus:ring-2 focus:ring-brand-pink/50',
   variantClasses[variant],
   sizeClasses[size],
   className,
 ]
   .filter(Boolean)
-  .join(" ");
+  .join(' ');
 ---
 
-<div 
-  class={badgeClasses}
-  {...props}
->
-  {showPulse && (
-    <div class="relative flex items-center justify-center w-3 h-3 mr-2">
-      <div class={`absolute inline-flex w-full h-full rounded-full ${pulseColors[pulseColor]} opacity-75 animate-ping`}></div>
-      <div class={`relative inline-flex w-2 h-2 rounded-full ${pulseColors[pulseColor]}`}></div>
-    </div>
-  )}
+<div class={badgeClasses} {...props}>
+  {
+    showPulse && (
+      <div class="relative flex items-center justify-center w-3 h-3 mr-2">
+        <div
+          class={`absolute inline-flex w-full h-full rounded-full ${pulseColors[pulseColor]} opacity-75 animate-ping`}
+        />
+        <div
+          class={`relative inline-flex w-2 h-2 rounded-full ${pulseColors[pulseColor]}`}
+        />
+      </div>
+    )
+  }
   <span class="text-text-muted font-medium">
     {text}
   </span>

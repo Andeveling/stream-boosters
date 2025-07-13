@@ -1,66 +1,75 @@
 ---
-import { Icon } from "astro-icon/components";
-import FluentHeading from "../shared/astro/FluentHeading.astro";
-import FluentPackageCard from "../shared/astro/FluentPackageCard.astro";
-import FluentSection from "../shared/astro/FluentSection.astro";
-import FluentText from "../shared/astro/FluentText.astro";
+import { Icon } from 'astro-icon/components';
+import FluentHeading from '../shared/astro/FluentHeading.astro';
+import FluentPackageCard from '../shared/astro/FluentPackageCard.astro';
+import FluentSection from '../shared/astro/FluentSection.astro';
+import FluentText from '../shared/astro/FluentText.astro';
 
 const packages = [
   {
-    name: "STARTER",
-    description: "Ideal para estudios indie y marcas emergentes.",
-    price: "175",
+    name: 'STARTER',
+    description: 'Ideal para estudios indie y marcas emergentes.',
+    price: '175',
     features: [
-      "5 streamers",
-      "1 hora de transmisión",
-      "30-70 viewers simultáneos",
-      "Alcance: 150 - 350 únicos",
-      "Story en red social",
+      '5 streamers',
+      '1 hora de transmisión',
+      '30-70 viewers simultáneos',
+      'Alcance: 150 - 350 únicos',
+      'Story en red social',
     ],
     isPopular: false,
   },
   {
-    name: "PRO",
+    name: 'PRO',
     description:
-      "Para campañas de visibilidad media y activaciones específicas.",
-    price: "320",
+      'Para campañas de visibilidad media y activaciones específicas.',
+    price: '320',
     features: [
-      "10 streamers",
-      "1 hora de transmisión",
-      "30-70 viewers simultáneos",
-      "Alcance: 300 - 700 únicos",
-      "Story en red social",
+      '10 streamers',
+      '1 hora de transmisión',
+      '30-70 viewers simultáneos',
+      'Alcance: 300 - 700 únicos',
+      'Story en red social',
     ],
     isPopular: true,
   },
   {
-    name: "ELITE",
-    description: "Para grandes lanzamientos y campañas de alto impacto.",
-    price: "600",
+    name: 'ELITE',
+    description: 'Para grandes lanzamientos y campañas de alto impacto.',
+    price: '600',
     features: [
-      "20 streamers",
-      "1 hora de transmisión",
-      "30-70 viewers simultáneos",
-      "Alcance: 600 - 1400 únicos",
-      "Story en red social",
+      '20 streamers',
+      '1 hora de transmisión',
+      '30-70 viewers simultáneos',
+      'Alcance: 600 - 1400 únicos',
+      'Story en red social',
     ],
     isPopular: false,
   },
 ];
 ---
 
-<FluentSection id='packages' animation='fade-in' padding='lg' align='center'>
-  <div class='max-w-6xl mx-auto'>
-    <div class='mb-16'>
-      <FluentHeading level={2} size='2xl' align='center'>Paquetes de Publicidad</FluentHeading>
-      <FluentText size='lg' variant='muted' align='center' margin='sm'> Soluciones directas para un impacto real. Elige el que mejor se adapte a ti. </FluentText>
+<FluentSection id="packages" animation="fade-in" padding="lg" align="center">
+  <div class="max-w-6xl mx-auto">
+    <div class="mb-16">
+      <FluentHeading level={2} size="2xl" align="center"
+        >Paquetes de Publicidad</FluentHeading
+      >
+      <FluentText size="lg" variant="muted" align="center" margin="sm">
+        Soluciones directas para un impacto real. Elige el que mejor se adapte a
+        ti.
+      </FluentText>
     </div>
-    <div class='grid md:grid-cols-3 gap-8 items-stretch'>
+    <div class="grid md:grid-cols-3 gap-8 items-stretch">
       {packages.map((pkg) => <FluentPackageCard {...pkg} />)}
     </div>
-    <div class='text-center mt-12'>
-      <FluentText size='base' variant='muted' align='center'>
-        ¿Ninguno se ajusta a tu visión? <a href='#contact' class='text-brand-cyan font-semibold hover:underline'>Contacta o crea una campaña personalizada</a>.
+    <div class="text-center mt-12">
+      <FluentText size="base" variant="muted" align="center">
+        ¿Ninguno se ajusta a tu visión? <a
+          href="#contact"
+          class="text-brand-cyan font-semibold hover:underline"
+          >Contacta o crea una campaña personalizada</a
+        >.
       </FluentText>
     </div>
   </div>

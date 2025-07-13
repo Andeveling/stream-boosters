@@ -3,36 +3,36 @@ interface Props {
   /**
    * Text size variant
    */
-  size?: "xs" | "sm" | "base" | "lg" | "xl";
+  size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl';
 
   /**
    * Text color variant
    */
-  variant?: "light" | "muted" | "accent" | "gradient";
+  variant?: 'light' | 'muted' | 'accent' | 'gradient';
 
   /**
    * Text alignment
    */
-  align?: "left" | "center" | "right" | "justify";
+  align?: 'left' | 'center' | 'right' | 'justify';
 
   /**
    * Maximum width constraint
    */
   maxWidth?:
-    | "sm"
-    | "md"
-    | "lg"
-    | "xl"
-    | "2xl"
-    | "3xl"
-    | "4xl"
-    | "full"
-    | "none";
+    | 'sm'
+    | 'md'
+    | 'lg'
+    | 'xl'
+    | '2xl'
+    | '3xl'
+    | '4xl'
+    | 'full'
+    | 'none';
 
   /**
    * Margin utilities
    */
-  margin?: "none" | "sm" | "md" | "lg";
+  margin?: 'none' | 'sm' | 'md' | 'lg';
 
   /**
    * Additional CSS classes
@@ -41,59 +41,59 @@ interface Props {
 }
 
 const {
-  size = "base",
-  variant = "muted",
-  align = "center",
-  maxWidth = "3xl",
-  margin = "lg",
-  class: className = "",
+  size = 'base',
+  variant = 'muted',
+  align = 'center',
+  maxWidth = '3xl',
+  margin = 'lg',
+  class: className = '',
 } = Astro.props as Props;
 
 // Mobile-first responsive size classes following Tailwind CSS best practices
 const sizeClasses = {
-  xs: "text-xs sm:text-sm",
-  sm: "text-sm sm:text-base",
-  base: "text-base sm:text-lg md:text-xl",
-  lg: "text-lg sm:text-xl md:text-2xl",
-  xl: "text-xl sm:text-2xl md:text-3xl",
+  xs: 'text-xs sm:text-sm',
+  sm: 'text-sm sm:text-base',
+  base: 'text-base sm:text-lg md:text-xl',
+  lg: 'text-lg sm:text-xl md:text-2xl',
+  xl: 'text-xl sm:text-2xl md:text-3xl',
 };
 
 // Variant classes
 const variantClasses = {
-  light: "text-text-light",
-  muted: "text-text-muted",
-  accent: "text-brand-cyan",
+  light: 'text-text-light',
+  muted: 'text-text-muted',
+  accent: 'text-brand-cyan',
   gradient:
-    "bg-gradient-to-r from-text-light to-text-muted bg-clip-text text-transparent",
+    'bg-gradient-to-r from-text-light to-text-muted bg-clip-text text-transparent',
 };
 
 // Alignment classes
 const alignClasses = {
-  left: "text-left",
-  center: "text-center",
-  right: "text-right",
-  justify: "text-justify",
+  left: 'text-left',
+  center: 'text-center',
+  right: 'text-right',
+  justify: 'text-justify',
 };
 
 // Max width classes
 const maxWidthClasses = {
-  sm: "max-w-sm",
-  md: "max-w-md",
-  lg: "max-w-lg",
-  xl: "max-w-xl",
-  "2xl": "max-w-2xl",
-  "3xl": "max-w-3xl",
-  "4xl": "max-w-4xl",
-  full: "max-w-full",
-  none: "",
+  sm: 'max-w-sm',
+  md: 'max-w-md',
+  lg: 'max-w-lg',
+  xl: 'max-w-xl',
+  '2xl': 'max-w-2xl',
+  '3xl': 'max-w-3xl',
+  '4xl': 'max-w-4xl',
+  full: 'max-w-full',
+  none: '',
 };
 
 // Margin classes
 const marginClasses = {
-  none: "",
-  sm: "mb-4",
-  md: "mb-6",
-  lg: "mb-8",
+  none: '',
+  sm: 'mb-4',
+  md: 'mb-6',
+  lg: 'mb-8',
 };
 
 const textClasses = [
@@ -102,11 +102,11 @@ const textClasses = [
   alignClasses[align],
   maxWidthClasses[maxWidth],
   marginClasses[margin],
-  maxWidth !== "none" && maxWidth !== "full" ? "mx-auto" : "",
+  maxWidth !== 'none' && maxWidth !== 'full' ? 'mx-auto' : '',
   className,
 ]
   .filter(Boolean)
-  .join(" ");
+  .join(' ');
 ---
 
 <p class={textClasses}>

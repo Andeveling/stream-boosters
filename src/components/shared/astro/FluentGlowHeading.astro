@@ -8,27 +8,27 @@ interface Props {
   /**
    * Size variant independent of heading level
    */
-  size?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl";
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl';
 
   /**
    * Glow effect variant
    */
-  glow?: "none" | "subtle" | "medium" | "intense";
+  glow?: 'none' | 'subtle' | 'medium' | 'intense';
 
   /**
    * Animation variant
    */
-  animation?: "none" | "fade-in" | "slide-up" | "type-effect" | "glow-pulse";
+  animation?: 'none' | 'fade-in' | 'slide-up' | 'type-effect' | 'glow-pulse';
 
   /**
    * Gradient variant for text
    */
-  gradient?: "primary" | "secondary" | "rainbow" | "none";
+  gradient?: 'primary' | 'secondary' | 'rainbow' | 'none';
 
   /**
    * Text alignment
    */
-  align?: "left" | "center" | "right";
+  align?: 'left' | 'center' | 'right';
 
   /**
    * Animation delay in milliseconds
@@ -43,68 +43,68 @@ interface Props {
 
 const {
   level = 1,
-  size = "xl",
-  glow = "medium",
-  animation = "fade-in",
-  gradient = "none",
-  align = "center",
+  size = 'xl',
+  glow = 'medium',
+  animation = 'fade-in',
+  gradient = 'none',
+  align = 'center',
   delay = 0,
-  class: className = "",
+  class: className = '',
 } = Astro.props as Props;
 
 // Mobile-first responsive size classes following Tailwind CSS best practices
 const sizeClasses = {
-  sm: "text-base sm:text-lg md:text-xl",
-  md: "text-lg sm:text-xl md:text-2xl",
-  lg: "text-xl sm:text-2xl md:text-3xl lg:text-4xl",
-  xl: "text-2xl sm:text-3xl md:text-4xl lg:text-5xl",
-  "2xl": "text-3xl sm:text-4xl md:text-5xl lg:text-6xl",
-  "3xl": "text-4xl sm:text-5xl md:text-6xl lg:text-7xl",
-  "4xl": "text-5xl sm:text-6xl md:text-7xl lg:text-8xl",
-  "5xl": "text-6xl sm:text-7xl md:text-8xl lg:text-9xl",
-  "6xl": "text-7xl sm:text-8xl md:text-9xl lg:text-[10rem]",
+  sm: 'text-base sm:text-lg md:text-xl',
+  md: 'text-lg sm:text-xl md:text-2xl',
+  lg: 'text-xl sm:text-2xl md:text-3xl lg:text-4xl',
+  xl: 'text-2xl sm:text-3xl md:text-4xl lg:text-5xl',
+  '2xl': 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl',
+  '3xl': 'text-4xl sm:text-5xl md:text-6xl lg:text-7xl',
+  '4xl': 'text-5xl sm:text-6xl md:text-7xl lg:text-8xl',
+  '5xl': 'text-6xl sm:text-7xl md:text-8xl lg:text-9xl',
+  '6xl': 'text-7xl sm:text-8xl md:text-9xl lg:text-[10rem]',
 };
 
 // Glow classes - Pure text-shadow approach (eliminates filter bleeding)
 const glowClasses = {
-  none: "",
-  subtle: "glow-text-subtle",
-  medium: "glow-text-medium",
-  intense: "glow-text-intense",
+  none: '',
+  subtle: 'glow-text-subtle',
+  medium: 'glow-text-medium',
+  intense: 'glow-text-intense',
 };
 
 // Animation classes
 const animationClasses = {
-  none: "",
-  "fade-in": "animate-fade-in",
-  "slide-up": "animate-slide-up",
-  "type-effect": "animate-type-effect",
-  "glow-pulse": "animate-glow-pulse",
+  none: '',
+  'fade-in': 'animate-fade-in',
+  'slide-up': 'animate-slide-up',
+  'type-effect': 'animate-type-effect',
+  'glow-pulse': 'animate-glow-pulse',
 };
 
 // Gradient classes
 const gradientClasses = {
   primary:
-    "bg-gradient-to-r from-brand-pink to-brand-purple bg-clip-text text-transparent",
+    'bg-gradient-to-r from-brand-pink to-brand-purple bg-clip-text text-transparent',
   secondary:
-    "bg-gradient-to-r from-brand-purple to-brand-cyan bg-clip-text text-transparent",
+    'bg-gradient-to-r from-brand-purple to-brand-cyan bg-clip-text text-transparent',
   rainbow:
-    "bg-gradient-to-r from-brand-pink via-brand-cyan to-brand-purple bg-clip-text text-transparent",
-  none: "text-text-light",
+    'bg-gradient-to-r from-brand-pink via-brand-cyan to-brand-purple bg-clip-text text-transparent',
+  none: 'text-text-light',
 };
 
 // Alignment classes
 const alignClasses = {
-  left: "text-left",
-  center: "text-center",
-  right: "text-right",
+  left: 'text-left',
+  center: 'text-center',
+  right: 'text-right',
 };
 
 const headingClasses = [
-  "font-black tracking-tighter",
-  "transition-all duration-500",
-  "will-change-transform", // Optimize for animations
-  "isolation-isolate", // Prevent filter bleeding
+  'font-black tracking-tighter',
+  'transition-all duration-500',
+  'will-change-transform', // Optimize for animations
+  'isolation-isolate', // Prevent filter bleeding
   sizeClasses[size],
   glowClasses[glow],
   animationClasses[animation],
@@ -113,12 +113,15 @@ const headingClasses = [
   className,
 ]
   .filter(Boolean)
-  .join(" ");
+  .join(' ');
 
 const Element = `h${level}` as keyof HTMLElementTagNameMap;
 ---
 
-<Element class={headingClasses} style={delay > 0 ? `animation-delay: ${delay}ms` : undefined}>
+<Element
+  class={headingClasses}
+  style={delay > 0 ? `animation-delay: ${delay}ms` : undefined}
+>
   <slot />
 </Element>
 
@@ -142,23 +145,23 @@ const Element = `h${level}` as keyof HTMLElementTagNameMap;
   .glow-text-intense {
     /* Performance-optimized glow - Solo 3 capas clave */
     text-shadow:
-      0 0 8px rgba(139, 92, 246, 0.4),    /* Purple glow - diferente del texto */
-      0 0 20px rgba(139, 92, 246, 0.2),   /* Medium spread */
-      0 0 40px rgba(6, 182, 212, 0.1);    /* Wide cyan glow */
-    
+      0 0 8px rgba(139, 92, 246, 0.4),
+      /* Purple glow - diferente del texto */ 0 0 20px rgba(139, 92, 246, 0.2),
+      /* Medium spread */ 0 0 40px rgba(6, 182, 212, 0.1); /* Wide cyan glow */
+
     /* Eliminar cualquier borde o clipping */
     overflow: visible;
     isolation: isolate;
-    
+
     /* Evitar que se cree cualquier línea de borde */
     border: none;
     outline: none;
     box-shadow: none;
-    
+
     /* Anti-aliasing optimizado */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    
+
     /* Asegurar que no hay límites de contenido */
     white-space: normal;
     word-wrap: normal;
@@ -180,14 +183,15 @@ const Element = `h${level}` as keyof HTMLElementTagNameMap;
   }
 
   @keyframes glow-pulse {
-    0%, 100% { 
+    0%,
+    100% {
       opacity: 0.9;
       text-shadow:
         0 0 8px rgba(139, 92, 246, 0.4),
         0 0 20px rgba(139, 92, 246, 0.2),
         0 0 40px rgba(6, 182, 212, 0.1);
     }
-    50% { 
+    50% {
       opacity: 1;
       text-shadow:
         0 0 12px rgba(139, 92, 246, 0.6),
@@ -204,12 +208,12 @@ const Element = `h${level}` as keyof HTMLElementTagNameMap;
 
   .animate-glow-pulse {
     animation: glow-pulse 4s ease-in-out infinite;
-    
+
     /* Performance-first optimizations */
     will-change: opacity; /* Solo opacity, no text-shadow */
     transform: translateZ(0);
     backface-visibility: hidden;
-    
+
     /* Eliminar propiedades que impactan performance */
     -webkit-font-smoothing: antialiased;
   }

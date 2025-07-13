@@ -51,13 +51,13 @@ Contenedor principal para secciones con fondos configurables y iconos decorativo
   backgroundImage="/src/assets/background.svg"
   backgroundIcons={[
     {
-      name: "material-symbols:gamepad-outline-rounded",
-      position: "top-left",
-      size: "md",
-      color: "purple",
+      name: 'material-symbols:gamepad-outline-rounded',
+      position: 'top-left',
+      size: 'md',
+      color: 'purple',
       rotation: 12,
-      blur: true
-    }
+      blur: true,
+    },
   ]}
 >
   <!-- Contenido aquí -->
@@ -122,12 +122,7 @@ Botones siguiendo los principios del Fluent Design con gradientes y estados hove
 Títulos con soporte para gradientes y diferentes tamaños.
 
 ```astro
-<FluentHeading
-  level={1}
-  size="4xl"
-  gradient="primary"
-  align="center"
->
+<FluentHeading level={1} size="4xl" gradient="primary" align="center">
   Tu proyecto frente a una <span class="text-brand-pink">audiencia real</span>
 </FluentHeading>
 ```
@@ -206,8 +201,8 @@ Componente especializado para mostrar pasos en procesos.
 
 ```astro
 ---
-import FluentSection from "../shared/astro/FluentSection.astro";
-import FluentHeading from "../shared/astro/FluentHeading.astro";
+import FluentSection from '../shared/astro/FluentSection.astro';
+import FluentHeading from '../shared/astro/FluentHeading.astro';
 // ... otros componentes
 ---
 ```

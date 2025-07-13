@@ -1,51 +1,70 @@
 ---
-import { Icon } from "astro-icon/components";
-import StreamBoostersLogo from "./StreamBoostersLogo.astro";
+import { Icon } from 'astro-icon/components';
+import StreamBoostersLogo from './StreamBoostersLogo.astro';
 
 // Header navigation for Stream Boosters landing
 const navLinks = [
-  { href: "#how-it-works", text: "¿Cómo funciona?" },
-  { href: "#packages", text: "Paquetes" },
-  { href: "#custom-plan", text: "Personalizado" },
-  { href: "#testimonials", text: "Testimonios" },
-  { href: "#genres", text: "Géneros" },
-  { href: "#founders", text: "Fundadores" },
-  { href: "#contact", text: "Contacto" },
+  { href: '#how-it-works', text: '¿Cómo funciona?' },
+  { href: '#packages', text: 'Paquetes' },
+  { href: '#custom-plan', text: 'Personalizado' },
+  { href: '#testimonials', text: 'Testimonios' },
+  { href: '#genres', text: 'Géneros' },
+  { href: '#founders', text: 'Fundadores' },
+  { href: '#contact', text: 'Contacto' },
 ];
 ---
 
-<header class='fixed top-0 left-0 w-full z-50 bg-brand-darker/80 backdrop-blur-sm border-b border-brand-card/50'>
-  <nav class='max-w-6xl mx-auto flex items-center justify-between px-2 md:px-4 py-3 gap-2 md:gap-4'>
-    <a href='#hero' class='flex items-center focus:outline-none focus:ring-2 focus:ring-brand-cyan rounded-lg min-w-0 transition-transform hover:scale-105'>
-      <StreamBoostersLogo size='md' class='transition-all duration-300 hover:brightness-110' />
+<header
+  class="fixed top-0 left-0 w-full z-50 bg-brand-darker/80 backdrop-blur-sm border-b border-brand-card/50"
+>
+  <nav
+    class="max-w-6xl mx-auto flex items-center justify-between px-2 md:px-4 py-3 gap-2 md:gap-4"
+  >
+    <a
+      href="#hero"
+      class="flex items-center focus:outline-none focus:ring-2 focus:ring-brand-cyan rounded-lg min-w-0 transition-transform hover:scale-105"
+    >
+      <StreamBoostersLogo
+        size="md"
+        class="transition-all duration-300 hover:brightness-110"
+      />
     </a>
 
     <button
-      id='mobile-menu-btn'
-      type='button'
-      class='inline-flex items-center p-2 ml-1 text-sm text-brand-pink rounded-lg md:hidden hover:bg-brand-card focus:outline-none focus:ring-2 focus:ring-brand-pink'
-      aria-controls='mobile-menu'
-      aria-expanded='false'
+      id="mobile-menu-btn"
+      type="button"
+      class="inline-flex items-center p-2 ml-1 text-sm text-brand-pink rounded-lg md:hidden hover:bg-brand-card focus:outline-none focus:ring-2 focus:ring-brand-pink"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
     >
-      <span class='sr-only'>Abrir menú principal</span>
-      <Icon name='material-symbols:menu-rounded' id='icon-open' class='w-6 h-6' />
-      <Icon name='material-symbols:close-rounded' id='icon-close' class='w-6 h-6 hidden' />
+      <span class="sr-only">Abrir menú principal</span>
+      <Icon
+        name="material-symbols:menu-rounded"
+        id="icon-open"
+        class="w-6 h-6"
+      />
+      <Icon
+        name="material-symbols:close-rounded"
+        id="icon-close"
+        class="w-6 h-6 hidden"
+      />
     </button>
 
     <div
-      id='mobile-menu'
-      class='absolute top-full left-0 w-full md:static md:w-auto md:flex transition-all duration-300 ease-in-out origin-top scale-y-0 opacity-0 md:scale-y-100 md:opacity-100'
+      id="mobile-menu"
+      class="absolute top-full left-0 w-full md:static md:w-auto md:flex transition-all duration-300 ease-in-out origin-top scale-y-0 opacity-0 md:scale-y-100 md:opacity-100"
     >
       <ul
-        class='flex flex-col md:flex-row md:space-x-2 lg:space-x-4 font-semibold text-text-light bg-brand-darker md:bg-transparent rounded-lg md:rounded-none px-4 md:px-0 py-4 md:py-0 mx-2 md:mx-0 border md:border-none border-brand-card/50 overflow-x-auto md:overflow-visible whitespace-nowrap'
+        class="flex flex-col md:flex-row md:space-x-2 lg:space-x-4 font-semibold text-text-light bg-brand-darker md:bg-transparent rounded-lg md:rounded-none px-4 md:px-0 py-4 md:py-0 mx-2 md:mx-0 border md:border-none border-brand-card/50 overflow-x-auto md:overflow-visible whitespace-nowrap"
       >
         {
           navLinks.map((link) => (
-            <li class='flex-shrink-0'>
+            <li class="flex-shrink-0">
               <a
                 href={link.href}
-                class='nav-link block py-2 px-2 md:px-3 text-sm md:text-xs lg:text-sm hover:text-brand-pink transition-colors duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-pink'
-                data-section={link.href.substring(1)}>
+                class="nav-link block py-2 px-2 md:px-3 text-sm md:text-xs lg:text-sm hover:text-brand-pink transition-colors duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-pink"
+                data-section={link.href.substring(1)}
+              >
                 {link.text}
               </a>
             </li>
@@ -57,56 +76,59 @@ const navLinks = [
 </header>
 
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("mobile-menu-btn")
-    const menu = document.getElementById("mobile-menu")
-    const iconOpen = document.getElementById("icon-open")
-    const iconClose = document.getElementById("icon-close")
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
 
     // --- Mobile Menu Toggle ---
-    btn?.addEventListener("click", () => {
-      const isExpanded = btn.getAttribute("aria-expanded") === "true"
-      btn.setAttribute("aria-expanded", !isExpanded)
-      menu.classList.toggle("scale-y-0")
-      menu.classList.toggle("opacity-0")
-      menu.classList.toggle("scale-y-100")
-      menu.classList.toggle("opacity-100")
-      iconOpen.classList.toggle("hidden")
-      iconClose.classList.toggle("hidden")
-    })
+    btn?.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !isExpanded);
+      menu.classList.toggle('scale-y-0');
+      menu.classList.toggle('opacity-0');
+      menu.classList.toggle('scale-y-100');
+      menu.classList.toggle('opacity-100');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
 
     // --- Active Link Highlighting ---
-    const navLinks = document.querySelectorAll(".nav-link")
-    const sections = document.querySelectorAll("section[id]")
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
 
     const observerOptions = {
       root: null,
-      rootMargin: "0px",
+      rootMargin: '0px',
       threshold: 0.4, // 40% of the section must be visible
-    }
+    };
 
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           navLinks.forEach((link) => {
-            link.classList.remove("text-brand-pink", "font-bold")
+            link.classList.remove('text-brand-pink', 'font-bold');
             if (link.dataset.section === entry.target.id) {
-              link.classList.add("text-brand-pink", "font-bold")
+              link.classList.add('text-brand-pink', 'font-bold');
             }
-          })
+          });
         }
-      })
-    }, observerOptions)
+      });
+    }, observerOptions);
 
-    sections.forEach((sec) => observer.observe(sec))
+    sections.forEach((sec) => observer.observe(sec));
 
     // --- Close menu on link click (mobile) ---
     navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        if (window.innerWidth < 768 && btn.getAttribute("aria-expanded") === "true") {
-          btn.click()
+      link.addEventListener('click', () => {
+        if (
+          window.innerWidth < 768 &&
+          btn.getAttribute('aria-expanded') === 'true'
+        ) {
+          btn.click();
         }
-      })
-    })
-  })
+      });
+    });
+  });
 </script>

@@ -1,7 +1,7 @@
 ---
-import { Icon } from "astro-icon/components";
-import FluentBadge from "./FluentBadge.astro";
-import FluentButton from "./FluentButton.astro";
+import { Icon } from 'astro-icon/components';
+import FluentBadge from './FluentBadge.astro';
+import FluentButton from './FluentButton.astro';
 
 interface Props {
   name: string;
@@ -26,35 +26,53 @@ const glassEffect = isPopular || glass;
 
 <div
   class:list={[
-    "p-8 rounded-xl border flex flex-col transition-all duration-300 hover:shadow-lg relative",
-    glassEffect ? "bg-brand-card/30 backdrop-blur-md border-brand-card/50" : "bg-brand-card border-brand-card/50 hover:border-brand-card",
-    isPopular ? "border-brand-pink shadow-[0_0_25px_0_rgba(255,45,146,0.3)] scale-105" : "",
+    'p-8 rounded-xl border flex flex-col transition-all duration-300 hover:shadow-lg relative',
+    glassEffect
+      ? 'bg-brand-card/30 backdrop-blur-md border-brand-card/50'
+      : 'bg-brand-card border-brand-card/50 hover:border-brand-card',
+    isPopular
+      ? 'border-brand-pink shadow-[0_0_25px_0_rgba(255,45,146,0.3)] scale-105'
+      : '',
   ]}
 >
   {
     isPopular && (
       <FluentBadge
-        text='Más Popular'
-        variant='glass'
-        size='sm'
-        class='absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-pink text-white font-bold px-3 py-1 rounded-full uppercase tracking-wider'
+        text="Más Popular"
+        variant="glass"
+        size="sm"
+        class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-pink text-white font-bold px-3 py-1 rounded-full uppercase tracking-wider"
       />
     )
   }
-  <h3 class='text-2xl font-bold text-text-light mb-2'>{name}</h3>
-  <p class='text-text-muted mb-6 flex-grow'>{description}</p>
-  <p class:list={["font-black text-text-light mb-6", { "text-4xl md:text-5xl": isPopular, "text-3xl md:text-4xl": !isPopular }]}>
-    <span class='text-2xl md:text-3xl font-medium'>$</span>{price}
+  <h3 class="text-2xl font-bold text-text-light mb-2">{name}</h3>
+  <p class="text-text-muted mb-6 flex-grow">{description}</p>
+  <p
+    class:list={[
+      'font-black text-text-light mb-6',
+      { 'text-4xl md:text-5xl': isPopular, 'text-3xl md:text-4xl': !isPopular },
+    ]}
+  >
+    <span class="text-2xl md:text-3xl font-medium">$</span>{price}
   </p>
-  <ul class='text-text-muted space-y-3 mb-8 flex-grow'>
+  <ul class="text-text-muted space-y-3 mb-8 flex-grow">
     {
       features.map((feature) => (
-        <li class='flex items-center'>
-          <Icon name='material-symbols:check-circle-outline-rounded' class='w-5 h-5 text-brand-cyan mr-3' />
+        <li class="flex items-center">
+          <Icon
+            name="material-symbols:check-circle-outline-rounded"
+            class="w-5 h-5 text-brand-cyan mr-3"
+          />
           {feature}
         </li>
       ))
     }
   </ul>
-  <FluentButton href='#contact' text='Contratar Plan' variant={isPopular ? "primary" : "secondary"} fullWidth={true} class='mt-auto' />
+  <FluentButton
+    href="#contact"
+    text="Contratar Plan"
+    variant={isPopular ? 'primary' : 'secondary'}
+    fullWidth={true}
+    class="mt-auto"
+  />
 </div>
