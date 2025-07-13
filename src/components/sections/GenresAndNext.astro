@@ -1,82 +1,98 @@
 ---
 // Genres and Next section for the landing page
-import { 
-  FluentBentoCard, 
-  FluentBentoContainer, 
-  FluentHeading, 
-  FluentSection, 
-  FluentText 
+import {
+  FluentBentoCard,
+  FluentBentoContainer,
+  FluentHeading,
+  FluentSection,
+  FluentText,
 } from '../shared/astro';
 ---
 
-<FluentSection id='genres' backgroundVariant='solid-darker' animation='fade-in' padding='lg' align='center'>
-  <div class='max-w-6xl mx-auto flex flex-col gap-12 items-center'>
+<FluentSection
+  id="genres"
+  backgroundVariant="solid-darker"
+  animation="fade-in"
+  padding="lg"
+  align="center"
+>
+  <div class="max-w-6xl mx-auto flex flex-col gap-12 items-center">
     <div class="w-full flex flex-col items-center text-center mb-4">
-      <FluentHeading level={2} size='2xl' align='center' class='mb-4'>
+      <FluentHeading level={2} size="2xl" align="center" class="mb-4">
         Para marcas y juegos que quieren
-        <span class='text-brand-cyan'>visibilidad real</span>
+        <span class="text-brand-cyan">visibilidad real</span>
       </FluentHeading>
-      <FluentText size='lg' variant='muted' align='center' margin='sm' class='mb-6'>
+      <FluentText
+        size="lg"
+        variant="muted"
+        align="center"
+        margin="sm"
+        class="mb-6"
+      >
         Trabajamos con una amplia variedad de géneros y productos:
       </FluentText>
     </div>
-    
+
     <!-- Bento Grid Layout -->
     <FluentBentoContainer columns={4} gap="md">
       <!-- Large card - Productos para Gamers -->
-      <FluentBentoCard 
-        icon="material-symbols:shopping-bag-outline" 
-        text="Productos para Gamers" 
-        colorScheme="cyan" 
-        size="large" 
+      <FluentBentoCard
+        icon="material-symbols:shopping-bag-outline"
+        text="Productos para Gamers"
+        colorScheme="cyan"
+        size="large"
         colSpan={2}
       />
-      
+
       <!-- Medium cards -->
-      <FluentBentoCard 
-        icon="material-symbols:stadia-controller-outline" 
-        text="Juegos Indie" 
-        colorScheme="pink" 
+      <FluentBentoCard
+        icon="material-symbols:stadia-controller-outline"
+        text="Juegos Indie"
+        colorScheme="pink"
         size="small"
       />
-      
-      <FluentBentoCard 
-        icon="material-symbols:explore-outline" 
-        text="RPG & Aventura" 
-        colorScheme="purple" 
+
+      <FluentBentoCard
+        icon="material-symbols:explore-outline"
+        text="RPG & Aventura"
+        colorScheme="purple"
         size="small"
       />
-      
-      <FluentBentoCard 
-        icon="material-symbols:chess-pawn-outline" 
-        text="Estrategia" 
-        colorScheme="red" 
+
+      <FluentBentoCard
+        icon="material-symbols:chess-pawn-outline"
+        text="Estrategia"
+        colorScheme="red"
         size="small"
       />
-      
-      <FluentBentoCard 
-        icon="material-symbols:home" 
-        text="Juegos de Terror" 
-        colorScheme="pink" 
+
+      <FluentBentoCard
+        icon="material-symbols:home"
+        text="Juegos de Terror"
+        colorScheme="pink"
         size="small"
       />
-      
+
       <!-- Large card - Marcas -->
-      <FluentBentoCard 
-        icon="material-symbols:label-outline" 
-        text="Marcas" 
-        colorScheme="purple" 
-        size="large" 
+      <FluentBentoCard
+        icon="material-symbols:label-outline"
+        text="Marcas"
+        colorScheme="purple"
+        size="large"
         colSpan={2}
       />
     </FluentBentoContainer>
-    
+
     <div class="w-full md:w-3/4 lg:w-1/2 mx-auto mt-8">
-      <FluentHeading level={3} size='lg' align='center' class='mb-4'> ¿Qué sigue? </FluentHeading>
-      <FluentText size='base' variant='muted' align='center'>
-        Estamos en constante evolución para ofrecerte más. Próximamente expandiremos nuestra red a plataformas como
-        <span class='text-text-light font-semibold'> TikTok </span> y
-        <span class='text-text-light font-semibold'> YouTube </span>, además de incluir campañas para tu marca.
+      <FluentHeading level={3} size="lg" align="center" class="mb-4">
+        ¿Qué sigue?
+      </FluentHeading>
+      <FluentText size="base" variant="muted" align="center">
+        Estamos en constante evolución para ofrecerte más. Próximamente
+        expandiremos nuestra red a plataformas como
+        <span class="text-text-light font-semibold"> TikTok </span> y
+        <span class="text-text-light font-semibold"> YouTube </span>, además de
+        incluir campañas para tu marca.
       </FluentText>
     </div>
   </div>

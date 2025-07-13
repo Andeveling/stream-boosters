@@ -24,31 +24,34 @@ Este plan implementa una experiencia de usuario optimizada para la captación de
 ## 2. Implementation Steps
 
 ### Implementation Phase 1
+
 - GOAL-001: Unificar y simplificar el flujo de formularios en la UI
 
-| Task      | Description                                                                                  | Completed | Date       |
-|-----------|----------------------------------------------------------------------------------------------|-----------|------------|
-| TASK-001  | Crear un único componente de formulario React que reciba el tipo de lead (paquete/personalizado) |           |            |
-| TASK-002  | Implementar lógica condicional para mostrar solo los campos requeridos según la selección      |           |            |
-| TASK-003  | Actualizar la sección de paquetes para que al hacer click pase el paquete seleccionado al formulario |           |            |
-| TASK-004  | Añadir validación y accesibilidad a todos los campos                                          |           |            |
+| Task     | Description                                                                                          | Completed | Date |
+| -------- | ---------------------------------------------------------------------------------------------------- | --------- | ---- |
+| TASK-001 | Crear un único componente de formulario React que reciba el tipo de lead (paquete/personalizado)     |           |      |
+| TASK-002 | Implementar lógica condicional para mostrar solo los campos requeridos según la selección            |           |      |
+| TASK-003 | Actualizar la sección de paquetes para que al hacer click pase el paquete seleccionado al formulario |           |      |
+| TASK-004 | Añadir validación y accesibilidad a todos los campos                                                 |           |      |
 
 ### Implementation Phase 2
+
 - GOAL-002: Adaptar el backend y la base de datos para soportar ambos flujos
 
-| Task      | Description                                                                                  | Completed | Date       |
-|-----------|----------------------------------------------------------------------------------------------|-----------|------------|
-| TASK-005  | Modificar el endpoint PHP para distinguir y almacenar correctamente ambos tipos de lead        |           |            |
-| TASK-006  | Ajustar la tabla `leads` si es necesario para nuevos campos                                   |           |            |
-| TASK-007  | Probar el flujo completo en Hostinger y validar almacenamiento y notificaciones                |           |            |
+| Task     | Description                                                                             | Completed | Date |
+| -------- | --------------------------------------------------------------------------------------- | --------- | ---- |
+| TASK-005 | Modificar el endpoint PHP para distinguir y almacenar correctamente ambos tipos de lead |           |      |
+| TASK-006 | Ajustar la tabla `leads` si es necesario para nuevos campos                             |           |      |
+| TASK-007 | Probar el flujo completo en Hostinger y validar almacenamiento y notificaciones         |           |      |
 
 ### Implementation Phase 3
+
 - GOAL-003: Mejorar la experiencia y el análisis de leads
 
-| Task      | Description                                                                                  | Completed | Date       |
-|-----------|----------------------------------------------------------------------------------------------|-----------|------------|
-| TASK-008  | Añadir campo de consentimiento legal y validación antispam                                    |           |            |
-| TASK-009  | Documentar el flujo y actualizar instrucciones para AI y humanos                              |           |            |
+| Task     | Description                                                      | Completed | Date |
+| -------- | ---------------------------------------------------------------- | --------- | ---- |
+| TASK-008 | Añadir campo de consentimiento legal y validación antispam       |           |      |
+| TASK-009 | Documentar el flujo y actualizar instrucciones para AI y humanos |           |      |
 
 ## 3. Alternatives
 

@@ -11,23 +11,23 @@ interface Props {
   class?: string;
 }
 
-const { 
-  name, 
-  role, 
-  description, 
-  avatar, 
-  gradientFrom, 
-  gradientTo, 
+const {
+  name,
+  role,
+  description,
+  avatar,
+  gradientFrom,
+  gradientTo,
   roleColor,
   animationDelay = '0s',
-  class: className = '' 
+  class: className = '',
 } = Astro.props;
 
 // Color mapping
 const colorMap = {
   pink: 'brand-pink',
   purple: 'brand-purple',
-  cyan: 'brand-cyan'
+  cyan: 'brand-cyan',
 };
 
 const gradientFromColor = colorMap[gradientFrom];
@@ -35,18 +35,20 @@ const gradientToColor = colorMap[gradientTo];
 const roleColorClass = `text-${colorMap[roleColor]}`;
 ---
 
-<div 
+<div
   class:list={[
     'text-center transition-transform duration-300 hover:scale-105 animate-fade-in',
-    className
+    className,
   ]}
   style={`animation-delay: ${animationDelay};`}
 >
   <!-- Avatar with gradient border -->
-  <div class:list={[
-    'w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4 p-1',
-    `bg-gradient-to-br from-${gradientFromColor} to-${gradientToColor}`
-  ]}>
+  <div
+    class:list={[
+      'w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4 p-1',
+      `bg-gradient-to-br from-${gradientFromColor} to-${gradientToColor}`,
+    ]}
+  >
     <img
       class="w-full h-full rounded-full bg-brand-dark object-cover"
       src={avatar}
@@ -54,7 +56,7 @@ const roleColorClass = `text-${colorMap[roleColor]}`;
       loading="lazy"
     />
   </div>
-  
+
   <!-- Content -->
   <h3 class="text-xl font-bold">{name}</h3>
   <p class:list={['font-semibold mb-2', roleColorClass]}>{role}</p>

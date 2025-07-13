@@ -1,21 +1,28 @@
 ---
 // Founders section for the landing page
-import { FluentFounderCard, FluentHeading, FluentSection, FluentText } from '../shared/astro';
+import {
+  FluentFounderCard,
+  FluentHeading,
+  FluentSection,
+  FluentText,
+} from '../shared/astro';
 ---
 
-<FluentSection 
-  id="founders" 
-  backgroundVariant="solid-dark" 
-  animation="fade-in" 
+<FluentSection
+  id="founders"
+  backgroundVariant="solid-dark"
+  animation="fade-in"
   padding="lg"
 >
   <!-- Glow Effects -->
   <div
     class="absolute top-1/4 left-0 w-80 h-80 bg-brand-pink/20 rounded-full blur-3xl -z-0 transform -translate-x-1/2 -translate-y-1/2"
-  ></div>
+  >
+  </div>
   <div
     class="absolute bottom-1/4 right-0 w-80 h-80 bg-brand-cyan/20 rounded-full blur-3xl -z-0 transform translate-x-1/2 translate-y-1/2"
-  ></div>
+  >
+  </div>
 
   <div class="relative z-10 max-w-6xl mx-auto">
     <!-- Header -->
@@ -40,7 +47,7 @@ import { FluentFounderCard, FluentHeading, FluentSection, FluentText } from '../
         roleColor="pink"
         animationDelay="0s"
       />
-      
+
       <FluentFounderCard
         name="Andevil"
         role="Programador"

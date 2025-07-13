@@ -10,13 +10,13 @@ interface Props {
   class?: string;
 }
 
-const { 
-  icon, 
-  text, 
-  colorScheme, 
-  size = 'small', 
+const {
+  icon,
+  text,
+  colorScheme,
+  size = 'small',
   colSpan = 1,
-  class: className = '' 
+  class: className = '',
 } = Astro.props;
 
 // Color scheme mapping
@@ -28,7 +28,7 @@ const colorMap = {
     hoverShadow: 'hover:shadow-[0_12px_40px_0_rgba(6,182,212,0.25)]',
     glow: 'from-brand-cyan/10',
     glowBg: 'bg-brand-cyan/10',
-    iconColor: 'text-brand-cyan'
+    iconColor: 'text-brand-cyan',
   },
   pink: {
     bg: 'from-brand-pink/20 to-brand-pink/5',
@@ -37,7 +37,7 @@ const colorMap = {
     hoverShadow: 'hover:shadow-[0_12px_40px_0_rgba(236,72,153,0.25)]',
     glow: 'from-brand-pink/10',
     glowBg: 'bg-brand-pink/10',
-    iconColor: 'text-brand-pink'
+    iconColor: 'text-brand-pink',
   },
   purple: {
     bg: 'from-brand-purple/20 to-brand-purple/5',
@@ -46,7 +46,7 @@ const colorMap = {
     hoverShadow: 'hover:shadow-[0_12px_40px_0_rgba(147,51,234,0.25)]',
     glow: 'from-brand-purple/10',
     glowBg: 'bg-brand-purple/10',
-    iconColor: 'text-brand-purple'
+    iconColor: 'text-brand-purple',
   },
   red: {
     bg: 'from-brand-red/20 to-brand-red/5',
@@ -55,8 +55,8 @@ const colorMap = {
     hoverShadow: 'hover:shadow-[0_12px_40px_0_rgba(239,68,68,0.25)]',
     glow: 'from-brand-red/10',
     glowBg: 'bg-brand-red/10',
-    iconColor: 'text-brand-red'
-  }
+    iconColor: 'text-brand-red',
+  },
 };
 
 const colors = colorMap[colorScheme];
@@ -70,7 +70,7 @@ const sizeStyles = {
     iconSize: 'w-5 h-5 sm:w-6 sm:h-6',
     textSize: 'text-xs sm:text-sm',
     glowSize: 'w-10 h-10 sm:w-12 sm:h-12',
-    glowBlur: 'blur-lg'
+    glowBlur: 'blur-lg',
   },
   large: {
     padding: 'p-4 sm:p-6',
@@ -79,8 +79,8 @@ const sizeStyles = {
     iconSize: 'w-6 h-6 sm:w-8 sm:h-8',
     textSize: 'text-base sm:text-lg',
     glowSize: 'w-16 h-16 sm:w-20 sm:h-20',
-    glowBlur: 'blur-xl'
-  }
+    glowBlur: 'blur-xl',
+  },
 };
 
 const styles = sizeStyles[size];
@@ -90,13 +90,14 @@ const colSpanClasses = {
   1: '',
   2: 'sm:col-span-2 lg:col-span-2',
   3: 'sm:col-span-2 lg:col-span-3',
-  4: 'sm:col-span-2 lg:col-span-4'
+  4: 'sm:col-span-2 lg:col-span-4',
 };
 
-const colSpanClass = colSpanClasses[colSpan as keyof typeof colSpanClasses] || '';
+const colSpanClass =
+  colSpanClasses[colSpan as keyof typeof colSpanClasses] || '';
 ---
 
-<div 
+<div
   class:list={[
     'bg-gradient-to-br backdrop-blur-2xl border rounded-2xl flex flex-col items-center justify-center text-center transition-all duration-300 hover:scale-105 relative overflow-hidden group',
     colors.bg,
@@ -107,34 +108,33 @@ const colSpanClass = colSpanClasses[colSpan as keyof typeof colSpanClasses] || '
     styles.minHeight,
     styles.gap,
     colSpanClass,
-    className
+    className,
   ]}
 >
   <!-- Glow effects -->
-  <div class:list={[
-    'absolute inset-0 bg-gradient-to-r to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300',
-    colors.glow
-  ]}></div>
-  <div class:list={[
-    'absolute top-1 right-1 sm:top-2 sm:right-2 rounded-full',
-    colors.glowBg,
-    styles.glowSize,
-    styles.glowBlur
-  ]}></div>
-  
-  <!-- Content -->
-  <Icon 
-    name={icon} 
+  <div
     class:list={[
-      'relative z-10',
-      colors.iconColor,
-      styles.iconSize
-    ]} 
+      'absolute inset-0 bg-gradient-to-r to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300',
+      colors.glow,
+    ]}
+  >
+  </div>
+  <div
+    class:list={[
+      'absolute top-1 right-1 sm:top-2 sm:right-2 rounded-full',
+      colors.glowBg,
+      styles.glowSize,
+      styles.glowBlur,
+    ]}
+  >
+  </div>
+
+  <!-- Content -->
+  <Icon
+    name={icon}
+    class:list={['relative z-10', colors.iconColor, styles.iconSize]}
   />
-  <span class:list={[
-    'font-semibold relative z-10',
-    styles.textSize
-  ]}>
+  <span class:list={['font-semibold relative z-10', styles.textSize]}>
     {text}
   </span>
 </div>

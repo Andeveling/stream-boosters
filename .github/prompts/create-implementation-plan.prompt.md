@@ -1,14 +1,35 @@
 ---
 mode: 'agent'
 description: 'Create a new implementation plan file for new features, refactoring existing code or upgrading packages, design, architecture or infrastructure.'
-tools: ['changes', 'codebase', 'editFiles', 'extensions', 'fetch', 'githubRepo', 'openSimpleBrowser', 'problems', 'runTasks', 'search', 'searchResults', 'terminalLastCommand', 'terminalSelection', 'testFailure', 'usages', 'vscodeAPI']
+tools:
+  [
+    'changes',
+    'codebase',
+    'editFiles',
+    'extensions',
+    'fetch',
+    'githubRepo',
+    'openSimpleBrowser',
+    'problems',
+    'runTasks',
+    'search',
+    'searchResults',
+    'terminalLastCommand',
+    'terminalSelection',
+    'testFailure',
+    'usages',
+    'vscodeAPI',
+  ]
 ---
+
 # Create Implementation Plan
 
 ## Primary Directive
+
 Your goal is to create a new implementation plan file for `${input:PlanPurpose}`. Your output must be machine-readable, deterministic, and structured for autonomous execution by other AI systems or humans.
 
 ## Execution Context
+
 This prompt is designed for AI-to-AI communication and automated processing. All instructions must be interpreted literally and executed systematically without human interpretation or clarification.
 
 ## Core Requirements
@@ -19,6 +40,7 @@ This prompt is designed for AI-to-AI communication and automated processing. All
 - Ensure complete self-containment with no external dependencies for understanding
 
 ## Plan Structure Requirements
+
 Plans must consist of discrete, atomic phases containing executable tasks. Each phase must be independently processable by AI agents or humans without cross-phase dependencies unless explicitly declared.
 
 ## Phase Architecture
@@ -47,6 +69,7 @@ Plans must consist of discrete, atomic phases containing executable tasks. Each 
 - File must be valid Markdown with proper front matter structure
 
 ## Mandatory Template Structure
+
 All implementation plans must strictly adhere to the following template. Each section is required and must be populated with specific, actionable content. AI agents must validate template compliance before execution.
 
 ## Template Validation Rules
@@ -88,21 +111,21 @@ tags: [Optional: List of relevant tags or categories, e.g., `feature`, `upgrade`
 
 - GOAL-001: [Describe the goal of this phase, e.g., "Implement feature X", "Refactor module Y", etc.]
 
-| Task | Description | Completed | Date |
-|------|-------------|-----------|------|
-| TASK-001 | Description of task 1 | ✅ | 2025-04-25 |
-| TASK-002 | Description of task 2 | |  |
-| TASK-003 | Description of task 3 | |  |
+| Task     | Description           | Completed | Date       |
+| -------- | --------------------- | --------- | ---------- |
+| TASK-001 | Description of task 1 | ✅        | 2025-04-25 |
+| TASK-002 | Description of task 2 |           |            |
+| TASK-003 | Description of task 3 |           |            |
 
 ### Implementation Phase 2
 
 - GOAL-002: [Describe the goal of this phase, e.g., "Implement feature X", "Refactor module Y", etc.]
 
-| Task | Description | Completed | Date |
-|------|-------------|-----------|------|
-| TASK-004 | Description of task 4 | |  |
-| TASK-005 | Description of task 5 | |  |
-| TASK-006 | Description of task 6 | |  |
+| Task     | Description           | Completed | Date |
+| -------- | --------------------- | --------- | ---- |
+| TASK-004 | Description of task 4 |           |      |
+| TASK-005 | Description of task 5 |           |      |
+| TASK-006 | Description of task 6 |           |      |
 
 ## 3. Alternatives
 

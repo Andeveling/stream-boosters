@@ -11,7 +11,12 @@ interface Props {
 const { icon, iconClass = '', text, colSpan2 = false } = Astro.props as Props;
 ---
 
-<div class:list={["bg-white/10 backdrop-blur-2xl border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.10)] p-4 rounded-lg flex items-center justify-center gap-2 text-center transition-all duration-300 hover:scale-105", colSpan2 ? "col-span-2" : ""]}>
+<div
+  class:list={[
+    'bg-white/10 backdrop-blur-2xl border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.10)] p-4 rounded-lg flex items-center justify-center gap-2 text-center transition-all duration-300 hover:scale-105',
+    colSpan2 ? 'col-span-2' : '',
+  ]}
+>
   <Icon name={icon} class={`w-5 h-5 ${iconClass}`} />
   {text}
 </div>
