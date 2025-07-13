@@ -1,0 +1,24 @@
+name: Block invalid PR sources
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  check-source-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR source branch
+        run: |
+          echo "Base branch: ${{ github.base_ref }}"
+          echo "Source branch: ${{ github.head_ref }}"
+          if [[ "${{ github.base_ref }}" == "main" && "${{ github.head_ref }}" != "develop" ]]; then
+            echo "ERROR: PRs to main branch must come from develop only."
+            exit 1
+          fi
+          if [[ "${{ github.base_ref }}" == "develop" && ( "${{ github.head_ref }}" == "main" || "${{ github.head_ref }}" == "develop" ) ]]; then
+            echo "ERROR: PRs to develop branch must come from feature/* or hotfix/* branches."
+            exit 1
+          fi

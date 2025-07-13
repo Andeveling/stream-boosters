@@ -1,0 +1,34 @@
+{
+  "name": "Protect develop branch",
+  "target": {
+    "ref_type": "branch",
+    "pattern": "develop"
+  },
+  "enforcement": "active",
+  "bypass_actors": [],
+  "conditions": {
+    "ref_name": {
+      "include": [
+        "develop"
+      ]
+    }
+  },
+  "rules": [
+    {
+      "type": "required_pull_request_reviews",
+      "parameters": {
+        "required_approving_review_count": 1
+      }
+    },
+    {
+      "type": "restrict_pushes",
+      "parameters": {
+        "restrictions": {
+          "users": [],
+          "teams": [],
+          "apps": []
+        }
+      }
+    }
+  ]
+}
