@@ -1,487 +1,277 @@
-# Copilot Instructions for Stream Boosters
-
-## Main Guidelines
-
-- **Language:** Spanish (respuestas y código)
-- **Project:** Modular landing page for connecting brands/game devs with streamers
-- **Stack:** Astro (SSG), React (client), Tailwind CSS 4, PHP (backend), MySQL
-- **Hosting:** Hostinger Single Plan (static + PHP)
-- **Testing:** Vitest + Testing Library (comprehensive test suite implemented)
-- **Form Management:** React Hook Form + Zod validation + shared components
-
-## TypeScript Rules
-
-- When `verbatimModuleSyntax` is enabled in TypeScript, **types must be imported using `import type`**. Example:
-  ```ts
-  import type { FieldError } from "react-hook-form"
-  ```
-- No uses `import { FieldError } ...` para tipos, ya que generará el error TS1484.
-- Apply this rule for any type (for example, `FC`, `FieldError`, etc.) in all `.ts` and `.tsx` files.
-
-## Tailwind CSS 4 Configuration (Official Astro Integration)
-
-### Current Setup
-- **Tailwind Version:** 4.1.11 via `@tailwindcss/vite` plugin
-- **Configuration:** CSS-based configuration in `src/styles/global.css` using `@theme`
-- **No Config File:** Tailwind 4 doesn't require `tailwind.config.mjs`
-- **Official Pattern:** Follows Astro's official documentation for Tailwind 4 integration
-
-### Astro Config (astro.config.mjs)
-```js
-import tailwindcss from "@tailwindcss/vite"
-
-export default defineConfig({
-  vite: {
-    plugins: [tailwindcss()], // Official Tailwind 4 Vite plugin
-    // ... other vite config
-  }
-})
-```
-
-### CSS Configuration (src/styles/global.css)
-```css
-@import "tailwindcss";
-
-@theme {
-  /* Custom theme variables */
-  --color-brand-pink: #FF2D92;
-  --color-brand-purple: #8B5CF6;
-  /* ... other variables */
-}
-
-@layer base {
-  /* Global styles */
-}
-```
-
-### Key Differences from Tailwind 3
-- **NO** `@astrojs/tailwind` integration needed
-- **NO** `tailwind.config.mjs` file required
-- **YES** `@tailwindcss/vite` plugin in Vite config
-- **YES** CSS-based theme configuration using `@theme`
-
-## Naming Conventions
-
-- **Variables, functions, and types:** Always in English (e.g., `name`, `email`, `company`, `projectType`)
-- **UI texts:** Always in Spanish (e.g., label, placeholder, error messages)
-
-## Architecture & Structure
-
-- **Sections:** Each landing section is a separate Astro component in `src/components/sections/`
-- **Forms:** 
-  - **Contact Forms:** React + Zod in `src/components/forms/contact/`
-  - **Campaign Forms:** React + Zod in `src/components/forms/campaign/`
-  - **Custom Campaign Forms:** React + Zod in `src/components/forms/custom-plan/`
-  - **Shared Components:** Reusable form components in `src/components/forms/shared/`
-- **PHP Backend:** 
-  - Form handlers in `src/php/` (contact_submit.php, campaign_submit.php, custom_plan_submit.php)
-  - Copied to `dist/` on build for Hostinger deployment
-- **Styling:** Tailwind 4 via Astro/Vite, global styles in `src/styles/global.css`
-- **Layout:** Main layout in `src/layouts/Layout.astro` (SEO, meta)
-- **Entry Point:** Page composed in `src/pages/index.astro`
-- **Testing:** Comprehensive test suite in `src/__tests__/` and component-level tests
-
-## Developer Workflows
-
-- **Install:** `pnpm install`
-- **Dev server:** `pnpm dev` (Astro at `localhost:4321`)
-- **Build:** `pnpm build` (outputs to `dist/`)
-- **Preview:** `pnpm preview`
-- **Clean:** `pnpm clean`
-- **Local build + PHP:** `pnpm build:local` (Astro + PHP to `dist/`)
-- **Test with PHP server:** `php -S localhost:8080 -t dist`
-- **Copy to XAMPP:** `pnpm copy:xampp`
-- **Testing:**
-  - **Run tests:** `pnpm test` (Vitest)
-  - **Test UI:** `pnpm test:ui`
-  - **Test coverage:** `pnpm test:coverage` (when available)
-  - **Test files:** Place in `src/__tests__/` or next to components as `*.test.ts(x)`
-  - **Setup:** See `vitest.config.ts` and `vitest.setup.ts` for environment config
-  - **Integration tests:** ContactForm, form submission workflows
-  - **Unit tests:** Individual components (FormButton, FormField, Notification, etc.)
-  - **Testing Libraries:** @testing-library/react, @testing-library/user-event, jsdom
-
-## Conventions & Patterns
-
-- **Modular sections:** All landing sections are imported in `index.astro`
-- **Animations:** Use Tailwind + custom classes (e.g. `animate-fade-in`)
-- **SEO:** Spanish-language, gaming-focused meta in `Layout.astro`
-- **Responsive:** Mobile-first, Tailwind breakpoints
-- **Validation:** React Hook Form + Zod with comprehensive error handling
-- **Icons:** Managed via `astro-icon` and `@iconify-json/material-symbols`
-- **PHP routing:** All form submissions go to `src/php/` scripts
-- **Testing:** Use Vitest + Testing Library for React/Astro components
-- **Form Architecture:** Shared components pattern with FormField, FormButton, FormSelect, etc.
-- **Notifications:** Centralized notification system with auto-dismiss and accessibility
-
-## Integration Points
-
-- **Astro + React:** Use `client:load` for dynamic forms
-- **Astro + PHP:** PHP files are statically copied to `dist/` for server-side handling
-- **Tailwind:** Configured as Astro/Vite plugin in `astro.config.mjs`
-- **Testing:** Vitest + Testing Library for unit/component tests
-- **Form Integration:** React Hook Form + Zod + shared component architecture
-- **Backend Integration:** PHP endpoints with proper validation and error handling
-- **Deployment:** Hostinger: static files + PHP in `public_html/`
-
-## Dependencies & Integrations
-
-### Core Stack
-- **Astro:** 5.11.0 (SSG framework)
-- **React:** 19.1.0 (UI components)
-- **Tailwind CSS:** 4.1.11 (styling)
-- **TypeScript:** Built-in support via Astro
-
-### Form Management
-- **React Hook Form:** 7.60.0 (form state management)
-- **Zod:** 3.25.74 (schema validation)
-- **@hookform/resolvers:** 5.1.1 (Zod integration)
-
-### Testing Suite
-- **Vitest:** 3.2.4 (test runner)
-- **@testing-library/react:** 14.3.1 (component testing)
-- **@testing-library/user-event:** 14.6.1 (user interaction simulation)
-- **@testing-library/jest-dom:** 6.6.3 (custom matchers)
-- **jsdom:** 26.1.0 (DOM environment simulation)
-
-### UI/UX Enhancements
-- **Astro Icon:** 1.1.5 (icon management)
-- **@iconify-json/material-symbols:** 1.2.29 (icon library)
-- **@fontsource/sora:** 5.2.6 (typography)
-
-### Build & Development Tools
-- **@tailwindcss/vite:** 4.1.11 (Tailwind 4 integration)
-- **rimraf:** 6.0.1 (cross-platform file removal)
-
-## Key Files & Directories
-
-- `src/components/sections/` — Landing page sections
-- `src/components/forms/contact/` — Contact form components and schemas
-- `src/components/forms/campaign/` — Campaign form components and schemas
-- `src/components/forms/custom-plan/` — Custom campaign form logic
-- `src/components/forms/shared/` — Reusable form components (FormField, FormButton, etc.)
-- `src/php/` — Backend PHP scripts (contact_submit.php, campaign_submit.php, custom_plan_submit.php)
-- `src/layouts/Layout.astro` — Global layout/SEO
-- `src/styles/global.css` — Global styles and Tailwind theme configuration
-- `astro.config.mjs` — Astro/Tailwind config
-- `package.json` — Scripts/deps
-- `vitest.config.ts`, `vitest.setup.ts` — Test config with official Astro integration
-- `src/__tests__/` — Test suites for components and integration workflows
-
-## External Resources
-
-- [Astro Docs](https://docs.astro.build)
-- [Tailwind CSS](https://tailwindcss.com)
-- [Vitest Docs](https://vitest.dev)
-
+---
+description: Ultracite Rules
+globs: "**/*.{ts,tsx,js,jsx}"
+alwaysApply: true
 ---
 
-For questions about workflow, architecture, or conventions, reference the README or ask for clarification.
-
-## Project Status & Development Phases
-
-### ✅ Completed Phases
-- **Phase 1:** Project setup and basic architecture
-- **Phase 2:** Astro + React + Tailwind 4 integration
-- **Phase 3:** Landing page sections implementation
-- **Phase 4:** Form architecture with shared components
-- **Phase 5:** Backend integration with PHP endpoints
-- **Phase 6:** Testing suite implementation (87.8% unit tests passing)
-- **Phase 7:** Mobile-First Design & Layout Integration (✅ NEW)
-  - True mobile-first responsive design implemented
-  - Button anti-wrapping system with equal-width layout
-  - Hero-Header integration with proper viewport calculations
-  - Typography scaling with progressive breakpoints
-  - Performance optimizations (hardware acceleration, reduced motion)
-  - CSS architecture improved with mobile-first utilities
-
-### 🚧 Current Phase
-- **Phase 7:** Mobile-First Design & Layout Integration (✅ completed)
-  - Mobile-first responsive design: ✅ Complete implementation
-  - Button text wrapping prevention: ✅ Anti-wrapping system implemented
-  - Hero-Header integration: ✅ Fixed layout displacement issues
-  - Typography scaling: ✅ True mobile-first approach applied
-  - Performance optimization: ✅ Hardware acceleration & reduced motion
-
-### 📋 Testing Architecture
-- **Unit Tests:** FormButton, FormField, Notification, useFormSubmission
-- **Integration Tests:** ContactForm workflows, form submission handling
-- **Mocking Strategy:** Fetch API, user interactions, server responses
-- **Configuration:** Official Astro getViteConfig() pattern with jsdom environment
-
-### 🎯 Next Steps
-1. Complete ContactForm integration with React Hook Form
-2. Achieve 80% test coverage across all components
-3. Implement e2e testing with Playwright
-4. Performance optimization and final deployment preparation
-
----
-
-## UI/UX Design System - Fluent Design Theory
-
-### Design Philosophy
-Inspired by Microsoft Fluent Design System, our visual approach prioritizes five core principles:
-
-#### 1. **Light (Illumination)**
-- **Glow Effects:** Subtle gradients and shadows to create depth and visual hierarchy
-- **Color Temperature:** Cool-dominant palette with warm accents (pink, purple, cyan)
-- **Lighting Hierarchy:** More important elements receive more "light" through gradients and shadows
-- **Implementation:** Strategic use of `shadow-lg`, `shadow-xl`, and custom shadow colors
-
-#### 2. **Depth (Layering)**
-- **Z-Index Strategy:** Visual layering using shadows and blur effects to simulate physical depth
-- **Surface Elevation:** Cards, overlays, and backgrounds with varying opacity levels
-- **Parallax Effects:** Subtle background elements with reduced opacity for depth perception
-- **Backdrop Blur:** `backdrop-blur-sm` for floating elements and modal overlays
-
-#### 3. **Motion (Animation)**
-- **Transition Timing:** 200-300ms for micro-interactions, up to 500ms for state changes
-- **Easing Functions:** `cubic-bezier(0.4,0,0.2,1)` for natural, organic transitions
-- **Hover States:** Scale transforms (1.05), opacity changes, and border color transitions
-- **Loading States:** Spinners and progress indicators with fluid animations
-- **Performance:** GPU-accelerated transforms and opacity changes for 60fps
-
-#### 4. **Material (Surface Textures)**
-- **Glass Morphism:** `backdrop-blur-sm` combined with semi-transparent backgrounds
-- **Surface Textures:** Multiple transparency levels (`/10`, `/30`, `/50`) for depth variation
-- **Elevation System:** Consistent shadow variants for different importance levels
-- **Touch Feedback:** Visual response to user interactions through material state changes
-
-#### 5. **Scale (Responsive Hierarchy)**
-- **Responsive Scaling:** Mobile-first design with consistent breakpoint behavior
-- **Typography Scale:** Hierarchical and proportional sizing (text-sm, text-lg, text-3xl)
-- **Component Sizing:** Consistent padding and spacing using 4px grid system
-- **Adaptive Layouts:** Components that scale gracefully across all device sizes
-
-### Color Psychology & Strategic Application
-
-#### Primary Brand Colors
-- **`brand-pink` (#FF2D92):** Energy, action, primary CTAs, active states
-  - *Psychological impact:* Urgency, excitement, brand recognition
-  - *Usage:* Submit buttons, active navigation, progress indicators
-- **`brand-purple` (#8B5CF6):** Creativity, technology, secondary elements
-  - *Psychological impact:* Innovation, premium feel, sophistication
-  - *Usage:* Hover states, secondary buttons, accent elements
-- **`brand-cyan` (#06B6D4):** Trust, modernity, informational elements
-  - *Psychological impact:* Reliability, clarity, communication
-  - *Usage:* Success states, notifications, informational badges
-
-#### Neutral Foundation Colors
-- **`brand-dark/darker`:** Depth, elegance, primary backgrounds
-  - *Purpose:* Main content areas, form backgrounds, card surfaces
-- **`brand-card`:** Separation, organization, container boundaries
-  - *Purpose:* Card borders, dividers, subtle separations
-- **`text-light/muted`:** Readability hierarchy, content prioritization
-  - *Purpose:* Primary text, secondary text, placeholder content
-
-#### Semantic State Colors
-- **`brand-red` (#DC2B50):** Errors, alerts, validation failures
-  - *Context:* Form validation, error messages, critical alerts
-- **Success Green:** Success states, confirmations, positive feedback
-- **Warning Yellow:** Caution, pending states, attention-required items
-
-### Component Design Patterns & Best Practices
-
-#### Form Elements & User Input
-- **Focus Ring Strategy:** `ring-2 ring-brand-pink/50` for accessibility compliance
-- **Error State Design:** Red border + shadow + icon for immediate visual feedback
-- **Placeholder Strategy:** Muted color with descriptive but non-redundant text
-- **Label Positioning:** Always top-aligned, left-justified, semibold weight for hierarchy
-- **Validation Feedback:** Real-time validation with smooth transitions and clear messaging
-
-#### Interactive Elements & Micro-interactions
-- **Primary Buttons:** Gradient backgrounds for high-priority actions
-- **Secondary Buttons:** Border-based design for secondary actions
-- **Card Interactions:** Hover states with border color transitions and subtle scaling
-- **Tab Navigation:** Active state with background tinting and accent borders
-- **Link Treatments:** Underline effects with smooth color transitions
-
-#### Layout Principles & Spatial Relationships
-- **Spacing System:** 8px-based grid system (space-2, space-4, space-6, etc.)
-- **Content Width:** Optimal readability limits (`max-w-4xl`, `max-w-6xl`)
-- **Grid Architecture:** Flexbox for general layouts, CSS Grid for complex components
-- **Responsive Breakpoints:** Mobile-first approach with consistent behavior across devices
-
-### Animation Guidelines & Performance Optimization
-
-#### Micro-interactions & State Transitions
-```css
-/* Standard transition for most interactive elements */
-transition-all duration-200
-
-/* Enhanced hover effects for buttons and interactive components */
-hover:scale-105 transition-all duration-300
-
-/* Accessibility-focused focus states with ring indicators */
-focus:outline-none focus:ring-2 focus:ring-brand-pink/50
-```
-
-#### Complex State Changes & Loading States
-- **Loading Indicators:** Fade in/out with smooth spinners, avoiding layout jumps
-- **Success/Error Feedback:** Slide-in animations from top with optional auto-dismiss
-- **Page Transitions:** Fade effects with subtle Y-axis translation for depth
-- **Progressive Enhancement:** Graceful degradation for users with motion sensitivity
-
-#### Performance Considerations & Best Practices
-- **GPU Acceleration:** Prioritize `transform` and `opacity` over layout-affecting properties
-- **Reduced Motion Compliance:** Respect user's `prefers-reduced-motion` system preference
-- **60fps Target:** Optimize all animations for consistent 60fps performance
-- **Efficient Triggers:** Use CSS transitions over JavaScript animations when possible
-
-### Accessibility Standards & Inclusive Design
-
-#### Color Contrast & Visual Accessibility
-- **WCAG AA Compliance:** Minimum 4.5:1 contrast ratio for normal text, 3:1 for large text
-- **Focus Indicators:** Always visible and high-contrast focus rings for keyboard navigation
-- **Color Independence:** Never rely solely on color to communicate important information
-- **Dark Mode Compatibility:** Ensure all components work in both light and dark themes
-
-#### Keyboard Navigation & Interaction
-- **Logical Tab Order:** Sequential and predictable navigation flow through interactive elements
-- **Skip Links:** Quick navigation options for screen reader and keyboard users
-- **Focus Management:** Proper focus trapping in modals and complex interactive components
-- **Escape Mechanisms:** Always provide clear ways to exit or cancel interactions
-
-#### Screen Reader Support & Semantic HTML
-- **Semantic Structure:** Proper heading hierarchy, landmarks, and HTML5 semantic elements
-- **Descriptive Alt Text:** Meaningful and contextual alternative text for images and icons
-- **ARIA Labels:** Comprehensive labeling for complex interactive components and dynamic content
-- **Live Regions:** Proper announcement of dynamic content changes for assistive technologies
-
-### Implementation Examples & Code Patterns
-
-#### Fluent Card Pattern
-```tsx
-className={`
-  bg-brand-card/30 backdrop-blur-sm rounded-2xl border border-brand-card/50 
-  p-8 shadow-xl transition-all duration-300
-  hover:shadow-2xl hover:border-brand-purple/50
-`}
-```
-
-#### Fluent Button Pattern
-```tsx
-className={`
-  bg-gradient-to-r from-brand-pink to-brand-purple
-  hover:from-brand-purple hover:to-brand-pink hover:scale-105
-  focus:outline-none focus:ring-2 focus:ring-brand-pink/50
-  transition-all duration-300 shadow-lg shadow-brand-pink/20
-`}
-```
-
-#### Fluent Input Pattern
-```tsx
-className={`
-  bg-brand-darker border-2 border-brand-card
-  focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/50
-  hover:border-brand-purple transition-all duration-200
-`}
-```
-
-#### Advanced Form Field Pattern
-```tsx
-className={`
-  w-full px-4 py-3 rounded-lg transition-all duration-200
-  bg-brand-darker border-2 text-text-light placeholder-text-muted
-  focus:outline-none focus:ring-2
-  ${error 
-    ? 'border-brand-red focus:ring-brand-red/50 shadow-lg shadow-brand-red/20' 
-    : 'border-brand-card hover:border-brand-purple focus:border-brand-pink focus:ring-brand-pink/50'
-  }
-`}
-```
-
-## Mobile-First Design Implementation (✅ Completed)
-
-### Tailwind CSS Mobile-First Principles Applied
-- **Base classes (no prefix):** Apply to mobile by default
-- **Responsive prefixes:** `sm:`, `md:`, `lg:`, `xl:` scale up from mobile
-- **Anti-pattern avoided:** Never use `sm:` thinking it targets mobile
-
-### Mobile-First Typography System
-```typescript
-// FluentGlowHeading - Mobile-first responsive scales
-'4xl': 'text-5xl sm:text-6xl md:text-7xl lg:text-8xl'
-'5xl': 'text-6xl sm:text-7xl md:text-8xl lg:text-9xl'
-
-// FluentText - Mobile-first text sizing
-base: 'text-base sm:text-lg md:text-xl'
-lg: 'text-lg sm:text-xl md:text-2xl'
-```
-
-### Mobile-First Layout Patterns
-```css
-/* Mobile-first spacing */
-padding: 0.75rem;        /* Mobile base */
-sm:padding: 1rem;        /* 640px+ */
-md:padding: 1.5rem;      /* 768px+ */
-lg:padding: 2rem;        /* 1024px+ */
-
-/* Mobile-first grid */
-grid-template-columns: 1fr;           /* Mobile: 1 column */
-sm:grid-template-columns: repeat(2, 1fr); /* 640px+: 2 columns */
-lg:grid-template-columns: repeat(3, 1fr); /* 1024px+: 3 columns */
-```
-
-### Button System Anti-Wrapping
-```css
-.button-text-control {
-  white-space: nowrap;      /* Prevent text wrapping */
-  overflow: hidden;         /* Hide overflow */
-  text-overflow: ellipsis;  /* Show ellipsis if needed */
-}
-
-.buttons-equal-width {
-  display: grid;
-  grid-template-columns: 1fr;      /* Mobile: stacked */
-  sm:grid-template-columns: 1fr 1fr; /* Desktop: side by side */
-  gap: 0.75rem;             /* Progressive gap spacing */
-}
-```
-
-### Mobile Performance Optimizations
-```css
-.mobile-performant-animation {
-  transform: translateZ(0);         /* Hardware acceleration */
-  backface-visibility: hidden;
-  will-change: transform, opacity;
-}
-
-/* Accessibility: Respect reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .animate-* { animation: none; }
-}
-```
-
-### Mobile Viewport & Safe Areas
-```css
-.mobile-viewport-height {
-  min-height: 100vh;
-  min-height: 100dvh;              /* Dynamic viewport height */
-}
-
-.mobile-safe-area {
-  padding-left: max(env(safe-area-inset-left), 1rem);
-  padding-right: max(env(safe-area-inset-right), 1rem);
-}
-```
-
-## Hero-Header Integration
-- **Fixed Header:** Header with `position: fixed` and proper z-index layering
-- **Hero Layout:** Accounts for header height with `calc(100vh - var(--header-height))`
-- **Smooth Scroll:** `scroll-padding-top` offset for navigation links
-- **Mobile Responsive:** Different header heights for mobile vs desktop
-- **Dynamic Viewport:** Uses `100dvh` for modern mobile browsers
-
-```css
-/* Hero-Header integration variables */
-:root {
-  --header-height: 4rem;        /* Desktop header */
-  --header-height-mobile: 3.5rem; /* Mobile header */
-}
-
-.hero-with-header {
-  min-height: calc(100dvh - var(--header-height-mobile));
-  padding-top: var(--header-height-mobile);
-}
-```
+- Don't use `accessKey` attribute on any HTML element.
+- Don't set `aria-hidden="true"` on focusable elements.
+- Don't add ARIA roles, states, and properties to elements that don't support them.
+- Don't use distracting elements like `<marquee>` or `<blink>`.
+- Only use the `scope` prop on `<th>` elements.
+- Don't assign non-interactive ARIA roles to interactive HTML elements.
+- Make sure label elements have text content and are associated with an input.
+- Don't assign interactive ARIA roles to non-interactive HTML elements.
+- Don't assign `tabIndex` to non-interactive HTML elements.
+- Don't use positive integers for `tabIndex` property.
+- Don't include "image", "picture", or "photo" in img `alt` prop.
+- Don't use explicit role property that's the same as the implicit/default role.
+- Make static elements with click handlers use a valid role attribute.
+- Always include a `title` element for SVG elements.
+- Give all elements requiring alt text meaningful information for screen readers.
+- Make sure anchors have content that's accessible to screen readers.
+- Assign `tabIndex` to non-interactive HTML elements with `aria-activedescendant`.
+- Include all required ARIA attributes for elements with ARIA roles.
+- Make sure ARIA properties are valid for the element's supported roles.
+- Always include a `type` attribute for button elements.
+- Make elements with interactive roles and handlers focusable.
+- Give heading elements content that's accessible to screen readers (not hidden with `aria-hidden`).
+- Always include a `lang` attribute on the html element.
+- Always include a `title` attribute for iframe elements.
+- Accompany `onClick` with at least one of: `onKeyUp`, `onKeyDown`, or `onKeyPress`.
+- Accompany `onMouseOver`/`onMouseOut` with `onFocus`/`onBlur`.
+- Include caption tracks for audio and video elements.
+- Use semantic elements instead of role attributes in JSX.
+- Make sure all anchors are valid and navigable.
+- Ensure all ARIA properties (`aria-*`) are valid.
+- Use valid, non-abstract ARIA roles for elements with ARIA roles.
+- Use valid ARIA state and property values.
+- Use valid values for the `autocomplete` attribute on input elements.
+- Use correct ISO language/country codes for the `lang` attribute.
+- Don't use consecutive spaces in regular expression literals.
+- Don't use the `arguments` object.
+- Don't use primitive type aliases or misleading types.
+- Don't use the comma operator.
+- Don't use empty type parameters in type aliases and interfaces.
+- Don't write functions that exceed a given Cognitive Complexity score.
+- Don't nest describe() blocks too deeply in test files.
+- Don't use unnecessary boolean casts.
+- Don't use unnecessary callbacks with flatMap.
+- Use for...of statements instead of Array.forEach.
+- Don't create classes that only have static members (like a static namespace).
+- Don't use this and super in static contexts.
+- Don't use unnecessary catch clauses.
+- Don't use unnecessary constructors.
+- Don't use unnecessary continue statements.
+- Don't export empty modules that don't change anything.
+- Don't use unnecessary escape sequences in regular expression literals.
+- Don't use unnecessary fragments.
+- Don't use unnecessary labels.
+- Don't use unnecessary nested block statements.
+- Don't rename imports, exports, and destructured assignments to the same name.
+- Don't use unnecessary string or template literal concatenation.
+- Don't use String.raw in template literals when there are no escape sequences.
+- Don't use useless case statements in switch statements.
+- Don't use ternary operators when simpler alternatives exist.
+- Don't use useless `this` aliasing.
+- Don't use any or unknown as type constraints.
+- Don't initialize variables to undefined.
+- Don't use void operators (they're not familiar).
+- Use arrow functions instead of function expressions.
+- Use Date.now() to get milliseconds since the Unix Epoch.
+- Use .flatMap() instead of map().flat() when possible.
+- Use literal property access instead of computed property access.
+- Don't use parseInt() or Number.parseInt() when binary, octal, or hexadecimal literals work.
+- Use concise optional chaining instead of chained logical expressions.
+- Use regular expression literals instead of the RegExp constructor when possible.
+- Don't use number literal object member names that aren't base 10 or use underscore separators.
+- Remove redundant terms from logical expressions.
+- Use while loops instead of for loops when you don't need initializer and update expressions.
+- Don't pass children as props.
+- Don't reassign const variables.
+- Don't use constant expressions in conditions.
+- Don't use `Math.min` and `Math.max` to clamp values when the result is constant.
+- Don't return a value from a constructor.
+- Don't use empty character classes in regular expression literals.
+- Don't use empty destructuring patterns.
+- Don't call global object properties as functions.
+- Don't declare functions and vars that are accessible outside their block.
+- Make sure builtins are correctly instantiated.
+- Don't use super() incorrectly inside classes. Also check that super() is called in classes that extend other constructors.
+- Don't use variables and function parameters before they're declared.
+- Don't use 8 and 9 escape sequences in string literals.
+- Don't use literal numbers that lose precision.
+- Don't use the return value of React.render.
+- Don't assign a value to itself.
+- Don't return a value from a setter.
+- Don't compare expressions that modify string case with non-compliant values.
+- Don't use lexical declarations in switch clauses.
+- Don't use variables that haven't been declared in the document.
+- Don't write unreachable code.
+- Make sure super() is called exactly once on every code path in a class constructor before this is accessed if the class has a superclass.
+- Don't use control flow statements in finally blocks.
+- Don't use optional chaining where undefined values aren't allowed.
+- Don't have unused function parameters.
+- Don't have unused imports.
+- Don't have unused labels.
+- Don't have unused private class members.
+- Don't have unused variables.
+- Make sure void (self-closing) elements don't have children.
+- Don't return a value from a function that has a 'void' return type.
+- Make sure all dependencies are correctly specified in React hooks.
+- Make sure all React hooks are called from the top level of component functions.
+- Use isNaN() when checking for NaN.
+- Don't forget key props in iterators and collection literals.
+- Make sure "for" loop update clauses move the counter in the right direction.
+- Make sure typeof expressions are compared to valid values.
+- Make sure generator functions contain yield.
+- Don't use await inside loops.
+- Don't use bitwise operators.
+- Don't use expressions where the operation doesn't change the value.
+- Don't destructure props inside JSX components in Solid projects.
+- Make sure Promise-like statements are handled appropriately.
+- Don't use __dirname and __filename in the global scope.
+- Prevent import cycles.
+- Don't define React components inside other components.
+- Don't use event handlers on non-interactive elements.
+- Don't assign to React component props.
+- Don't use configured elements.
+- Don't hardcode sensitive data like API keys and tokens.
+- Don't let variable declarations shadow variables from outer scopes.
+- Don't use the TypeScript directive @ts-ignore.
+- Prevent duplicate polyfills from Polyfill.io.
+- Don't use useless backreferences in regular expressions that always match empty strings.
+- Don't use unnecessary escapes in string literals.
+- Don't use useless undefined.
+- Make sure getters and setters for the same property are next to each other in class and object definitions.
+- Make sure object literals are declared consistently (defaults to explicit definitions).
+- Use static Response methods instead of new Response() constructor when possible.
+- Make sure switch-case statements are exhaustive.
+- Make sure the `preconnect` attribute is used when using Google Fonts.
+- Use `Array#{indexOf,lastIndexOf}()` instead of `Array#{findIndex,findLastIndex}()` when looking for the index of an item.
+- Make sure iterable callbacks return consistent values.
+- Use `with { type: "json" }` for JSON module imports.
+- Use numeric separators in numeric literals.
+- Use object spread instead of `Object.assign()` when constructing new objects.
+- Always use the radix argument when using `parseInt()`.
+- Make sure JSDoc comment lines start with a single asterisk, except for the first one.
+- Include a description parameter for `Symbol()`.
+- Don't use spread (`...`) syntax on accumulators.
+- Don't use the `delete` operator.
+- Don't access namespace imports dynamically.
+- Don't use `<img>` elements in Next.js projects.
+- Don't use namespace imports.
+- Declare regex literals at the top level.
+- Don't use `target="_blank"` without `rel="noopener"`.
+- Don't use dangerous JSX props.
+- Don't use both `children` and `dangerouslySetInnerHTML` props on the same element.
+- Don't use global `eval()`.
+- Don't use callbacks in asynchronous tests and hooks.
+- Don't use TypeScript enums.
+- Don't export imported variables.
+- Don't use `<head>` elements in Next.js projects.
+- Don't add type annotations to variables, parameters, and class properties that are initialized with literal expressions.
+- Don't use TypeScript namespaces.
+- Don't use negation in `if` statements that have `else` clauses.
+- Don't use nested ternary expressions.
+- Don't use non-null assertions with the `!` postfix operator.
+- Don't reassign function parameters.
+- Don't use parameter properties in class constructors.
+- This rule lets you specify global variable names you don't want to use in your application.
+- Don't use specified modules when loaded by import or require.
+- Don't use user-defined types.
+- Don't use constants whose value is the upper-case version of their name.
+- Use `String.slice()` instead of `String.substr()` and `String.substring()`.
+- Don't use template literals if you don't need interpolation or special-character handling.
+- Don't use `else` blocks when the `if` block breaks early.
+- Don't use yoda expressions.
+- Don't use Array constructors.
+- Use `as const` instead of literal types and type annotations.
+- Use `at()` instead of integer index access.
+- Follow curly brace conventions.
+- Use `else if` instead of nested `if` statements in `else` clauses.
+- Use single `if` statements instead of nested `if` clauses.
+- Use either `T[]` or `Array<T>` consistently.
+- Use `new` for all builtins except `String`, `Number`, and `Boolean`.
+- Use consistent accessibility modifiers on class properties and methods.
+- Use `const` declarations for variables that are only assigned once.
+- Put default function parameters and optional function parameters last.
+- Include a `default` clause in switch statements.
+- Initialize each enum member value explicitly.
+- Use the `**` operator instead of `Math.pow`.
+- Use `export type` for types.
+- Use `for-of` loops when you need the index to extract an item from the iterated array.
+- Use `<>...</>` instead of `<Fragment>...</Fragment>`.
+- Use `import type` for types.
+- Make sure all enum members are literal values.
+- Use `node:assert/strict` over `node:assert`.
+- Use the `node:` protocol for Node.js builtin modules.
+- Use Number properties instead of global ones.
+- Don't add extra closing tags for components without children.
+- Use assignment operator shorthand where possible.
+- Use function types instead of object types with call signatures.
+- Use template literals over string concatenation.
+- Use `new` when throwing an error.
+- Don't throw non-Error values.
+- Use `String.trimStart()` and `String.trimEnd()` over `String.trimLeft()` and `String.trimRight()`.
+- Use standard constants instead of approximated literals.
+- Don't use Array index in keys.
+- Don't assign values in expressions.
+- Don't use async functions as Promise executors.
+- Don't reassign exceptions in catch clauses.
+- Don't reassign class members.
+- Don't insert comments as text nodes.
+- Don't compare against -0.
+- Don't use labeled statements that aren't loops.
+- Don't use void type outside of generic or return types.
+- Don't use console.
+- Don't use TypeScript const enum.
+- Don't use control characters and escape sequences that match control characters in regular expression literals.
+- Don't use debugger.
+- Don't assign directly to document.cookie.
+- Don't import next/document outside of pages/_document.jsx in Next.js projects.
+- Use `===` and `!==`.
+- Don't use duplicate case labels.
+- Don't use duplicate class members.
+- Don't use duplicate conditions in if-else-if chains.
+- Don't assign JSX properties multiple times.
+- Don't use two keys with the same name inside objects.
+- Don't use duplicate function parameter names.
+- Don't have duplicate hooks in describe blocks.
+- Don't use empty block statements and static blocks.
+- Don't declare empty interfaces.
+- Don't let variables evolve into any type through reassignments.
+- Don't use the any type.
+- Don't use export or module.exports in test files.
+- Don't misuse the non-null assertion operator (!) in TypeScript files.
+- Don't let switch clauses fall through.
+- Don't use focused tests.
+- Don't reassign function declarations.
+- Don't allow assignments to native objects and read-only global variables.
+- Use Number.isFinite instead of global isFinite.
+- Use Number.isNaN instead of global isNaN.
+- Don't use the next/head module in pages/_document.js on Next.js projects.
+- Don't use implicit any type on variable declarations.
+- Don't assign to imported bindings.
+- Don't use irregular whitespace characters.
+- Don't use labels that share a name with a variable.
+- Don't use characters made with multiple code points in character class syntax.
+- Make sure to use new and constructor properly.
+- Make sure the assertion function, like expect, is placed inside an it() function call.
+- Don't use shorthand assign when the variable appears on both sides.
+- Don't use octal escape sequences in string literals.
+- Don't use Object.prototype builtins directly.
+- Don't redeclare variables, functions, classes, and types in the same scope.
+- Don't have redundant "use strict".
+- Don't compare things where both sides are exactly the same.
+- Don't let identifiers shadow restricted names.
+- Don't use disabled tests.
+- Don't use sparse arrays (arrays with holes).
+- Watch out for possible "wrong" semicolons inside JSX elements.
+- Don't use template literal placeholder syntax in regular strings.
+- Don't use the then property.
+- Don't merge interfaces and classes unsafely.
+- Don't use unsafe negation.
+- Don't use var.
+- Don't use with statements in non-strict contexts.
+- Don't use overload signatures that aren't next to each other.
+- Make sure async functions actually use await.
+- Make sure default clauses in switch statements come last.
+- Make sure to pass a message value when creating a built-in error.
+- Make sure get methods always return a value.
+- Use a recommended display strategy with Google Fonts.
+- Make sure for-in loops include an if statement.
+- Use Array.isArray() instead of instanceof Array.
+- Use the namespace keyword instead of the module keyword to declare TypeScript namespaces.
+- Make sure to use the digits argument with Number#toFixed().
+- Make sure to use the "use strict" directive in script files.
