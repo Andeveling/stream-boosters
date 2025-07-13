@@ -1,65 +1,69 @@
 ---
 // Testimonials section for the landing page
-import { Icon } from "astro-icon/components";
+import { Icon } from 'astro-icon/components';
+import FluentSection from '../shared/astro/FluentSection.astro';
+import FluentHeading from '../shared/astro/FluentHeading.astro';
+import FluentTestimonialCard from '../shared/astro/FluentTestimonialCard.astro';
 
 const testimonials = [
   {
-    quote: "La visibilidad que obtuvimos fue increíble. Nuestra comunidad creció gracias a streamers que realmente amaron el juego.",
-    author: "Desarrollador Indie",
-    role: "Fundador de PixelPlay Studios",
-    avatar: "https://placehold.co/100x100/FF2D92/FFFFFF/png?text=DI",
+    quote:
+      'La visibilidad que obtuvimos fue increíble. Nuestra comunidad creció gracias a streamers que realmente amaron el juego.',
+    author: 'Desarrollador Indie',
+    role: 'Fundador de PixelPlay Studios',
+    avatar: 'https://placehold.co/100x100/FF2D92/FFFFFF/png?text=DI',
   },
   {
-    quote: "El proceso fue rápido y transparente. En pocos días ya estábamos en vivo en varios canales de Twitch. ¡Un servicio top!",
-    author: "Streamer Colaborador",
-    role: "@GamingGuru",
-    avatar: "https://placehold.co/100x100/8B5CF6/FFFFFF/png?text=SC",
+    quote:
+      'El proceso fue rápido y transparente. En pocos días ya estábamos en vivo en varios canales de Twitch. ¡Un servicio top!',
+    author: 'Streamer Colaborador',
+    role: '@GamingGuru',
+    avatar: 'https://placehold.co/100x100/8B5CF6/FFFFFF/png?text=SC',
   },
   {
-    quote: "Stream Boosters nos ayudó a lanzar nuestro nuevo producto con una campaña auténtica y con un ROI que superó nuestras expectativas.",
-    author: "Gerente de Marketing",
-    role: "TechBrand Solutions",
-    avatar: "https://placehold.co/100x100/06B6D4/FFFFFF/png?text=GM",
+    quote:
+      'Stream Boosters nos ayudó a lanzar nuestro nuevo producto con una campaña auténtica y con un ROI que superó nuestras expectativas.',
+    author: 'Gerente de Marketing',
+    role: 'TechBrand Solutions',
+    avatar: 'https://placehold.co/100x100/06B6D4/FFFFFF/png?text=GM',
   },
   {
-    quote: "Gracias a Stream Boosters, logramos conectar con una audiencia que antes parecía inalcanzable. ¡Repetiremos sin duda!",
-    author: "Community Manager",
-    role: "NextGen Creators",
-    avatar: "https://placehold.co/100x100/F59E42/FFFFFF/png?text=CM",
+    quote:
+      'Gracias a Stream Boosters, logramos conectar con una audiencia que antes parecía inalcanzable. ¡Repetiremos sin duda!',
+    author: 'Community Manager',
+    role: 'NextGen Creators',
+    avatar: 'https://placehold.co/100x100/F59E42/FFFFFF/png?text=CM',
   },
 ];
 ---
 
-<section id="testimonials" class="relative py-20 px-4 bg-brand-dark animate-fade-in overflow-hidden">
+<FluentSection
+  id="testimonials"
+  backgroundVariant="solid-dark"
+  animation="fade-in"
+  padding="lg"
+  align="center"
+>
   <!-- Glow Effects -->
-  <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-brand-pink/20 rounded-full blur-3xl -z-0 transform -translate-x-1/2 -translate-y-1/2"></div>
-  <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-brand-purple/20 rounded-full blur-3xl -z-0 transform translate-x-1/2 translate-y-1/2"></div>
+  <div
+    class="absolute top-1/4 left-1/4 w-64 h-64 bg-brand-pink/20 rounded-full blur-3xl -z-0 transform -translate-x-1/2 -translate-y-1/2"
+  >
+  </div>
+  <div
+    class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-brand-purple/20 rounded-full blur-3xl -z-0 transform translate-x-1/2 translate-y-1/2"
+  >
+  </div>
 
   <div class="relative z-10 max-w-6xl mx-auto">
-    <h2 class="text-3xl font-bold text-center mb-12">Ellos ya confiaron en nosotros</h2>
+    <FluentHeading level={2} size="2xl" align="center" class="mb-12"
+      >Ellos ya confiaron en nosotros</FluentHeading
+    >
     <div class="grid md:grid-cols-2 gap-8">
-      {testimonials.map((testimonial, index) => (
-        <div
-          class="bg-brand-card p-6 rounded-lg border border-brand-card/50 transition-transform duration-300 hover:scale-105 animate-fade-in flex flex-col"
-          style={`animation-delay:${index * 150}ms;`}
-        >
-          <div class="flex items-start mb-4">
-            <Icon name="material-symbols:format-quote-rounded" class="w-8 h-8 text-brand-pink mr-3 flex-shrink-0" />
-            <p class="text-text-muted italic flex-grow">"{testimonial.quote}"</p>
-          </div>
-          <div class="flex items-center mt-auto pt-4 border-t border-brand-card/50">
-            <img
-              src={testimonial.avatar}
-              alt={`Avatar de ${testimonial.author}`}
-              class="w-12 h-12 rounded-full mr-4 border-2 border-brand-pink"
-            />
-            <div>
-              <p class="text-text-light font-bold">{testimonial.author}</p>
-              <p class="text-text-muted text-sm">{testimonial.role}</p>
-            </div>
-          </div>
-        </div>
-      ))}
+      {
+        testimonials.map((testimonial, index) => (
+          <FluentTestimonialCard {...testimonial} />
+        ))
+      }
     </div>
   </div>
-</section>
+</FluentSection>

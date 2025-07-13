@@ -40,12 +40,12 @@ Landing page desarrollada con [Astro](https://astro.build/) para conectar videoj
 
 Todos los comandos se ejecutan desde la raíz del proyecto:
 
-| Comando         | Acción                                         |
-|-----------------|-----------------------------------------------|
-| `pnpm install`  | Instala las dependencias                      |
-| `pnpm dev`      | Inicia el servidor de desarrollo (`localhost:4321`) |
-| `pnpm build`    | Genera la versión de producción en `./dist/`  |
-| `pnpm preview`  | Previsualiza el sitio generado                |
+| Comando        | Acción                                              |
+| -------------- | --------------------------------------------------- |
+| `pnpm install` | Instala las dependencias                            |
+| `pnpm dev`     | Inicia el servidor de desarrollo (`localhost:4321`) |
+| `pnpm build`   | Genera la versión de producción en `./dist/`        |
+| `pnpm preview` | Previsualiza el sitio generado                      |
 
 ---
 
@@ -78,13 +78,14 @@ Todos los comandos se ejecutan desde la raíz del proyecto:
 
 ### 4. Scripts útiles
 
-| Comando             | Acción                                                        |
-|---------------------|--------------------------------------------------------------|
-| `pnpm clean`        | Borra la carpeta `dist/`                                      |
-| `pnpm build:local`  | Build Astro + copia PHP a `dist/`                             |
-| `pnpm copy:xampp`   | Copia `dist/` a XAMPP (`/opt/lampp/htdocs/stream-boosters/`)  |
+| Comando            | Acción                                                       |
+| ------------------ | ------------------------------------------------------------ |
+| `pnpm clean`       | Borra la carpeta `dist/`                                     |
+| `pnpm build:local` | Build Astro + copia PHP a `dist/`                            |
+| `pnpm copy:xampp`  | Copia `dist/` a XAMPP (`/opt/lampp/htdocs/stream-boosters/`) |
 
 ### 5. Notas
+
 - Asegúrate de que los archivos PHP estén en `src/php/` para ser copiados.
 - Si usas rutas absolutas en PHP, revisa que funcionen igual en Hostinger y XAMPP.
 - Si necesitas permisos, antepone `sudo` al comando de copia.

@@ -1,93 +1,165 @@
 ---
 // StreamBoostersLogo.astro
 interface Props {
-  class?: string
-  size?: "sm" | "md" | "lg"
+  class?: string;
+  size?: 'sm' | 'md' | 'lg';
 }
 
-const { class: className = "", size = "md" } = Astro.props
+const { class: className = '', size = 'md' } = Astro.props;
 
 const sizeClasses = {
-  sm: "w-32 h-8",
-  md: "w-44 h-10",
-  lg: "w-52 h-12",
-}
+  sm: 'w-32 h-8',
+  md: 'w-44 h-10',
+  lg: 'w-52 h-12',
+};
 
 const textSizeClasses = {
-  sm: "text-xs",
-  md: "text-sm",
-  lg: "text-base",
-}
+  sm: 'text-xs',
+  md: 'text-sm',
+  lg: 'text-base',
+};
 ---
 
-<div class={`${sizeClasses[size]} ${className} flex items-center gap-3 select-none`}>
+<div
+  class={`${sizeClasses[size]} ${className} flex items-center gap-3 select-none`}
+>
   <!-- Logo Icon Container -->
-  <div class='relative flex items-center justify-center'>
+  <div class="relative flex items-center justify-center">
     <!-- Glow background -->
-    <div class='absolute inset-0 bg-gradient-to-r from-brand-pink/20 via-brand-purple/20 to-brand-cyan/20 rounded-full blur-sm'></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-brand-pink/20 via-brand-purple/20 to-brand-cyan/20 rounded-full blur-sm"
+    >
+    </div>
 
     <!-- Letters Container -->
-    <div class='relative flex items-center justify-center w-10 h-8 bg-gradient-to-br from-brand-dark/80 to-brand-card/60 rounded-lg border border-brand-card/50'>
+    <div
+      class="relative flex items-center justify-center w-10 h-8 bg-gradient-to-br from-brand-dark/80 to-brand-card/60 rounded-lg border border-brand-card/50"
+    >
       <!-- Letter S -->
-      <div class='absolute left-1 top-0 w-4 h-8 flex items-center justify-center'>
-        <svg width='14' height='20' viewBox='0 0 14 20' class='drop-shadow-sm'>
+      <div
+        class="absolute left-1 top-0 w-4 h-8 flex items-center justify-center"
+      >
+        <svg width="14" height="20" viewBox="0 0 14 20" class="drop-shadow-sm">
           <defs>
-            <linearGradient id='letterGradient' x1='0%' y1='0%' x2='100%' y2='100%'>
-              <stop offset='0%' class='text-brand-pink' style='stop-color:currentColor'></stop>
-              <stop offset='50%' class='text-brand-purple' style='stop-color:currentColor'></stop>
-              <stop offset='100%' class='text-brand-cyan' style='stop-color:currentColor'></stop>
+            <linearGradient
+              id="letterGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop
+                offset="0%"
+                class="text-brand-pink"
+                style="stop-color:currentColor"></stop>
+              <stop
+                offset="50%"
+                class="text-brand-purple"
+                style="stop-color:currentColor"></stop>
+              <stop
+                offset="100%"
+                class="text-brand-cyan"
+                style="stop-color:currentColor"></stop>
             </linearGradient>
           </defs>
           <path
-            d='M12 4 C12 2, 10 1, 7 1 C4 1, 2 2, 2 4 C2 6, 4 7, 7 7 C10 7, 12 8, 12 10 C12 12, 10 13, 7 13 C4 13, 2 12, 2 10'
-            stroke='url(#letterGradient)'
-            stroke-width='1.5'
-            stroke-linecap='round'
-            fill='none'
-            class='animate-pulse'></path>
+            d="M12 4 C12 2, 10 1, 7 1 C4 1, 2 2, 2 4 C2 6, 4 7, 7 7 C10 7, 12 8, 12 10 C12 12, 10 13, 7 13 C4 13, 2 12, 2 10"
+            stroke="url(#letterGradient)"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            fill="none"
+            class="animate-pulse"></path>
           <!-- Additional S curves for better definition -->
-          <path d='M7 7 C8.5 7, 10 8, 10 10 M7 7 C5.5 7, 4 6, 4 4' stroke='url(#letterGradient)' stroke-width='1' stroke-linecap='round' fill='none' opacity='0.6'></path>
+          <path
+            d="M7 7 C8.5 7, 10 8, 10 10 M7 7 C5.5 7, 4 6, 4 4"
+            stroke="url(#letterGradient)"
+            stroke-width="1"
+            stroke-linecap="round"
+            fill="none"
+            opacity="0.6"></path>
         </svg>
       </div>
 
       <!-- Letter B -->
-      <div class='absolute right-1 top-0 w-4 h-8 flex items-center justify-center'>
-        <svg width='12' height='20' viewBox='0 0 12 20' class='drop-shadow-sm'>
+      <div
+        class="absolute right-1 top-0 w-4 h-8 flex items-center justify-center"
+      >
+        <svg width="12" height="20" viewBox="0 0 12 20" class="drop-shadow-sm">
           <defs>
-            <linearGradient id='letterGradientB' x1='0%' y1='0%' x2='100%' y2='100%'>
-              <stop offset='0%' class='text-brand-pink' style='stop-color:currentColor'></stop>
-              <stop offset='50%' class='text-brand-purple' style='stop-color:currentColor'></stop>
-              <stop offset='100%' class='text-brand-cyan' style='stop-color:currentColor'></stop>
+            <linearGradient
+              id="letterGradientB"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop
+                offset="0%"
+                class="text-brand-pink"
+                style="stop-color:currentColor"></stop>
+              <stop
+                offset="50%"
+                class="text-brand-purple"
+                style="stop-color:currentColor"></stop>
+              <stop
+                offset="100%"
+                class="text-brand-cyan"
+                style="stop-color:currentColor"></stop>
             </linearGradient>
           </defs>
           <path
-            d='M2 2 L2 18 M2 2 L7 2 C9 2, 10 3, 10 5 C10 7, 9 8, 7 8 L2 8 M2 8 L8 8 C10 8, 11 9, 11 11 C11 13, 10 14, 8 14 L2 14'
-            stroke='url(#letterGradientB)'
-            stroke-width='1.5'
-            stroke-linecap='round'
-            stroke-linejoin='round'
-            fill='none'
-            class='animate-pulse'></path>
+            d="M2 2 L2 18 M2 2 L7 2 C9 2, 10 3, 10 5 C10 7, 9 8, 7 8 L2 8 M2 8 L8 8 C10 8, 11 9, 11 11 C11 13, 10 14, 8 14 L2 14"
+            stroke="url(#letterGradientB)"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"
+            class="animate-pulse"></path>
         </svg>
       </div>
     </div>
 
     <!-- Floating particles -->
-    <div class='absolute -top-1 -right-1 w-1 h-1 bg-brand-pink rounded-full animate-ping'></div>
-    <div class='absolute -bottom-1 -left-1 w-1 h-1 bg-brand-cyan rounded-full animate-ping' style='animation-delay: 1s;'></div>
+    <div
+      class="absolute -top-1 -right-1 w-1 h-1 bg-brand-pink rounded-full animate-ping"
+    >
+    </div>
+    <div
+      class="absolute -bottom-1 -left-1 w-1 h-1 bg-brand-cyan rounded-full animate-ping"
+      style="animation-delay: 1s;"
+    >
+    </div>
   </div>
 
   <!-- Text -->
-  <div class='flex flex-col justify-center'>
-    <div class={`font-bold ${textSizeClasses[size]} text-text-light tracking-tight`}>Stream</div>
-    <div class={`font-medium ${textSizeClasses[size]} text-text-muted -mt-1`}>Boosters</div>
+  <div class="flex flex-col justify-center">
+    <div
+      class={`font-bold ${textSizeClasses[size]} text-text-light tracking-tight`}
+    >
+      Stream
+    </div>
+    <div class={`font-medium ${textSizeClasses[size]} text-text-muted -mt-1`}>
+      Boosters
+    </div>
   </div>
 
   <!-- Decorative elements -->
-  <div class='flex flex-col gap-1 ml-1'>
-    <div class='w-1 h-1 bg-brand-pink rounded-full animate-pulse' style='animation-delay: 0.5s;'></div>
-    <div class='w-1 h-1 bg-brand-purple rounded-full animate-pulse' style='animation-delay: 1.5s;'></div>
-    <div class='w-1 h-1 bg-brand-cyan rounded-full animate-pulse' style='animation-delay: 2.5s;'></div>
+  <div class="flex flex-col gap-1 ml-1">
+    <div
+      class="w-1 h-1 bg-brand-pink rounded-full animate-pulse"
+      style="animation-delay: 0.5s;"
+    >
+    </div>
+    <div
+      class="w-1 h-1 bg-brand-purple rounded-full animate-pulse"
+      style="animation-delay: 1.5s;"
+    >
+    </div>
+    <div
+      class="w-1 h-1 bg-brand-cyan rounded-full animate-pulse"
+      style="animation-delay: 2.5s;"
+    >
+    </div>
   </div>
 </div>
 

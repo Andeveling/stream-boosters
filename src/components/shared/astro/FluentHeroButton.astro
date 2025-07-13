@@ -1,0 +1,280 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  /**
+   * Button href for links
+   */
+  href?: string;
+
+  /**
+   * Button variant following Fluent Design principles
+   */
+  variant?: 'hero-primary' | 'hero-secondary' | 'hero-ghost' | 'hero-glow';
+
+  /**
+   * Size variant
+   */
+  size?: 'md' | 'lg' | 'xl';
+
+  /**
+   * Icon name (optional)
+   */
+  icon?: string;
+
+  /**
+   * Icon position
+   */
+  iconPosition?: 'left' | 'right';
+
+  /**
+   * Button text content
+   */
+  text: string;
+
+  /**
+   * Special effect variant
+   */
+  effect?: 'none' | 'float' | 'glow-pulse' | 'magnetic' | 'ripple';
+
+  /**
+   * Animation delay
+   */
+  delay?: number;
+
+  /**
+   * Additional CSS classes
+   */
+  class?: string;
+}
+
+const {
+  href,
+  variant = 'hero-primary',
+  size = 'lg',
+  icon,
+  iconPosition = 'left',
+  text,
+  effect = 'glow-pulse',
+  delay = 0,
+  class: className = '',
+} = Astro.props as Props;
+
+// Variant classes following Fluent Design with enhanced effects
+const variantClasses = {
+  'hero-primary': `
+    relative overflow-hidden
+    bg-gradient-to-r from-brand-pink via-brand-purple to-brand-pink bg-size-200
+    hover:bg-gradient-to-r hover:from-brand-purple hover:via-brand-pink hover:to-brand-purple
+    text-white font-bold
+    shadow-2xl shadow-brand-pink/30
+    hover:shadow-brand-purple/50 hover:shadow-3xl
+    border-2 border-transparent
+    hover:border-brand-cyan/30
+  `,
+  'hero-secondary': `
+    relative overflow-hidden
+    bg-gradient-to-r from-brand-purple via-brand-cyan to-brand-purple bg-size-200
+    hover:bg-gradient-to-r hover:from-brand-cyan hover:via-brand-purple hover:to-brand-cyan
+    text-white font-semibold
+    shadow-2xl shadow-brand-purple/30
+    hover:shadow-brand-cyan/50 hover:shadow-3xl
+    border-2 border-brand-purple/20
+    hover:border-brand-cyan/50
+  `,
+  'hero-ghost': `
+    relative overflow-hidden
+    bg-transparent backdrop-blur-sm
+    border-2 border-brand-card
+    text-text-light font-semibold
+    hover:bg-brand-card/30
+    hover:border-brand-purple/50
+    hover:text-white
+    shadow-lg shadow-brand-dark/20
+    hover:shadow-xl hover:shadow-brand-purple/20
+  `,
+  'hero-glow': `
+    relative overflow-hidden
+    bg-gradient-to-r from-brand-cyan via-brand-pink to-brand-purple bg-size-200
+    text-white font-bold
+    shadow-2xl shadow-brand-cyan/40
+    hover:shadow-brand-pink/60 hover:shadow-3xl
+    border-2 border-brand-cyan/30
+    hover:border-brand-pink/50
+    animate-gradient-shift
+  `,
+};
+
+// Size classes with better width control and text handling
+const sizeClasses = {
+  md: 'py-3 px-6 text-base min-w-[180px] max-w-[240px]',
+  lg: 'py-4 px-8 text-lg min-w-[200px] max-w-[280px]',
+  xl: 'py-5 px-10 text-xl min-w-[220px] max-w-[320px]',
+};
+
+// Icon size classes
+const iconSizeClasses = {
+  md: 'w-5 h-5',
+  lg: 'w-6 h-6',
+  xl: 'w-7 h-7',
+};
+
+// Effect classes
+const effectClasses = {
+  none: '',
+  float: 'animate-float-gentle',
+  'glow-pulse': 'animate-glow-pulse-button',
+  magnetic: 'animate-magnetic',
+  ripple: 'animate-ripple-effect',
+};
+
+const buttonClasses = [
+  'inline-flex items-center justify-center gap-3',
+  'rounded-xl',
+  'transition-all duration-500',
+  'hover:scale-105 hover:-translate-y-1',
+  'focus:outline-none focus:ring-4 focus:ring-brand-pink/30',
+  'transform-gpu',
+  'group',
+  'whitespace-nowrap', // Prevent text wrapping
+  'text-center', // Center text alignment
+  'flex-shrink-0', // Prevent button shrinking
+  variantClasses[variant],
+  sizeClasses[size],
+  effectClasses[effect],
+  className,
+]
+  .filter(Boolean)
+  .join(' ');
+
+const Element = href ? 'a' : 'button';
+const elementProps = href ? { href } : {};
+---
+
+<Element
+  class={buttonClasses}
+  style={delay > 0 ? `animation-delay: ${delay}ms` : undefined}
+  {...elementProps}
+>
+  <!-- Ripple effect overlay -->
+  <div
+    class="absolute inset-0 rounded-xl bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 group-hover:animate-shimmer pointer-events-none"
+  >
+  </div>
+
+  <!-- Glow effect -->
+  <div
+    class="absolute inset-0 rounded-xl bg-gradient-to-r from-brand-pink/20 to-brand-purple/20 blur-lg opacity-0 group-hover:opacity-100 transition-all duration-500 -z-10"
+  >
+  </div>
+
+  {
+    icon && iconPosition === 'left' && (
+      <Icon
+        name={icon}
+        class={`${iconSizeClasses[size]} transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110`}
+      />
+    )
+  }
+
+  <span
+    class="relative z-10 transition-all duration-300 group-hover:tracking-wide whitespace-nowrap overflow-hidden text-ellipsis"
+  >
+    {text}
+  </span>
+
+  {
+    icon && iconPosition === 'right' && (
+      <Icon
+        name={icon}
+        class={`${iconSizeClasses[size]} transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110`}
+      />
+    )
+  }
+</Element>
+
+<style>
+  /* Background size utility for gradient animation */
+  .bg-size-200 {
+    background-size: 200% 200%;
+  }
+
+  /* Shadow 3xl for enhanced depth */
+  .shadow-3xl {
+    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Advanced button animations */
+  @keyframes gradient-shift {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes float-gentle {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes glow-pulse-button {
+    0%,
+    100% {
+      box-shadow:
+        0 0 20px rgba(255, 45, 146, 0.3),
+        0 0 40px rgba(139, 92, 246, 0.2);
+    }
+    50% {
+      box-shadow:
+        0 0 30px rgba(255, 45, 146, 0.5),
+        0 0 60px rgba(139, 92, 246, 0.3);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes magnetic {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  .animate-gradient-shift {
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  .animate-float-gentle {
+    animation: float-gentle 4s ease-in-out infinite;
+  }
+
+  .animate-glow-pulse-button {
+    animation: glow-pulse-button 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 1.5s ease-in-out;
+  }
+
+  .animate-magnetic {
+    animation: magnetic 0.3s ease-in-out;
+  }
+</style>

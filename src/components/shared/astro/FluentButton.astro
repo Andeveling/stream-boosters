@@ -1,0 +1,206 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  /**
+   * Button href for links
+   */
+  href?: string;
+
+  /**
+   * Button variant following Fluent Design principles
+   */
+  variant?: 'primary' | 'secondary' | 'ghost' | 'glass' | 'outline';
+
+  /**
+   * Size variant
+   */
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+
+  /**
+   * Icon name (optional)
+   */
+  icon?: string;
+
+  /**
+   * Icon position
+   */
+  iconPosition?: 'left' | 'right';
+
+  /**
+   * Full width button
+   */
+  fullWidth?: boolean;
+
+  /**
+   * Button text content
+   */
+  text: string;
+
+  /**
+   * Loading state
+   */
+  loading?: boolean;
+
+  /**
+   * Additional CSS classes
+   */
+  class?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  icon,
+  iconPosition = 'left',
+  fullWidth = false,
+  text,
+  loading = false,
+  class: className = '',
+} = Astro.props as Props;
+
+// Variant classes following Fluent Design
+const variantClasses = {
+  primary: `
+    bg-gradient-to-r from-brand-pink to-brand-purple
+    hover:from-brand-purple hover:to-brand-pink
+    text-white font-bold
+    shadow-lg shadow-brand-pink/20
+    hover:shadow-xl hover:shadow-brand-purple/30
+  `,
+  secondary: `
+    bg-gradient-to-r from-brand-purple to-brand-cyan
+    hover:from-brand-cyan hover:to-brand-purple
+    text-white font-semibold
+    shadow-lg shadow-brand-purple/20
+    hover:shadow-xl hover:shadow-brand-cyan/30
+  `,
+  ghost: `
+    bg-transparent
+    hover:bg-brand-card/50
+    text-text-light
+    border-2 border-transparent
+    hover:border-brand-purple/30
+  `,
+  glass: `
+    bg-brand-card/30 backdrop-blur-sm
+    hover:bg-brand-card/50
+    text-text-light font-semibold
+    border border-brand-card/50
+    hover:border-brand-purple/50
+    shadow-lg shadow-brand-dark/20
+  `,
+  outline: `
+    bg-transparent
+    border-2 border-brand-card
+    text-text-muted font-semibold
+    hover:bg-brand-card hover:text-text-light
+    hover:border-brand-purple
+  `,
+};
+
+// Size classes
+const sizeClasses = {
+  sm: 'py-2 px-4 text-sm',
+  md: 'py-3 px-6 text-base',
+  lg: 'py-3 px-8 text-lg',
+  xl: 'py-4 px-10 text-xl',
+};
+
+// Icon size classes
+const iconSizeClasses = {
+  sm: 'w-4 h-4',
+  md: 'w-5 h-5',
+  lg: 'w-6 h-6',
+  xl: 'w-7 h-7',
+};
+
+const buttonClasses = [
+  'inline-flex items-center justify-center gap-2',
+  'rounded-lg',
+  'transition-all duration-300',
+  'hover:scale-105',
+  'focus:outline-none focus:ring-2 focus:ring-brand-pink/50',
+  'disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100',
+  fullWidth ? 'w-full' : 'w-full sm:w-auto',
+  variantClasses[variant],
+  sizeClasses[size],
+  className,
+]
+  .filter(Boolean)
+  .join(' ');
+---
+
+{
+  href ? (
+    <a href={href} class={buttonClasses}>
+      {loading && (
+        <svg
+          class={`animate-spin ${iconSizeClasses[size]}`}
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"
+          />
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          />
+        </svg>
+      )}
+
+      {!loading && icon && iconPosition === 'left' && (
+        <Icon name={icon} class={iconSizeClasses[size]} />
+      )}
+
+      <span>{text}</span>
+
+      {!loading && icon && iconPosition === 'right' && (
+        <Icon name={icon} class={iconSizeClasses[size]} />
+      )}
+    </a>
+  ) : (
+    <button class={buttonClasses}>
+      {loading && (
+        <svg
+          class={`animate-spin ${iconSizeClasses[size]}`}
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"
+          />
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          />
+        </svg>
+      )}
+
+      {!loading && icon && iconPosition === 'left' && (
+        <Icon name={icon} class={iconSizeClasses[size]} />
+      )}
+
+      <span>{text}</span>
+
+      {!loading && icon && iconPosition === 'right' && (
+        <Icon name={icon} class={iconSizeClasses[size]} />
+      )}
+    </button>
+  )
+}

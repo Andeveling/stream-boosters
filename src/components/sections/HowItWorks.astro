@@ -1,48 +1,84 @@
 ---
-// How It Works section for the landing page
-import { Icon } from 'astro-icon/components';
+import FluentHeading from '../shared/astro/FluentHeading.astro';
+import FluentSection from '../shared/astro/FluentSection.astro';
+import FluentStep from '../shared/astro/FluentStep.astro';
+import FluentText from '../shared/astro/FluentText.astro';
 
 const steps = [
   {
     icon: 'material-symbols:upload-file-outline-rounded',
-    title: 'Paso 1: Comparte tu Juego',
-    description: 'Nos envías la información y el acceso a tu juego o producto. Nosotros nos encargamos del resto.',
+    title: 'Paso 1: Selecciona tu paquete',
+    description:
+      'Cuéntanos los detalles de tu proyecto Escoge un plan y presupuesto que mejor se adapte a tu campaña.',
   },
   {
     icon: 'material-symbols:groups-outline-rounded',
     title: 'Paso 2: Seleccionamos Streamers',
-    description: 'Buscamos en nuestra red los perfiles más activos y comprometidos que encajen con tu audiencia.',
+    description:
+      'Te brindaremos una selección de streamers que mejor se adapten a tus condiciones.',
   },
   {
     icon: 'material-symbols:rocket-launch-outline-rounded',
     title: 'Paso 3: Tu Marca al Aire',
-    description: 'Coordinamos y lanzamos la campaña, dándote seguimiento personalizado y métricas en tiempo real.',
+    description:
+      'Coordinamos y lanzamos la campaña, dándote seguimiento personalizado y métricas en tiempo real.',
   },
 ];
 ---
 
-<section id="how-it-works" class="py-20 px-4 animate-fade-in">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-text-light">¿Cómo funciona?</h2>
-      <p class="text-text-muted mt-2">En solo 3 pasos, tu proyecto estará en vivo.</p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-8 text-center relative">
-      <!-- Línea de conexión (decorativa) -->
-      <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-brand-card/30 transform -translate-y-1/2"></div>
+<FluentSection
+  id="how-it-works"
+  backgroundVariant="solid-dark"
+  animation="slide-up"
+  padding="lg"
+  align="center"
+>
+  <!-- Section Header -->
+  <div class="text-center mb-16">
+    <FluentHeading
+      level={2}
+      size="3xl"
+      gradient="none"
+      align="center"
+      class="mb-4"
+    >
+      ¿Cómo funciona?
+    </FluentHeading>
 
-      {steps.map((step, index) => (
-        <div class="bg-brand-dark p-8 rounded-xl border border-brand-card transition-transform duration-300 hover:scale-105 hover:-translate-y-2 animate-fade-in relative z-10" style={`animation-delay:${index * 150}ms;`}>
-          <div class="relative mb-6">
-            <span class="absolute -top-4 -left-4 text-4xl md:text-6xl font-black text-brand-card select-none">0{index + 1}</span>
-            <div class="flex items-center justify-center h-20 w-20 rounded-full bg-brand-purple/20 mx-auto shadow-lg">
-              <Icon name={step.icon} class="h-10 w-10 text-brand-pink" />
-            </div>
-          </div>
-          <h3 class="text-xl font-bold mb-2 text-text-light">{step.title}</h3>
-          <p class="text-text-muted">{step.description}</p>
-        </div>
-      ))}
-    </div>
+    <FluentText
+      size="base"
+      variant="muted"
+      align="center"
+      maxWidth="lg"
+      margin="none"
+    >
+      En solo 3 pasos, tu proyecto estará en vivo.
+    </FluentText>
   </div>
-</section>
+
+  <!-- Steps Grid -->
+  <div
+    class="relative flex flex-col md:grid md:grid-cols-3 gap-8 md:gap-10 px-2 sm:px-4 md:px-0 w-full max-w-6xl mx-auto z-10"
+  >
+    {/* Línea decorativa detrás de las tarjetas, solo en desktop */}
+    <div
+      class="hidden md:block absolute top-1/2 left-0 w-full h-1 pointer-events-none z-0"
+      style="background: linear-gradient(90deg, rgba(136,58,255,0.10) 0%, rgba(255,0,128,0.18) 50%, rgba(0,255,255,0.10) 100%); filter: blur(1.5px);"
+    >
+    </div>
+    {
+      steps.map((step, index) => (
+        <div class="relative z-10 flex-1 flex justify-center">
+          <FluentStep
+            icon={step.icon}
+            number={index + 1}
+            title={step.title}
+            description={step.description}
+            delay={index * 150}
+            variant="elevated"
+          />
+        </div>
+      ))
+    }
+  </div>
+</FluentSection>
