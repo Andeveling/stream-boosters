@@ -1,32 +1,26 @@
 ---
+import { FluentGlowHeading, FluentText, FluentSection } from '../shared/astro';
 import { FormTabs } from '../forms/shared/FormTabs';
 // Call to Action section for the landing page
 ---
 
-<section
-  id="contact"
-  class="relative py-20 px-4 text-center animate-fade-in overflow-hidden"
->
+<FluentSection id="contact" class="py-20 px-4 text-center animate-fade-in overflow-hidden">
   <!-- Glow Effect -->
   <div
     class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-purple/20 rounded-full blur-3xl -z-0"
-  >
-  </div>
+  ></div>
   <div
     class="absolute top-1/4 right-1/4 w-64 h-64 bg-brand-pink/15 rounded-full blur-2xl -z-0"
-  >
-  </div>
+  ></div>
 
   <div class="relative z-10 max-w-6xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-black tracking-tight mb-4">
-      ¿Listo para ver tu juego en <span class="text-brand-pink">streaming?</span
-      >
-    </h2>
-    <p class="text-text-muted mb-12 max-w-2xl mx-auto">
-      Hablemos de tu proyecto. Elige la opción que mejor se adapte a tus
-      necesidades.
-    </p>
+    <FluentGlowHeading level={2} class="text-3xl md:text-4xl font-black tracking-tight mb-4">
+      ¿Listo para ver tu <span class="text-brand-pink">marca</span> o <span class="text-brand-pink">juego</span> en streaming?
+    </FluentGlowHeading>
+    <FluentText class="text-text-muted mb-12 max-w-2xl mx-auto">
+      Hablemos de tu proyecto. Elige la opción que mejor se adapte a tus necesidades.
+    </FluentText>
 
     <FormTabs client:load />
   </div>
-</section>
+</FluentSection>
