@@ -65,12 +65,12 @@ const sizeClasses = {
   '6xl': 'text-7xl sm:text-8xl md:text-9xl lg:text-[10rem]',
 };
 
-// Glow classes
+// Glow classes - Pure text-shadow approach (eliminates filter bleeding)
 const glowClasses = {
   none: '',
-  subtle: 'drop-shadow-glow-subtle',
-  medium: 'drop-shadow-glow-medium',
-  intense: 'drop-shadow-glow-intense',
+  subtle: 'glow-text-subtle',
+  medium: 'glow-text-medium',
+  intense: 'glow-text-intense',
 };
 
 // Animation classes
@@ -103,6 +103,8 @@ const alignClasses = {
 const headingClasses = [
   'font-black tracking-tighter',
   'transition-all duration-500',
+  'will-change-transform', // Optimize for animations
+  'isolation-isolate', // Prevent filter bleeding
   sizeClasses[size],
   glowClasses[glow],
   animationClasses[animation],
@@ -116,39 +118,60 @@ const headingClasses = [
 const Element = `h${level}` as keyof HTMLElementTagNameMap;
 ---
 
-<Element 
-  class={headingClasses}
-  style={delay > 0 ? `animation-delay: ${delay}ms` : undefined}
->
+<Element class={headingClasses} style={delay > 0 ? `animation-delay: ${delay}ms` : undefined}>
   <slot />
 </Element>
 
 <style>
-  /* Improved Glow effects - no solid borders */
-  .drop-shadow-glow-subtle {
-    filter: drop-shadow(0 0 8px rgba(255, 45, 146, 0.2)) drop-shadow(0 0 16px rgba(255, 45, 146, 0.1));
-    text-shadow: 0 0 12px rgba(255, 45, 146, 0.3);
+  /* Pure text-shadow glow effects - No filter issues */
+  .glow-text-subtle {
+    text-shadow:
+      0 0 10px rgba(255, 45, 146, 0.3),
+      0 0 20px rgba(255, 45, 146, 0.2),
+      0 0 30px rgba(139, 92, 246, 0.1);
   }
 
-  .drop-shadow-glow-medium {
-    filter: drop-shadow(0 0 12px rgba(255, 45, 146, 0.3)) drop-shadow(0 0 24px rgba(139, 92, 246, 0.15));
-    text-shadow: 
-      0 0 16px rgba(255, 45, 146, 0.4),
-      0 0 32px rgba(139, 92, 246, 0.2);
+  .glow-text-medium {
+    text-shadow:
+      0 0 15px rgba(255, 45, 146, 0.4),
+      0 0 30px rgba(255, 45, 146, 0.3),
+      0 0 45px rgba(139, 92, 246, 0.2),
+      0 0 60px rgba(6, 182, 212, 0.1);
   }
 
-  .drop-shadow-glow-intense {
-    filter: 
-      drop-shadow(0 0 16px rgba(255, 45, 146, 0.4)) 
-      drop-shadow(0 0 32px rgba(139, 92, 246, 0.25)) 
-      drop-shadow(0 0 48px rgba(6, 182, 212, 0.15));
-    text-shadow: 
-      0 0 20px rgba(255, 45, 146, 0.5),
-      0 0 40px rgba(139, 92, 246, 0.3),
-      0 0 60px rgba(6, 182, 212, 0.2);
+  .glow-text-intense {
+    /* Múltiples capas de sombra con degradado suave - Sin bordes cuadrados */
+    text-shadow:
+      /* Capa interna - muy suave */
+      0 0 5px rgba(255, 45, 146, 0.8),
+      0 0 10px rgba(255, 45, 146, 0.6),
+      0 0 15px rgba(255, 45, 146, 0.4),
+      
+      /* Capa media - transición */
+      0 0 25px rgba(139, 92, 246, 0.3),
+      0 0 35px rgba(139, 92, 246, 0.2),
+      
+      /* Capa externa - muy difusa */
+      0 0 50px rgba(6, 182, 212, 0.15),
+      0 0 75px rgba(6, 182, 212, 0.1),
+      0 0 100px rgba(255, 45, 146, 0.05);
+    
+    /* Eliminar cualquier overflow que pueda crear bordes */
+    overflow: visible;
+    
+    /* Optimización para rendering suave */
+    filter: blur(0); /* Fuerza anti-aliasing */
+    
+    /* Mejor composición de capas */
+    isolation: isolate;
+    mix-blend-mode: normal;
+    
+    /* Eliminar cualquier borde sharp */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Advanced animations */
+  /* Advanced animations - Optimized for performance */
   @keyframes type-effect {
     0% {
       width: 0;
@@ -164,23 +187,29 @@ const Element = `h${level}` as keyof HTMLElementTagNameMap;
   }
 
   @keyframes glow-pulse {
-    0%, 100% {
-      filter: 
-        drop-shadow(0 0 12px rgba(255, 45, 146, 0.3)) 
-        drop-shadow(0 0 24px rgba(139, 92, 246, 0.15));
-      text-shadow: 
-        0 0 16px rgba(255, 45, 146, 0.4),
-        0 0 32px rgba(139, 92, 246, 0.2);
-      transform: scale(1);
+    0%, 100% { 
+      opacity: 0.9;
+      text-shadow:
+        0 0 5px rgba(255, 45, 146, 0.8),
+        0 0 10px rgba(255, 45, 146, 0.6),
+        0 0 15px rgba(255, 45, 146, 0.4),
+        0 0 25px rgba(139, 92, 246, 0.3),
+        0 0 35px rgba(139, 92, 246, 0.2),
+        0 0 50px rgba(6, 182, 212, 0.15),
+        0 0 75px rgba(6, 182, 212, 0.1),
+        0 0 100px rgba(255, 45, 146, 0.05);
     }
-    50% {
-      filter: 
-        drop-shadow(0 0 20px rgba(255, 45, 146, 0.5)) 
-        drop-shadow(0 0 40px rgba(139, 92, 246, 0.3));
-      text-shadow: 
+    50% { 
+      opacity: 1;
+      text-shadow:
+        0 0 8px rgba(255, 45, 146, 1),
+        0 0 16px rgba(255, 45, 146, 0.8),
         0 0 24px rgba(255, 45, 146, 0.6),
-        0 0 48px rgba(139, 92, 246, 0.4);
-      transform: scale(1.01);
+        0 0 40px rgba(139, 92, 246, 0.5),
+        0 0 60px rgba(139, 92, 246, 0.3),
+        0 0 80px rgba(6, 182, 212, 0.25),
+        0 0 120px rgba(6, 182, 212, 0.15),
+        0 0 160px rgba(255, 45, 146, 0.08);
     }
   }
 
@@ -191,6 +220,20 @@ const Element = `h${level}` as keyof HTMLElementTagNameMap;
   }
 
   .animate-glow-pulse {
-    animation: glow-pulse 4s ease-in-out infinite;
+    animation: glow-pulse 3s ease-in-out infinite;
+    
+    /* Optimizaciones de performance */
+    will-change: opacity, text-shadow;
+    transform: translateZ(0); /* GPU layer */
+    backface-visibility: hidden;
+    
+    /* Eliminar cualquier borde sharp */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Ensure proper isolation */
+  .isolation-isolate {
+    isolation: isolate;
   }
 </style>

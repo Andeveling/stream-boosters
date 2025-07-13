@@ -1,138 +1,153 @@
 ---
-import type { HTMLAttributes } from "astro/types"
-import { Icon } from "astro-icon/components"
+import type { HTMLAttributes } from 'astro/types';
+import { Icon } from 'astro-icon/components';
 
-interface Props extends HTMLAttributes<"section"> {
+interface Props extends HTMLAttributes<'section'> {
   /**
    * Unique identifier for the section
    */
-  id?: string
+  id?: string;
 
   /**
    * Background pattern variant for Fluent Design
    */
-  backgroundVariant?: "default" | "gradient" | "glass" | "abstract" | "geometric"
+  backgroundVariant?:
+    | 'default'
+    | 'gradient'
+    | 'glass'
+    | 'abstract'
+    | 'geometric';
 
   /**
    * Depth level for layering (affects shadows and blur)
    */
-  depth?: "shallow" | "medium" | "deep"
+  depth?: 'shallow' | 'medium' | 'deep';
 
   /**
    * Animation variant for section entrance
    */
-  animation?: "fade-in" | "slide-up" | "scale-in" | "none"
+  animation?: 'fade-in' | 'slide-up' | 'scale-in' | 'none';
 
   /**
    * Padding variant for responsive spacing
    */
-  padding?: "sm" | "md" | "lg" | "xl"
+  padding?: 'sm' | 'md' | 'lg' | 'xl';
 
   /**
    * Background icons configuration
    */
   backgroundIcons?: Array<{
-    name: string
-    position: "top-left" | "top-right" | "bottom-left" | "bottom-right" | "center" | "top-center" | "bottom-center"
-    size: "sm" | "md" | "lg" | "xl"
-    color: "pink" | "purple" | "cyan" | "muted"
-    rotation?: number
-    opacity?: number
-    blur?: boolean
-  }>
+    name: string;
+    position:
+      | 'top-left'
+      | 'top-right'
+      | 'bottom-left'
+      | 'bottom-right'
+      | 'center'
+      | 'top-center'
+      | 'bottom-center';
+    size: 'sm' | 'md' | 'lg' | 'xl';
+    color: 'pink' | 'purple' | 'cyan' | 'muted';
+    rotation?: number;
+    opacity?: number;
+    blur?: boolean;
+  }>;
 
   /**
    * Custom background image URL
    */
-  backgroundImage?: string
+  backgroundImage?: string;
 
   /**
    * Content alignment
    */
-  align?: "left" | "center" | "right"
+  align?: 'left' | 'center' | 'right';
 }
 
 const {
   id,
-  backgroundVariant = "default",
-  depth = "medium",
-  animation = "fade-in",
-  padding = "lg",
+  backgroundVariant = 'default',
+  depth = 'medium',
+  animation = 'fade-in',
+  padding = 'lg',
   backgroundIcons = [],
   backgroundImage,
-  align = "center",
-  class: className = "",
+  align = 'center',
+  class: className = '',
   ...props
-} = Astro.props as Props
+} = Astro.props as Props;
 
 // Background variant classes
 const backgroundClasses = {
-  default: "bg-transparent",
-  gradient: "bg-gradient-to-br from-brand-darker via-brand-dark to-brand-darker",
-  glass: "bg-brand-card/30 backdrop-blur-sm",
-  abstract: "bg-gradient-to-tr from-brand-purple/5 via-transparent to-brand-pink/5",
-  geometric: "bg-gradient-radial from-brand-cyan/5 via-brand-purple/3 to-transparent",
-}
+  default: 'bg-transparent',
+  gradient:
+    'bg-gradient-to-br from-brand-darker via-brand-dark to-brand-darker',
+  glass: 'bg-brand-card/30 backdrop-blur-sm',
+  abstract:
+    'bg-gradient-to-tr from-brand-purple/5 via-transparent to-brand-pink/5',
+  geometric:
+    'bg-gradient-radial from-brand-cyan/5 via-brand-purple/3 to-transparent',
+};
 
 // Depth classes for shadows and layering - Removed solid borders
 const depthClasses = {
-  shallow: "", // Removed shadow to prevent border effect
-  medium: "", // Removed shadow to prevent border effect
-  deep: "", // Removed shadow to prevent border effect
-}
+  shallow: '', // Removed shadow to prevent border effect
+  medium: '', // Removed shadow to prevent border effect
+  deep: '', // Removed shadow to prevent border effect
+};
 
 // Animation classes
 const animationClasses = {
-  "fade-in": "animate-fade-in",
-  "slide-up": "animate-slide-up",
-  "scale-in": "animate-scale-in",
-  none: "",
-}
+  'fade-in': 'animate-fade-in',
+  'slide-up': 'animate-slide-up',
+  'scale-in': 'animate-scale-in',
+  none: '',
+};
 
 // Padding classes
 const paddingClasses = {
-  sm: "py-12 md:py-16",
-  md: "py-16 md:py-24",
-  lg: "py-20 md:py-32",
-  xl: "py-28 md:py-40",
-}
+  sm: 'py-12 md:py-16',
+  md: 'py-16 md:py-24',
+  lg: 'py-20 md:py-32',
+  xl: 'py-28 md:py-40',
+};
 
 // Alignment classes
 const alignClasses = {
-  left: "text-left",
-  center: "text-center",
-  right: "text-right",
-}
+  left: 'text-left',
+  center: 'text-center',
+  right: 'text-right',
+};
 
 // Icon position classes
 const iconPositions = {
-  "top-left": "top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2",
-  "top-right": "top-1/4 right-1/4 translate-x-1/2 -translate-y-1/2",
-  "bottom-left": "bottom-1/4 left-1/4 -translate-x-1/2 translate-y-1/2",
-  "bottom-right": "bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2",
-  center: "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
-  "top-center": "top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2",
-  "bottom-center": "bottom-1/4 left-1/2 -translate-x-1/2 translate-y-1/2",
-}
+  'top-left': 'top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2',
+  'top-right': 'top-1/4 right-1/4 translate-x-1/2 -translate-y-1/2',
+  'bottom-left': 'bottom-1/4 left-1/4 -translate-x-1/2 translate-y-1/2',
+  'bottom-right': 'bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2',
+  center: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
+  'top-center': 'top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2',
+  'bottom-center': 'bottom-1/4 left-1/2 -translate-x-1/2 translate-y-1/2',
+};
 
 // Icon size classes
 const iconSizes = {
-  sm: "w-24 h-24 md:w-32 md:h-32",
-  md: "w-32 h-32 md:w-48 md:h-48",
-  lg: "w-40 h-40 md:w-64 md:h-64",
-  xl: "w-48 h-48 md:w-80 md:h-80",
-}
+  sm: 'w-24 h-24 md:w-32 md:h-32',
+  md: 'w-32 h-32 md:w-48 md:h-48',
+  lg: 'w-40 h-40 md:w-64 md:h-64',
+  xl: 'w-48 h-48 md:w-80 md:h-80',
+};
 
 // Icon color classes
 const iconColors = {
-  pink: "text-brand-pink",
-  purple: "text-brand-purple",
-  cyan: "text-brand-cyan",
-  muted: "text-text-muted",
-}
+  pink: 'text-brand-pink',
+  purple: 'text-brand-purple',
+  cyan: 'text-brand-cyan',
+  muted: 'text-text-muted',
+};
 
 const sectionClasses = [
-  "relative overflow-hidden w-full min-h-0", // Ensure seamless integration
+  'relative overflow-hidden w-full min-h-0', // Ensure seamless integration
   backgroundClasses[backgroundVariant],
   depthClasses[depth],
   animationClasses[animation],
@@ -141,7 +156,7 @@ const sectionClasses = [
   className,
 ]
   .filter(Boolean)
-  .join(" ")
+  .join(' ');
 ---
 
 <section {id} class={sectionClasses} {...props}>
