@@ -34,17 +34,7 @@
     width: 100%;
     height: 100%;
     z-index: -1;
-    background:
-      radial-gradient(
-        circle at 10% 10%,
-        rgba(139, 92, 246, 0.1),
-        transparent 35%
-      ),
-      radial-gradient(
-        circle at 90% 80%,
-        rgba(255, 45, 146, 0.1),
-        transparent 35%
-      );
+    background: radial-gradient(circle at 10% 10%, rgba(139, 92, 246, 0.1), transparent 35%), radial-gradient(circle at 90% 80%, rgba(255, 45, 146, 0.1), transparent 35%);
     pointer-events: none;
   }
 
@@ -110,47 +100,34 @@
 
   /* Enhanced radial gradient patterns - Seamless integration */
   .bg-hero-radial {
-    background:
-      radial-gradient(
-        circle at 20% 20%,
-        rgba(255, 45, 146, 0.12),
-        transparent 45%
-      ),
-      radial-gradient(
-        circle at 80% 80%,
-        rgba(139, 92, 246, 0.12),
-        transparent 45%
-      ),
-      radial-gradient(
-        circle at 50% 10%,
-        rgba(6, 182, 212, 0.08),
-        transparent 35%
-      ),
-      radial-gradient(
-        circle at 10% 80%,
-        rgba(255, 45, 146, 0.06),
-        transparent 40%
-      );
+    background: radial-gradient(circle at 20% 20%, rgba(255, 45, 146, 0.12), transparent 45%), radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.12), transparent 45%),
+      radial-gradient(circle at 50% 10%, rgba(6, 182, 212, 0.08), transparent 35%), radial-gradient(circle at 10% 80%, rgba(255, 45, 146, 0.06), transparent 40%);
     /* Ensure seamless integration with global background */
     position: relative;
     isolation: isolate;
   }
 
-  /* Floating orbs effect */
+  /* Floating orbs effect - Optimized for performance */
   @keyframes orb-float {
     0%,
     100% {
-      transform: translateY(0px) translateX(0px) scale(1);
+      transform: translateY(0px) translateX(0px) scale(1) translateZ(0);
       opacity: 0.6;
     }
     33% {
-      transform: translateY(-30px) translateX(20px) scale(1.1);
+      transform: translateY(-20px) translateX(15px) scale(1.05) translateZ(0);
       opacity: 0.8;
     }
     66% {
-      transform: translateY(-15px) translateX(-15px) scale(0.9);
+      transform: translateY(-10px) translateX(-10px) scale(0.95) translateZ(0);
       opacity: 0.7;
     }
+  }
+
+  .animate-orb-float {
+    animation: orb-float 8s ease-in-out infinite;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
   }
 
   .animate-orb-float {
@@ -161,15 +138,11 @@
   @keyframes pulse-glow {
     0%,
     100% {
-      box-shadow:
-        0 0 20px rgba(255, 45, 146, 0.4),
-        0 0 40px rgba(139, 92, 246, 0.2);
+      box-shadow: 0 0 20px rgba(255, 45, 146, 0.4), 0 0 40px rgba(139, 92, 246, 0.2);
       opacity: 0.8;
     }
     50% {
-      box-shadow:
-        0 0 40px rgba(255, 45, 146, 0.6),
-        0 0 80px rgba(139, 92, 246, 0.4);
+      box-shadow: 0 0 40px rgba(255, 45, 146, 0.6), 0 0 80px rgba(139, 92, 246, 0.4);
       opacity: 1;
     }
   }
@@ -239,6 +212,11 @@
 
   .animate-text-reveal {
     animation: text-reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  }
+
+  /* Isolation utility for preventing filter bleeding */
+  .isolation-isolate {
+    isolation: isolate;
   }
 
   /* Enhanced full-width Hero styles */
@@ -877,9 +855,7 @@
     /* Mobile menu dropdown positioning */
     #mobile-menu {
       top: calc(var(--header-height-mobile) - 1px);
-      box-shadow:
-        0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
   }
 }
