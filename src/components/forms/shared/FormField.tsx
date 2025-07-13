@@ -37,10 +37,10 @@ export const FormField: React.FC<FormFieldProps> = ({
         className={`
           w-full px-4 py-3 rounded-lg transition-all duration-200
           bg-brand-darker border-2 text-text-light placeholder-text-muted
-          focus:outline-none focus:ring-2 focus:ring-brand-pink/50
+          focus:outline-none focus:ring-2
           ${error 
-            ? 'border-brand-red shadow-lg shadow-brand-red/20' 
-            : 'border-brand-card hover:border-brand-purple'
+            ? 'border-brand-red focus:ring-brand-red/50 shadow-lg shadow-brand-red/20' 
+            : 'border-brand-card hover:border-brand-purple focus:border-brand-pink focus:ring-brand-pink/50'
           }
         `}
       />
@@ -54,10 +54,10 @@ export const FormField: React.FC<FormFieldProps> = ({
         className={`
           w-full px-4 py-3 rounded-lg transition-all duration-200 resize-none
           bg-brand-darker border-2 text-text-light placeholder-text-muted
-          focus:outline-none focus:ring-2 focus:ring-brand-pink/50
+          focus:outline-none focus:ring-2
           ${error 
-            ? 'border-brand-red shadow-lg shadow-brand-red/20' 
-            : 'border-brand-card hover:border-brand-purple'
+            ? 'border-brand-red focus:ring-brand-red/50 shadow-lg shadow-brand-red/20' 
+            : 'border-brand-card hover:border-brand-purple focus:border-brand-pink focus:ring-brand-pink/50'
           }
         `}
         rows={4}
