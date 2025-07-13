@@ -1,81 +1,83 @@
 ---
 // Genres and Next section for the landing page
-import { Icon } from 'astro-icon/components';
+import { 
+  FluentBentoCard, 
+  FluentBentoContainer, 
+  FluentHeading, 
+  FluentSection, 
+  FluentText 
+} from '../shared/astro';
 ---
 
-<section id="genres" class="py-20 px-4 animate-fade-in">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-    <div>
-      <h2 class="text-3xl font-bold mb-4">
-        Para marcas y juegos que quieren <span class="text-brand-cyan"
-          >visibilidad real</span>
-      </h2>
-      <p class="text-text-muted mb-6">
+<FluentSection id='genres' backgroundVariant='solid-darker' animation='fade-in' padding='lg' align='center'>
+  <div class='max-w-6xl mx-auto flex flex-col gap-12 items-center'>
+    <div class="w-full flex flex-col items-center text-center mb-4">
+      <FluentHeading level={2} size='2xl' align='center' class='mb-4'>
+        Para marcas y juegos que quieren
+        <span class='text-brand-cyan'>visibilidad real</span>
+      </FluentHeading>
+      <FluentText size='lg' variant='muted' align='center' margin='sm' class='mb-6'>
         Trabajamos con una amplia variedad de géneros y productos:
-      </p>
-      <div class="grid grid-cols-2 gap-4 text-center">
-        <div
-          class="bg-brand-dark p-4 rounded-lg border border-brand-card col-span-2 flex items-center justify-center gap-2"
-        >
-          <Icon
-            name="material-symbols:shopping-bag-outline"
-            class="w-5 h-5 text-brand-cyan"
-          />
-          Productos para Gamers
-        </div>
-        <div
-          class="bg-brand-dark p-4 rounded-lg border border-brand-card flex items-center justify-center gap-2"
-        >
-          <Icon
-            name="material-symbols:stadia-controller-outline"
-            class="w-5 h-5 text-brand-pink"
-          />
-          Juegos Indie
-        </div>
-        <div
-          class="bg-brand-dark p-4 rounded-lg border border-brand-card flex items-center justify-center gap-2"
-        >
-          <Icon
-            name="material-symbols:explore-outline"
-            class="w-5 h-5 text-brand-purple"
-          />
-          RPG & Aventura
-        </div>
-        <div
-          class="bg-brand-dark p-4 rounded-lg border border-brand-card flex items-center justify-center gap-2"
-        >
-          <Icon
-            name="material-symbols:chess-pawn-outline"
-            class="w-5 h-5 text-brand-red"
-          />
-          Estrategia
-        </div>
-        <div
-          class="bg-brand-dark p-4 rounded-lg border border-brand-card flex items-center justify-center gap-2"
-        >
-          <Icon name="material-symbols:home" class="w-5 h-5 text-brand-pink" />
-          Juegos de Terror
-        </div>
-        <div
-          class="bg-brand-dark p-4 rounded-lg border border-brand-card col-span-2 flex items-center justify-center gap-2"
-        >
-          <Icon
-            name="material-symbols:label-outline"
-            class="w-5 h-5 text-brand-purple"
-          />
-          Marcas
-        </div>
-      </div>
+      </FluentText>
     </div>
-    <div>
-      <h3 class="text-2xl font-bold mb-4">¿Qué sigue?</h3>
-      <p class="text-text-muted">
-        Estamos en constante evolución para ofrecerte más. Próximamente
-        expandiremos nuestra red a plataformas como <span
-          class="text-text-light font-semibold">TikTok</span
-        > y <span class="text-text-light font-semibold">YouTube</span>, además
-        de incluir campañas para tu marca.
-      </p>
+    
+    <!-- Bento Grid Layout -->
+    <FluentBentoContainer columns={4} gap="md">
+      <!-- Large card - Productos para Gamers -->
+      <FluentBentoCard 
+        icon="material-symbols:shopping-bag-outline" 
+        text="Productos para Gamers" 
+        colorScheme="cyan" 
+        size="large" 
+        colSpan={2}
+      />
+      
+      <!-- Medium cards -->
+      <FluentBentoCard 
+        icon="material-symbols:stadia-controller-outline" 
+        text="Juegos Indie" 
+        colorScheme="pink" 
+        size="small"
+      />
+      
+      <FluentBentoCard 
+        icon="material-symbols:explore-outline" 
+        text="RPG & Aventura" 
+        colorScheme="purple" 
+        size="small"
+      />
+      
+      <FluentBentoCard 
+        icon="material-symbols:chess-pawn-outline" 
+        text="Estrategia" 
+        colorScheme="red" 
+        size="small"
+      />
+      
+      <FluentBentoCard 
+        icon="material-symbols:home" 
+        text="Juegos de Terror" 
+        colorScheme="pink" 
+        size="small"
+      />
+      
+      <!-- Large card - Marcas -->
+      <FluentBentoCard 
+        icon="material-symbols:label-outline" 
+        text="Marcas" 
+        colorScheme="purple" 
+        size="large" 
+        colSpan={2}
+      />
+    </FluentBentoContainer>
+    
+    <div class="w-full md:w-3/4 lg:w-1/2 mx-auto mt-8">
+      <FluentHeading level={3} size='lg' align='center' class='mb-4'> ¿Qué sigue? </FluentHeading>
+      <FluentText size='base' variant='muted' align='center'>
+        Estamos en constante evolución para ofrecerte más. Próximamente expandiremos nuestra red a plataformas como
+        <span class='text-text-light font-semibold'> TikTok </span> y
+        <span class='text-text-light font-semibold'> YouTube </span>, además de incluir campañas para tu marca.
+      </FluentText>
     </div>
   </div>
-</section>
+</FluentSection>
