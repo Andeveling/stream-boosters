@@ -36,17 +36,7 @@
     width: 100%;
     height: 100%;
     z-index: -1;
-    background:
-      radial-gradient(
-        circle at 10% 10%,
-        rgba(139, 92, 246, 0.1),
-        transparent 35%
-      ),
-      radial-gradient(
-        circle at 90% 80%,
-        rgba(255, 45, 146, 0.1),
-        transparent 35%
-      );
+    background: radial-gradient(circle at 10% 10%, rgba(139, 92, 246, 0.1), transparent 35%), radial-gradient(circle at 90% 80%, rgba(255, 45, 146, 0.1), transparent 35%);
     pointer-events: none;
   }
 
@@ -102,37 +92,12 @@
     background-image: radial-gradient(circle, var(--tw-gradient-stops));
   }
 
-  /* Responsive padding for sections */
-  section,
-  .section {
-    @apply px-3 sm:px-4;
-  }
-
   /* Advanced Hero Effects and Animations */
 
   /* Enhanced radial gradient patterns - Seamless integration */
   .bg-hero-radial {
-    background:
-      radial-gradient(
-        circle at 20% 20%,
-        rgba(255, 45, 146, 0.12),
-        transparent 45%
-      ),
-      radial-gradient(
-        circle at 80% 80%,
-        rgba(139, 92, 246, 0.12),
-        transparent 45%
-      ),
-      radial-gradient(
-        circle at 50% 10%,
-        rgba(6, 182, 212, 0.08),
-        transparent 35%
-      ),
-      radial-gradient(
-        circle at 10% 80%,
-        rgba(255, 45, 146, 0.06),
-        transparent 40%
-      );
+    background: radial-gradient(circle at 20% 20%, rgba(255, 45, 146, 0.12), transparent 45%), radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.12), transparent 45%),
+      radial-gradient(circle at 50% 10%, rgba(6, 182, 212, 0.08), transparent 35%), radial-gradient(circle at 10% 80%, rgba(255, 45, 146, 0.06), transparent 40%);
     /* Ensure seamless integration with global background */
     position: relative;
     isolation: isolate;
@@ -169,15 +134,11 @@
   @keyframes pulse-glow {
     0%,
     100% {
-      box-shadow:
-        0 0 20px rgba(255, 45, 146, 0.4),
-        0 0 40px rgba(139, 92, 246, 0.2);
+      box-shadow: 0 0 20px rgba(255, 45, 146, 0.4), 0 0 40px rgba(139, 92, 246, 0.2);
       opacity: 0.8;
     }
     50% {
-      box-shadow:
-        0 0 40px rgba(255, 45, 146, 0.6),
-        0 0 80px rgba(139, 92, 246, 0.4);
+      box-shadow: 0 0 40px rgba(255, 45, 146, 0.6), 0 0 80px rgba(139, 92, 246, 0.4);
       opacity: 1;
     }
   }
@@ -249,21 +210,21 @@
   .text-glow-container {
     /* Overflow completamente libre para glow */
     overflow: visible;
-    
+
     /* Espaciado generoso para expansión */
     padding: 1rem;
     margin: -1rem;
-    
+
     /* Eliminar cualquier límite visual */
     border: none;
     outline: none;
     box-shadow: none;
-    
+
     /* Performance-first optimización */
     transform: translateZ(0);
     isolation: isolate;
     contain: none; /* Permitir expansión completa */
-    
+
     /* Asegurar que no hay clipping */
     clip-path: none;
     mask: none;
@@ -273,7 +234,7 @@
   .animate-text-reveal {
     /* Permitir que el glow se expanda libremente */
     overflow: visible;
-    
+
     /* Padding optimizado */
     padding: 0.25rem;
     margin: -0.25rem;
@@ -953,14 +914,17 @@
     /* Mobile menu dropdown positioning */
     #mobile-menu {
       top: calc(var(--header-height-mobile) - 1px);
-      box-shadow:
-        0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
   }
 
   /* Anti-aliasing mejorado para texto con glow */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -971,10 +935,10 @@
     /* Permitir overflow solo para glow effects */
     overflow-x: hidden; /* Solo horizontal para evitar scroll */
     overflow-y: visible; /* Vertical libre para glow */
-    
+
     /* Aislamiento de efectos */
     isolation: isolate;
-    
+
     /* Contener el layout sin afectar glow */
     contain: layout;
   }
@@ -983,7 +947,7 @@
   .glow-overflow-safe .layer-effects {
     /* Contener los orbs dentro del viewport */
     overflow: hidden;
-    
+
     /* Aislar efectos de background */
     isolation: isolate;
   }
@@ -992,7 +956,7 @@
   .glow-overflow-safe .layer-content {
     /* Overflow libre para efectos de texto */
     overflow: visible;
-    
+
     /* Isolation para mejor composición */
     isolation: isolate;
   }
@@ -1000,15 +964,27 @@
   /* Clase de accesibilidad para spans con glow - Contraste mejorado */
   .glow-accessibility-safe {
     /* Glow sutil que no afecta la legibilidad del gradiente */
-    text-shadow: 
-      0 0 20px rgba(139, 92, 246, 0.3),
-      0 0 40px rgba(6, 182, 212, 0.1);
-    
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(6, 182, 212, 0.1);
+
     /* Asegurar contraste óptimo */
     filter: brightness(1.1) saturate(1.2);
-    
+
     /* Performance optimizado */
     will-change: filter;
     transform: translateZ(0);
+  }
+
+  /* Fix for Hero section padding override - Ensure no padding whatsoever */
+  #hero,
+  #hero.hero-full-width,
+  section#hero {
+    padding: 0 !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+  }
+
+  /* Ensure all sections with padding='none' have no padding */
+  section[data-padding="none"] {
+    padding: 0 !important;
   }
 }

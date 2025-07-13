@@ -50,6 +50,7 @@ const animationClasses = {
 
 // Padding classes
 const paddingClasses = {
+  none: "",
   sm: "py-12 md:py-16",
   md: "py-16 md:py-24",
   lg: "py-20 md:py-32",
@@ -75,7 +76,7 @@ const sectionClasses = [
   .join(" ")
 ---
 
-<section {id} class={sectionClasses} {...props}>
+<section {id} class={sectionClasses} data-padding={padding} {...props}>
   <!-- Content Layer - Simplified structure -->
   <div class='relative w-full mx-auto'>
     <slot />
