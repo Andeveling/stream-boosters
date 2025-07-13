@@ -1,0 +1,88 @@
+---
+interface Props {
+  /**
+   * Step icon name
+   */
+  icon: string;
+  
+  /**
+   * Step number (displays as overlay)
+   */
+  number: number;
+  
+  /**
+   * Step title
+   */
+  title: string;
+  
+  /**
+   * Step description
+   */
+  description: string;
+  
+  /**
+   * Animation delay in milliseconds
+   */
+  delay?: number;
+  
+  /**
+   * Step variant for styling
+   */
+  variant?: 'default' | 'glass' | 'elevated';
+}
+
+const {
+  icon,
+  number,
+  title,
+  description,
+  delay = 0,
+  variant = 'default'
+} = Astro.props as Props;
+
+import { Icon } from "astro-icon/components";
+
+// Variant classes
+const variantClasses = {
+  default: 'bg-brand-dark border-brand-card',
+  glass: 'bg-brand-card/30 backdrop-blur-sm border-brand-card/50',
+  elevated: 'bg-gradient-to-br from-brand-dark to-brand-darker border-brand-purple/20 shadow-2xl shadow-brand-purple/10'
+};
+
+const cardClasses = [
+  'relative z-10 p-8 rounded-xl border',
+  'transition-all duration-300',
+  'hover:scale-105 hover:-translate-y-2',
+  'hover:border-brand-purple/50',
+  'hover:shadow-xl hover:shadow-brand-purple/20',
+  'animate-fade-in',
+  variantClasses[variant]
+].join(' ');
+---
+
+<div 
+  class={cardClasses}
+  style={`animation-delay: ${delay}ms;`}
+>
+  <!-- Step Number Overlay -->
+  <span class="absolute -top-4 -left-4 text-4xl md:text-6xl font-black text-brand-card/50 select-none">
+    {number.toString().padStart(2, '0')}
+  </span>
+  
+  <!-- Icon Container with Fluent Design -->
+  <div class="relative mb-6">
+    <div class="flex items-center justify-center h-20 w-20 rounded-full bg-gradient-to-br from-brand-purple/20 to-brand-pink/20 mx-auto shadow-lg backdrop-blur-sm border border-brand-purple/20">
+      <div class="absolute inset-0 rounded-full bg-gradient-to-br from-brand-purple/10 to-brand-pink/10 animate-pulse"></div>
+      <Icon name={icon} class="relative z-10 h-10 w-10 text-brand-pink" />
+    </div>
+  </div>
+  
+  <!-- Content -->
+  <h3 class="text-xl font-bold mb-3 text-text-light">
+    {title}
+  </h3>
+  
+  <p class="text-text-muted leading-relaxed">
+    {description}
+  </p>
+</div>

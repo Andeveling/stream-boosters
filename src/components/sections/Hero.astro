@@ -1,42 +1,96 @@
 ---
-import { Icon } from "astro-icon/components";
+import FluentSection from "../shared/astro/FluentSection.astro";
+import FluentBadge from "../shared/astro/FluentBadge.astro";
+import FluentButton from "../shared/astro/FluentButton.astro";
+import FluentHeading from "../shared/astro/FluentHeading.astro";
+import FluentText from "../shared/astro/FluentText.astro";
 ---
 
-<section id="hero" class="relative text-center py-20 md:py-32 px-4 overflow-hidden animate-fade-in">
-  <!-- Abstract Background Image -->
-  <div class="absolute inset-0 bg-cover bg-center opacity-5 blur-sm -z-20" style="background-image: url('/src/assets/background.svg');"></div>
+<FluentSection
+  id="hero"
+  backgroundVariant="abstract"
+  depth="deep"
+  animation="fade-in"
+  padding="xl"
+  align="center"
+  backgroundImage="/src/assets/background.svg"
+  backgroundIcons={[
+    {
+      name: "material-symbols:gamepad-outline-rounded",
+      position: "top-left",
+      size: "md",
+      color: "purple",
+      rotation: 12,
+      blur: true
+    },
+    {
+      name: "material-symbols:play-circle-outline-rounded",
+      position: "bottom-right",
+      size: "lg",
+      color: "pink",
+      rotation: -12,
+      blur: true
+    },
+    {
+      name: "material-symbols:share",
+      position: "center",
+      size: "lg",
+      color: "cyan",
+      rotation: 6,
+      blur: true
+    }
+  ]}
+>
+  <!-- Status Badge -->
+  <FluentBadge
+    variant="glass"
+    size="md"
+    showPulse={true}
+    pulseColor="cyan"
+    text="Conectando marcas con audiencias en vivo"
+    class="mb-8"
+  />
 
-  <!-- Background SVGs Composition -->
-  <div class="absolute inset-0 flex items-center justify-center opacity-10 -z-10">
-    <Icon name="material-symbols:gamepad-outline-rounded" class="w-32 h-32 md:w-48 md:h-48 text-brand-purple blur-sm absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 rotate-12"></Icon>
-    <Icon name="material-symbols:play-circle-outline-rounded" class="w-40 h-40 md:w-64 md:h-64 text-brand-pink blur-sm absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 -rotate-12"></Icon>
-    <Icon name="material-symbols:share" class="w-36 h-36 md:w-56 md:h-56 text-brand-cyan blur-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-6"></Icon>
-  </div>
+  <!-- Main Heading -->
+  <FluentHeading
+    level={1}
+    size="4xl"
+    gradient="none"
+    align="center"
+    class="mb-6"
+  >
+    Tu proyecto frente a una <span class="text-brand-pink">audiencia real</span>
+  </FluentHeading>
 
-  <div class="relative z-10 max-w-4xl mx-auto">
-    <div class="inline-flex items-center justify-center bg-brand-darker border border-brand-card rounded-full px-4 py-1 mb-4">
-      <div class="relative flex items-center justify-center w-3 h-3 mr-2">
-        <div class="absolute inline-flex w-full h-full rounded-full bg-brand-cyan opacity-75 animate-ping"></div>
-        <div class="relative inline-flex w-2 h-2 rounded-full bg-brand-cyan"></div>
-      </div>
-      <span class="text-xs text-text-muted sm:text-sm ">Conectando marcas con audiencias en vivo</span>
-    </div>
-
-    <h1 class="text-4xl md:text-6xl font-black tracking-tighter text-text-light mb-4">
-      Tu proyecto frente a una <span class="text-brand-pink">audiencia real</span>
-    </h1>
-    <p class="text-base md:text-lg text-text-muted max-w-full sm:max-w-2xl md:max-w-3xl mx-auto mb-8">
-      Conecta con una red de <strong class="bg-gradient-to-r from-brand-pink via-brand-cyan to-brand-purple bg-clip-text text-transparent">streamers de audiencias reales</strong>, pequeñas y medianas, para maximizar el impacto de tus promociones de manera orgánica.
-    </p>
+  <!-- Description Text -->
+  <FluentText
+    size="base"
+    variant="muted"
+    align="center"
+    maxWidth="3xl"
+    margin="lg"
+  >
+    Conecta con una red de <strong class="bg-gradient-to-r from-brand-pink via-brand-cyan to-brand-purple bg-clip-text text-transparent">streamers de audiencias reales</strong>, pequeñas y medianas, para maximizar el impacto de tus promociones de manera orgánica.
+  </FluentText>
+  
+  <!-- Call to Action Buttons -->
+  <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+    <FluentButton
+      href="#packages"
+      variant="primary"
+      size="lg"
+      text="Ver Paquetes"
+      fullWidth={false}
+    />
     
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="#packages" class="w-full sm:w-auto bg-brand-pink text-white font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-pink">
-        Ver Paquetes
-      </a>
-      <a href="#how-it-works" class="w-full sm:w-auto flex items-center justify-center gap-2 border-2 border-brand-card text-text-muted font-semibold py-3 px-6 rounded-lg text-lg hover:bg-brand-card hover:text-text-light transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-card">
-        <Icon name="material-symbols:rocket-launch-outline-rounded" class="w-5 h-5" />
-        Cómo Funciona
-      </a>
-    </div>
+    <FluentButton
+      href="#how-it-works"
+      variant="outline"
+      size="lg"
+      icon="material-symbols:rocket-launch-outline-rounded"
+      iconPosition="left"
+      text="Cómo Funciona"
+      fullWidth={false}
+    />
   </div>
-</section>
+</FluentSection>

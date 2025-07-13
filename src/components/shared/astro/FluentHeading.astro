@@ -1,0 +1,76 @@
+---
+interface Props {
+  /**
+   * Heading level (h1-h6)
+   */
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
+  
+  /**
+   * Size variant independent of heading level
+   */
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
+  
+  /**
+   * Gradient variant for text
+   */
+  gradient?: 'primary' | 'secondary' | 'accent' | 'none';
+  
+  /**
+   * Text alignment
+   */
+  align?: 'left' | 'center' | 'right';
+  
+  /**
+   * Additional CSS classes
+   */
+  class?: string;
+}
+
+const {
+  level = 1,
+  size = 'xl',
+  gradient = 'none',
+  align = 'center',
+  class: className = ''
+} = Astro.props as Props;
+
+// Size classes
+const sizeClasses = {
+  sm: 'text-lg md:text-xl',
+  md: 'text-xl md:text-2xl',
+  lg: 'text-2xl md:text-3xl',
+  xl: 'text-3xl md:text-4xl',
+  '2xl': 'text-4xl md:text-5xl',
+  '3xl': 'text-5xl md:text-6xl',
+  '4xl': 'text-6xl md:text-7xl'
+};
+
+// Gradient classes
+const gradientClasses = {
+  primary: 'bg-gradient-to-r from-brand-pink to-brand-purple bg-clip-text text-transparent',
+  secondary: 'bg-gradient-to-r from-brand-purple to-brand-cyan bg-clip-text text-transparent',
+  accent: 'bg-gradient-to-r from-brand-pink via-brand-cyan to-brand-purple bg-clip-text text-transparent',
+  none: 'text-text-light'
+};
+
+// Alignment classes
+const alignClasses = {
+  left: 'text-left',
+  center: 'text-center',
+  right: 'text-right'
+};
+
+const headingClasses = [
+  'font-black tracking-tighter',
+  sizeClasses[size],
+  gradientClasses[gradient],
+  alignClasses[align],
+  className
+].filter(Boolean).join(' ');
+
+const Element = `h${level}` as keyof HTMLElementTagNameMap;
+---
+
+<Element class={headingClasses}>
+  <slot />
+</Element>
