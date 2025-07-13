@@ -1,9 +1,8 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-// @ts-ignore
-import tailwind from '@astrojs/tailwind';
-import react from '@astrojs/react';
-import astroIcon from 'astro-icon';
+import { defineConfig } from "astro/config"
+import react from "@astrojs/react"
+import astroIcon from "astro-icon"
+import tailwindcss from "@tailwindcss/vite"
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,10 +15,10 @@ export default defineConfig({
   },
   integrations: [
     react({ experimentalReactChildren: true }),
-    tailwind({ applyBaseStyles: false }),
     astroIcon()
   ],
   vite: {
+    plugins: [tailwindcss()],
     build: {
       assetsInlineLimit: 0,
       rollupOptions: {
@@ -31,4 +30,4 @@ export default defineConfig({
       }
     }
   }
-});
+})
