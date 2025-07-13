@@ -214,6 +214,26 @@
     animation: text-reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
   }
 
+  /* Gradient text animations */
+  @keyframes gradient-shift {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient-shift {
+    animation: gradient-shift 4s ease-in-out infinite;
+    background-size: 200% 200%;
+  }
+
+  .bg-size-200 {
+    background-size: 200% 200%;
+  }
+
   /* Isolation utility for preventing filter bleeding */
   .isolation-isolate {
     isolation: isolate;
