@@ -15,7 +15,7 @@ import { Icon } from "astro-icon/components";
   animation="none"
   padding="xl"
   align="center"
-  class="relative min-h-screen flex items-center bg-hero-radial overflow-hidden"
+  class="relative min-h-screen flex items-center bg-hero-radial overflow-hidden w-full"
 >
   <!-- Enhanced Background Effects -->
   <div class="absolute inset-0 layer-background">
@@ -81,17 +81,17 @@ import { Icon } from "astro-icon/components";
   </div>
 
   <!-- Main Content with Sequential Animations -->
-  <div class="relative layer-content w-full max-w-6xl mx-auto">
+  <div class="relative layer-content w-full max-w-7xl mx-auto px-4">
     <!-- Enhanced Status Badge -->
     <div class="animate-fade-in animate-stagger-1">
-      <FluentBadge
-        variant="glass"
-        size="lg"
-        showPulse={true}
-        pulseColor="cyan"
-        text="🔥 Conectando marcas con audiencias en vivo"
-        class="mb-8 backdrop-blur-md border-2 border-brand-cyan/20 shadow-2xl shadow-brand-cyan/20"
-      />
+      <div class="inline-flex items-center justify-center bg-brand-card/30 backdrop-blur-md border-2 border-brand-cyan/20 shadow-2xl shadow-brand-cyan/20 rounded-full px-6 py-3 mb-8 transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-pink/50">
+        <div class="relative flex items-center justify-center w-4 h-4 mr-3">
+          <div class="absolute inline-flex w-full h-full rounded-full bg-brand-cyan opacity-75 animate-ping"></div>
+          <div class="relative inline-flex w-2 h-2 rounded-full bg-brand-cyan"></div>
+        </div>
+        <Icon name="material-symbols:local-fire-department-rounded" class="w-5 h-5 text-brand-pink mr-2" />
+        <span class="text-text-muted font-medium text-lg">Conectando marcas con audiencias en vivo</span>
+      </div>
     </div>
 
     <!-- Main Hero Heading with Glow Effect -->
@@ -130,7 +130,9 @@ import { Icon } from "astro-icon/components";
         href="#packages"
         variant="hero-primary"
         size="xl"
-        text="🚀 Ver Paquetes"
+        icon="material-symbols:rocket-launch-rounded"
+        iconPosition="left"
+        text="Ver Paquetes"
         effect="glow-pulse"
         delay={800}
         class="w-full sm:w-auto min-w-[200px]"
@@ -150,29 +152,49 @@ import { Icon } from "astro-icon/components";
     </div>
 
     <!-- Interactive Stats Preview -->
-    <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in animate-stagger-5">
-      <div class="bg-brand-card/20 backdrop-blur-sm rounded-2xl p-6 border border-brand-purple/20 hover:border-brand-pink/40 transition-all duration-500 hover:scale-105 magnetic-hover">
-        <div class="text-3xl font-bold text-brand-pink mb-2">500+</div>
-        <div class="text-text-muted">Streamers Activos</div>
+    <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in animate-stagger-5 max-w-5xl mx-auto">
+      <div class="bg-brand-card/20 backdrop-blur-sm rounded-2xl p-8 border border-brand-purple/20 hover:border-brand-pink/40 transition-all duration-500 hover:scale-105 stats-card group">
+        <div class="flex items-center justify-center mb-4">
+          <Icon name="material-symbols:groups-rounded" class="w-8 h-8 text-brand-pink group-hover:scale-110 transition-transform duration-300" />
+        </div>
+        <div class="text-4xl font-bold text-brand-pink mb-3 text-center">500+</div>
+        <div class="text-text-muted text-center font-medium">Streamers Activos</div>
       </div>
       
-      <div class="bg-brand-card/20 backdrop-blur-sm rounded-2xl p-6 border border-brand-cyan/20 hover:border-brand-purple/40 transition-all duration-500 hover:scale-105 magnetic-hover">
-        <div class="text-3xl font-bold text-brand-cyan mb-2">50K+</div>
-        <div class="text-text-muted">Audiencia Combinada</div>
+      <div class="bg-brand-card/20 backdrop-blur-sm rounded-2xl p-8 border border-brand-cyan/20 hover:border-brand-purple/40 transition-all duration-500 hover:scale-105 stats-card group">
+        <div class="flex items-center justify-center mb-4">
+          <Icon name="material-symbols:visibility-rounded" class="w-8 h-8 text-brand-cyan group-hover:scale-110 transition-transform duration-300" />
+        </div>
+        <div class="text-4xl font-bold text-brand-cyan mb-3 text-center">50K+</div>
+        <div class="text-text-muted text-center font-medium">Audiencia Combinada</div>
       </div>
       
-      <div class="bg-brand-card/20 backdrop-blur-sm rounded-2xl p-6 border border-brand-pink/20 hover:border-brand-cyan/40 transition-all duration-500 hover:scale-105 magnetic-hover">
-        <div class="text-3xl font-bold text-brand-purple mb-2">95%</div>
-        <div class="text-text-muted">Satisfacción Cliente</div>
+      <div class="bg-brand-card/20 backdrop-blur-sm rounded-2xl p-8 border border-brand-pink/20 hover:border-brand-cyan/40 transition-all duration-500 hover:scale-105 stats-card group">
+        <div class="flex items-center justify-center mb-4">
+          <Icon name="material-symbols:thumb-up-rounded" class="w-8 h-8 text-brand-purple group-hover:scale-110 transition-transform duration-300" />
+        </div>
+        <div class="text-4xl font-bold text-brand-purple mb-3 text-center">95%</div>
+        <div class="text-text-muted text-center font-medium">Satisfacción Cliente</div>
       </div>
     </div>
   </div>
 
-  <!-- Scroll Indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 layer-interactive animate-bounce">
-    <div class="w-6 h-10 border-2 border-brand-cyan/50 rounded-full flex justify-center">
-      <div class="w-1 h-3 bg-brand-cyan rounded-full mt-2 animate-pulse"></div>
+  <!-- Enhanced Scroll Indicator -->
+  <div class="absolute bottom-12 left-1/2 -translate-x-1/2 layer-interactive animate-bounce z-20">
+    <div class="flex flex-col items-center gap-2 group scroll-indicator" onclick="document.getElementById('how-it-works')?.scrollIntoView({behavior: 'smooth'})">
+      <!-- Modern scroll indicator -->
+      <div class="relative w-6 h-10 border-2 border-brand-cyan/60 rounded-full flex justify-center group-hover:border-brand-pink/80 transition-all duration-300">
+        <div class="w-1 h-3 bg-brand-cyan rounded-full mt-2 animate-pulse group-hover:bg-brand-pink transition-colors duration-300"></div>
+      </div>
+      
+      <!-- Scroll text with icon -->
+      <div class="flex items-center gap-1 text-xs text-brand-cyan/70 group-hover:text-brand-pink/90 transition-all duration-300">
+        <Icon name="material-symbols:keyboard-arrow-down-rounded" class="w-4 h-4 animate-bounce" />
+        <span class="font-medium tracking-wide">Explorar</span>
+      </div>
+      
+      <!-- Subtle glow effect -->
+      <div class="absolute inset-0 bg-brand-cyan/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
     </div>
-    <div class="text-xs text-brand-cyan/70 mt-2 text-center">Scroll</div>
   </div>
 </FluentSection>

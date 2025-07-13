@@ -176,4 +176,38 @@
   .animate-text-reveal {
     animation: text-reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
   }
+
+  /* Enhanced full-width Hero styles */
+  .hero-full-width {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+
+  /* Improved scroll indicator styles */
+  .scroll-indicator {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .scroll-indicator:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Enhanced magnetic hover for stats cards */
+  .stats-card {
+    transform-style: preserve-3d;
+  }
+
+  .stats-card:hover {
+    transform: perspective(1000px) rotateY(5deg) rotateX(5deg) translateZ(20px);
+  }
+
+  /* Smooth scrolling enhancement */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 2rem;
+    }
+  }
 }
