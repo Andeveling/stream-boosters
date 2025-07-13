@@ -1,0 +1,193 @@
+/* ==============================================
+   HERO OPTIMIZED STYLES - Performance First
+   ============================================== */
+
+/* Core optimizations */
+.hero-optimized {
+  /* Hardware acceleration */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  
+  /* Reduce repaints */
+  will-change: auto; /* Only when needed */
+  
+  /* Layout containment */
+  contain: layout style;
+  
+  /* Disable problematic CSS features */
+  filter: none;
+  backdrop-filter: none;
+  
+  /* Efficient background */
+  background-attachment: scroll; /* Not fixed */
+}
+
+/* Remove heavy animations */
+.hero-optimized * {
+  /* Disable expensive properties */
+  will-change: auto;
+  animation: none;
+  transition: none;
+}
+
+/* Only allow essential transitions */
+.hero-optimized .essential-transition {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Optimized gradient - Single layer */
+.hero-optimized .hero-gradient {
+  background: linear-gradient(135deg, 
+    hsl(var(--brand-darker)) 0%,
+    hsl(var(--brand-dark)) 50%,
+    hsl(var(--brand-darker)) 100%
+  );
+}
+
+/* Remove blur effects completely */
+.hero-optimized .no-blur {
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Optimized text gradient - Static only */
+.hero-optimized .text-gradient {
+  background: linear-gradient(90deg, 
+    hsl(var(--brand-pink)) 0%,
+    hsl(var(--brand-cyan)) 50%,
+    hsl(var(--brand-purple)) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  
+  /* No animation */
+  background-size: 100% 100%;
+  background-position: 0% 0%;
+}
+
+/* Minimal button styles */
+.hero-optimized .btn-optimized {
+  /* Essential styles only */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  
+  /* Single transition */
+  transition: transform 0.15s ease;
+  
+  /* Hardware acceleration */
+  transform: translateZ(0);
+}
+
+.hero-optimized .btn-optimized:hover {
+  transform: translateZ(0) scale(1.02);
+}
+
+/* Remove all complex animations */
+@media (prefers-reduced-motion: reduce) {
+  .hero-optimized * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Minimal responsive approach */
+@media (max-width: 640px) {
+  .hero-optimized {
+    min-height: 100vh;
+    padding: 1rem;
+  }
+  
+  .hero-optimized h1 {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+  
+  .hero-optimized p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .hero-optimized h1 {
+    font-size: 3.5rem;
+  }
+  
+  .hero-optimized p {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .hero-optimized h1 {
+    font-size: 4rem;
+  }
+  
+  .hero-optimized p {
+    font-size: 1.25rem;
+  }
+}
+
+/* Ultra-lightweight scroll indicator */
+.hero-optimized .scroll-indicator {
+  /* Minimal styles */
+  opacity: 0.7;
+  cursor: pointer;
+  transform: translateZ(0);
+}
+
+.hero-optimized .scroll-indicator:hover {
+  opacity: 1;
+}
+
+/* Remove all unnecessary visual effects */
+.hero-optimized .remove-effects {
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Critical CSS only - Inline this in HTML */
+.hero-critical {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+  color: white;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.hero-critical h1 {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 1.5rem 0;
+}
+
+.hero-critical p {
+  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+  opacity: 0.9;
+}
+
+/* Performance monitoring */
+.hero-optimized.debug::before {
+  content: "Hero Optimized - Performance Mode";
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5rem;
+  background: rgba(0, 255, 0, 0.1);
+  color: lime;
+  font-size: 0.75rem;
+  z-index: 9999;
+}
