@@ -91,4 +91,89 @@
   section, .section {
     @apply px-3 sm:px-4;
   }
+
+  /* Advanced Hero Effects and Animations */
+  
+  /* Enhanced radial gradient patterns */
+  .bg-hero-radial {
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(255, 45, 146, 0.15), transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15), transparent 40%),
+      radial-gradient(circle at 50% 10%, rgba(6, 182, 212, 0.1), transparent 30%),
+      radial-gradient(circle at 10% 80%, rgba(255, 45, 146, 0.08), transparent 35%);
+  }
+
+  /* Floating orbs effect */
+  @keyframes orb-float {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) scale(1);
+      opacity: 0.6;
+    }
+    33% {
+      transform: translateY(-30px) translateX(20px) scale(1.1);
+      opacity: 0.8;
+    }
+    66% {
+      transform: translateY(-15px) translateX(-15px) scale(0.9);
+      opacity: 0.7;
+    }
+  }
+
+  .animate-orb-float {
+    animation: orb-float 8s ease-in-out infinite;
+  }
+
+  /* Pulsing glow effect */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(255, 45, 146, 0.4), 0 0 40px rgba(139, 92, 246, 0.2);
+      opacity: 0.8;
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(255, 45, 146, 0.6), 0 0 80px rgba(139, 92, 246, 0.4);
+      opacity: 1;
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  /* Staggered fade-in for sequential animations */
+  .animate-stagger-1 { animation-delay: 0.2s; }
+  .animate-stagger-2 { animation-delay: 0.4s; }
+  .animate-stagger-3 { animation-delay: 0.6s; }
+  .animate-stagger-4 { animation-delay: 0.8s; }
+  .animate-stagger-5 { animation-delay: 1.0s; }
+
+  /* Enhanced depth layers */
+  .layer-background { z-index: -20; }
+  .layer-effects { z-index: -15; }
+  .layer-particles { z-index: -10; }
+  .layer-icons { z-index: -5; }
+  .layer-content { z-index: 10; }
+  .layer-interactive { z-index: 20; }
+
+  /* Magnetic hover effect */
+  .magnetic-hover {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .magnetic-hover:hover {
+    transform: scale(1.05) translateY(-2px);
+  }
+
+  /* Text reveal animations */
+  @keyframes text-reveal {
+    0% {
+      clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+    }
+    100% {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+
+  .animate-text-reveal {
+    animation: text-reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  }
 }
