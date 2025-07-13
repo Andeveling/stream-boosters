@@ -30,65 +30,10 @@ interface Props extends HTMLAttributes<"section"> {
 
 const { id, backgroundVariant = "transparent", animation = "fade-in", padding = "lg", align = "center", class: className = "", ...props } = Astro.props as Props
 
-// Background variant classes - Centralized background system
-const backgroundClasses = {
-  "hero-gradient": "", // Will be handled by background layer
-  "solid-dark": "", // Will be handled by background layer  
-  "solid-darker": "", // Will be handled by background layer
-  glass: "", // Will be handled by background layer
-  abstract: "", // Will be handled by background layer
-  geometric: "", // Will be handled by background layer
-  transparent: "bg-transparent", // No background layer needed
-}
-
-// Background layers for each variant
-const getBackgroundLayer = (variant: string) => {
-  switch (variant) {
-    case "hero-gradient":
-      return `
-        <div class='absolute inset-0 -z-10'>
-          <div class='absolute inset-0 bg-gradient-to-br from-brand-darker via-brand-dark to-brand-darker opacity-95'></div>
-        </div>
-      `;
-    case "solid-dark":
-      return `
-        <div class='absolute inset-0 -z-10'>
-          <div class='absolute inset-0 bg-brand-dark'></div>
-        </div>
-      `;
-    case "solid-darker":
-      return `
-        <div class='absolute inset-0 -z-10'>
-          <div class='absolute inset-0 bg-brand-darker'></div>
-        </div>
-      `;
-    case "glass":
-      return `
-        <div class='absolute inset-0 -z-10'>
-          <div class='absolute inset-0 bg-brand-card/20'></div>
-        </div>
-      `;
-    case "abstract":
-      return `
-        <div class='absolute inset-0 -z-10'>
-          <div class='absolute inset-0 bg-gradient-to-tr from-brand-purple/3 via-transparent to-brand-pink/3'></div>
-        </div>
-      `;
-    case "geometric":
-      return `
-        <div class='absolute inset-0 -z-10'>
-          <div class='absolute inset-0 bg-gradient-radial from-brand-cyan/3 via-brand-purple/2 to-transparent'></div>
-        </div>
-      `;
-    default:
-      return "";
-  }
-}
-
 // Animation classes
 const animationClasses = {
   "fade-in": "animate-fade-in",
-  "slide-up": "animate-slide-up", 
+  "slide-up": "animate-slide-up",
   "scale-in": "animate-scale-in",
   none: "",
 }
@@ -97,7 +42,7 @@ const animationClasses = {
 const paddingClasses = {
   none: "",
   sm: "py-12 md:py-16",
-  md: "py-16 md:py-24", 
+  md: "py-16 md:py-24",
   lg: "py-20 md:py-32",
   xl: "py-28 md:py-40",
 }
@@ -109,23 +54,52 @@ const alignClasses = {
   right: "text-right",
 }
 
-const sectionClasses = [
-  "relative w-full min-h-0",
-  backgroundClasses[backgroundVariant],
-  animationClasses[animation],
-  paddingClasses[padding], 
-  alignClasses[align],
-  className,
-]
-  .filter(Boolean)
-  .join(" ")
+const sectionClasses = ["relative w-full min-h-0", animationClasses[animation], paddingClasses[padding], alignClasses[align], className].filter(Boolean).join(" ")
 ---
 
 <section {id} class={sectionClasses} data-padding={padding} {...props}>
-  <!-- Background Layer - Centralized and standardized -->
-  <Fragment set:html={getBackgroundLayer(backgroundVariant)} />
-  
-  <!-- Content Layer - Transparent slots -->
+  {
+    backgroundVariant === "hero-gradient" && (
+      <div aria-hidden='true' class='absolute inset-0 -z-10'>
+        <div class='absolute inset-0 bg-gradient-to-br from-brand-darker via-brand-dark to-brand-darker opacity-95' />
+      </div>
+    )
+  }
+  {
+    backgroundVariant === "solid-dark" && (
+      <div aria-hidden='true' class='absolute inset-0 -z-10'>
+        <div class='absolute inset-0 bg-brand-dark' />
+      </div>
+    )
+  }
+  {
+    backgroundVariant === "solid-darker" && (
+      <div aria-hidden='true' class='absolute inset-0 -z-10'>
+        <div class='absolute inset-0 bg-brand-darker' />
+      </div>
+    )
+  }
+  {
+    backgroundVariant === "glass" && (
+      <div aria-hidden='true' class='absolute inset-0 -z-10'>
+        <div class='absolute inset-0 bg-brand-card/20' />
+      </div>
+    )
+  }
+  {
+    backgroundVariant === "abstract" && (
+      <div aria-hidden='true' class='absolute inset-0 -z-10'>
+        <div class='absolute inset-0 bg-gradient-to-tr from-brand-purple/3 via-transparent to-brand-pink/3' />
+      </div>
+    )
+  }
+  {
+    backgroundVariant === "geometric" && (
+      <div aria-hidden='true' class='absolute inset-0 -z-10'>
+        <div class='absolute inset-0 bg-gradient-radial from-brand-cyan/3 via-brand-purple/2 to-transparent' />
+      </div>
+    )
+  }
   <div class='relative w-full mx-auto'>
     <slot />
   </div>
