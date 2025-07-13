@@ -124,19 +124,28 @@ const Element = `h${level}` as keyof HTMLElementTagNameMap;
 </Element>
 
 <style>
-  /* Glow effects */
+  /* Improved Glow effects - no solid borders */
   .drop-shadow-glow-subtle {
-    filter: drop-shadow(0 0 4px rgba(255, 45, 146, 0.3));
+    filter: drop-shadow(0 0 8px rgba(255, 45, 146, 0.2)) drop-shadow(0 0 16px rgba(255, 45, 146, 0.1));
+    text-shadow: 0 0 12px rgba(255, 45, 146, 0.3);
   }
 
   .drop-shadow-glow-medium {
-    filter: drop-shadow(0 0 8px rgba(255, 45, 146, 0.4)) drop-shadow(0 0 16px rgba(139, 92, 246, 0.2));
+    filter: drop-shadow(0 0 12px rgba(255, 45, 146, 0.3)) drop-shadow(0 0 24px rgba(139, 92, 246, 0.15));
+    text-shadow: 
+      0 0 16px rgba(255, 45, 146, 0.4),
+      0 0 32px rgba(139, 92, 246, 0.2);
   }
 
   .drop-shadow-glow-intense {
-    filter: drop-shadow(0 0 12px rgba(255, 45, 146, 0.6)) 
-            drop-shadow(0 0 24px rgba(139, 92, 246, 0.4)) 
-            drop-shadow(0 0 36px rgba(6, 182, 212, 0.2));
+    filter: 
+      drop-shadow(0 0 16px rgba(255, 45, 146, 0.4)) 
+      drop-shadow(0 0 32px rgba(139, 92, 246, 0.25)) 
+      drop-shadow(0 0 48px rgba(6, 182, 212, 0.15));
+    text-shadow: 
+      0 0 20px rgba(255, 45, 146, 0.5),
+      0 0 40px rgba(139, 92, 246, 0.3),
+      0 0 60px rgba(6, 182, 212, 0.2);
   }
 
   /* Advanced animations */
@@ -156,12 +165,22 @@ const Element = `h${level}` as keyof HTMLElementTagNameMap;
 
   @keyframes glow-pulse {
     0%, 100% {
-      filter: drop-shadow(0 0 8px rgba(255, 45, 146, 0.4)) drop-shadow(0 0 16px rgba(139, 92, 246, 0.2));
+      filter: 
+        drop-shadow(0 0 12px rgba(255, 45, 146, 0.3)) 
+        drop-shadow(0 0 24px rgba(139, 92, 246, 0.15));
+      text-shadow: 
+        0 0 16px rgba(255, 45, 146, 0.4),
+        0 0 32px rgba(139, 92, 246, 0.2);
       transform: scale(1);
     }
     50% {
-      filter: drop-shadow(0 0 16px rgba(255, 45, 146, 0.6)) drop-shadow(0 0 32px rgba(139, 92, 246, 0.4));
-      transform: scale(1.02);
+      filter: 
+        drop-shadow(0 0 20px rgba(255, 45, 146, 0.5)) 
+        drop-shadow(0 0 40px rgba(139, 92, 246, 0.3));
+      text-shadow: 
+        0 0 24px rgba(255, 45, 146, 0.6),
+        0 0 48px rgba(139, 92, 246, 0.4);
+      transform: scale(1.01);
     }
   }
 
@@ -172,6 +191,6 @@ const Element = `h${level}` as keyof HTMLElementTagNameMap;
   }
 
   .animate-glow-pulse {
-    animation: glow-pulse 3s ease-in-out infinite;
+    animation: glow-pulse 4s ease-in-out infinite;
   }
 </style>

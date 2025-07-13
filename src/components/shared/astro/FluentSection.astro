@@ -89,11 +89,11 @@ const backgroundClasses = {
     'bg-gradient-radial from-brand-cyan/5 via-brand-purple/3 to-transparent',
 };
 
-// Depth classes for shadows and layering
+// Depth classes for shadows and layering - Removed solid borders
 const depthClasses = {
-  shallow: 'shadow-lg shadow-brand-dark/20',
-  medium: 'shadow-xl shadow-brand-dark/30',
-  deep: 'shadow-2xl shadow-brand-dark/50',
+  shallow: '', // Removed shadow to prevent border effect
+  medium: '', // Removed shadow to prevent border effect
+  deep: '', // Removed shadow to prevent border effect
 };
 
 // Animation classes
@@ -147,7 +147,7 @@ const iconColors = {
 };
 
 const sectionClasses = [
-  'relative overflow-hidden w-full', // Asegurar ancho completo
+  'relative overflow-hidden w-full min-h-0', // Ensure seamless integration
   backgroundClasses[backgroundVariant],
   depthClasses[depth],
   animationClasses[animation],

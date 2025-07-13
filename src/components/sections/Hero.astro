@@ -1,9 +1,9 @@
 ---
-import { Icon } from "astro-icon/components"
-import FluentGlowHeading from "../shared/astro/FluentGlowHeading.astro"
-import FluentHeroButton from "../shared/astro/FluentHeroButton.astro"
-import FluentSection from "../shared/astro/FluentSection.astro"
-import FluentText from "../shared/astro/FluentText.astro"
+import { Icon } from 'astro-icon/components';
+import FluentGlowHeading from '../shared/astro/FluentGlowHeading.astro';
+import FluentHeroButton from '../shared/astro/FluentHeroButton.astro';
+import FluentSection from '../shared/astro/FluentSection.astro';
+import FluentText from '../shared/astro/FluentText.astro';
 ---
 
 <FluentSection
@@ -85,7 +85,7 @@ import FluentText from "../shared/astro/FluentText.astro"
       <!-- Enhanced Status Badge - Mobile optimized -->
       <div class='animate-fade-in animate-stagger-1 mb-4 sm:mb-6 md:mb-8'>
         <div
-          class='inline-flex items-center justify-center bg-brand-card/30 backdrop-blur-md border-2 border-brand-cyan/20 shadow-2xl shadow-brand-cyan/20 rounded-full px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-pink/50'
+          class='inline-flex items-center justify-center bg-brand-card/20 backdrop-blur-md border border-brand-cyan/10 shadow-lg shadow-brand-cyan/10 rounded-full px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-pink/30'
         >
           <div class='relative flex items-center justify-center w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-4 md:h-4 mr-1.5 sm:mr-2 md:mr-3'>
             <div class='absolute inline-flex w-full h-full rounded-full bg-brand-cyan opacity-75 animate-ping'></div>
@@ -95,7 +95,34 @@ import FluentText from "../shared/astro/FluentText.astro"
         </div>
       </div>
 
-      <!-- Interactive Stats Preview - Mobile-first texts with +50 streamers  | 94% clientes satisfechos | etc -->
+      <!-- Subtle Stats Preview - Mobile-first -->
+      <div class='animate-fade-in animate-stagger-1.5 mb-6 sm:mb-8 md:mb-10'>
+        <div class='flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 text-xs sm:text-sm md:text-base'>
+          <!-- Stat 1: Streamers -->
+          <div class='flex items-center gap-1.5 sm:gap-2 text-text-muted/70 font-medium tracking-wide'>
+            <div class='w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-brand-pink/60 animate-pulse'></div>
+            <span class='bg-gradient-to-r from-brand-pink/80 to-brand-purple/80 bg-clip-text text-transparent'>+50 streamers</span>
+          </div>
+
+          <!-- Separator -->
+          <div class='hidden sm:block w-px h-3 sm:h-4 bg-gradient-to-b from-transparent via-text-muted/30 to-transparent'></div>
+
+          <!-- Stat 2: Satisfaction -->
+          <div class='flex items-center gap-1.5 sm:gap-2 text-text-muted/70 font-medium tracking-wide'>
+            <div class='w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-brand-cyan/60 animate-pulse' style='animation-delay: 0.5s;'></div>
+            <span class='bg-gradient-to-r from-brand-cyan/80 to-brand-purple/80 bg-clip-text text-transparent'>94% satisfacción</span>
+          </div>
+
+          <!-- Separator -->
+          <div class='hidden md:block w-px h-3 sm:h-4 bg-gradient-to-b from-transparent via-text-muted/30 to-transparent'></div>
+
+          <!-- Stat 3: Active Campaigns -->
+          <div class='flex items-center gap-1.5 sm:gap-2 text-text-muted/70 font-medium tracking-wide'>
+            <div class='w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-brand-purple/60 animate-pulse' style='animation-delay: 1s;'></div>
+            <span class='bg-gradient-to-r from-brand-purple/80 to-brand-pink/80 bg-clip-text text-transparent'>Campañas activas</span>
+          </div>
+        </div>
+      </div>
 
       <!-- Main Hero Heading with Glow Effect - Mobile-first -->
       <div class='animate-text-reveal animate-stagger-2 mb-4 sm:mb-6 md:mb-8'>
@@ -152,7 +179,7 @@ import FluentText from "../shared/astro/FluentText.astro"
     >
       <!-- Modern scroll indicator with enhanced design -->
       <div
-        class='relative w-5 h-8 sm:w-6 sm:h-10 md:w-8 md:h-14 border-2 border-brand-cyan/60 rounded-full flex flex-col justify-start items-center py-1 sm:py-1.5 md:py-2 group-hover:border-brand-pink/80 transition-all duration-300 bg-brand-card/20 backdrop-blur-sm shadow-lg shadow-brand-cyan/20'
+        class='relative w-5 h-8 sm:w-6 sm:h-10 md:w-8 md:h-14 border border-brand-cyan/40 rounded-full flex flex-col justify-start items-center py-1 sm:py-1.5 md:py-2 group-hover:border-brand-pink/60 transition-all duration-300 bg-brand-card/10 backdrop-blur-sm shadow-md shadow-brand-cyan/10'
       >
         <div class='w-0.5 h-1.5 sm:w-0.5 sm:h-2 md:w-1 md:h-3 bg-brand-pink rounded-full animate-bounce group-hover:bg-brand-cyan transition-colors duration-300'></div>
       </div>
