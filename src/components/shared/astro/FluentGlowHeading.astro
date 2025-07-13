@@ -134,13 +134,22 @@ const Element = `h${level}` as keyof HTMLElementTagNameMap
       0 0 20px rgba(139, 92, 246, 0.2),   /* Medium spread */
       0 0 40px rgba(6, 182, 212, 0.1);    /* Wide cyan glow */
     
-    /* Optimización máxima de rendering */
+    /* Eliminar cualquier borde o clipping */
     overflow: visible;
     isolation: isolate;
+    
+    /* Evitar que se cree cualquier línea de borde */
+    border: none;
+    outline: none;
+    box-shadow: none;
     
     /* Anti-aliasing optimizado */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    
+    /* Asegurar que no hay límites de contenido */
+    white-space: normal;
+    word-wrap: normal;
   }
 
   /* Advanced animations - Optimized for performance */

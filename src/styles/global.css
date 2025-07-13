@@ -247,17 +247,26 @@
 
   /* Clase de utilidad para contenedores de glow sin bordes */
   .text-glow-container {
-    /* Eliminar cualquier clipping que pueda crear bordes */
+    /* Overflow completamente libre para glow */
     overflow: visible;
     
-    /* Espacio reducido para mejor performance */
-    padding: 0.5rem;
-    margin: -0.5rem;
+    /* Espaciado generoso para expansión */
+    padding: 1rem;
+    margin: -1rem;
+    
+    /* Eliminar cualquier límite visual */
+    border: none;
+    outline: none;
+    box-shadow: none;
     
     /* Performance-first optimización */
     transform: translateZ(0);
     isolation: isolate;
-    contain: layout; /* Optimize reflow */
+    contain: none; /* Permitir expansión completa */
+    
+    /* Asegurar que no hay clipping */
+    clip-path: none;
+    mask: none;
   }
 
   /* Mejoras para el contenedor de animaciones de texto */
@@ -955,6 +964,37 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+  }
+
+  /* Clase específica para secciones con glow sin bordes */
+  .glow-overflow-safe {
+    /* Permitir overflow solo para glow effects */
+    overflow-x: hidden; /* Solo horizontal para evitar scroll */
+    overflow-y: visible; /* Vertical libre para glow */
+    
+    /* Aislamiento de efectos */
+    isolation: isolate;
+    
+    /* Contener el layout sin afectar glow */
+    contain: layout;
+  }
+
+  /* Optimizar los orbs para evitar overflow horizontal */
+  .glow-overflow-safe .layer-effects {
+    /* Contener los orbs dentro del viewport */
+    overflow: hidden;
+    
+    /* Aislar efectos de background */
+    isolation: isolate;
+  }
+
+  /* Permitir que el contenido principal tenga glow libre */
+  .glow-overflow-safe .layer-content {
+    /* Overflow libre para efectos de texto */
+    overflow: visible;
+    
+    /* Isolation para mejor composición */
+    isolation: isolate;
   }
 
   /* Clase de accesibilidad para spans con glow - Contraste mejorado */
