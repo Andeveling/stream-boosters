@@ -1,11 +1,11 @@
-import { describe, it, expect, vi } from 'vitest';
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
 import { FormSelect } from '../FormSelect';
 
 describe('FormSelect', () => {
   const options = [
     { value: 'opcion1', label: 'Opción 1' },
-    { value: 'opcion2', label: 'Opción 2' }
+    { value: 'opcion2', label: 'Opción 2' },
   ];
 
   it('renders options and label correctly', () => {
@@ -13,9 +13,9 @@ describe('FormSelect', () => {
       <FormSelect
         label="Selecciona una opción"
         name="test-select"
-        value="opcion1"
         onChange={() => {}}
         options={options}
+        value="opcion1"
       />
     );
     expect(getByLabelText('Selecciona una opción')).toBeInTheDocument();
@@ -29,9 +29,9 @@ describe('FormSelect', () => {
       <FormSelect
         label="Selecciona una opción"
         name="test-select"
-        value="opcion1"
         onChange={handleChange}
         options={options}
+        value="opcion1"
       />
     );
     fireEvent.change(getByRole('combobox'), { target: { value: 'opcion2' } });

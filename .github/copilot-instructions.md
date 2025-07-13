@@ -120,7 +120,7 @@ alwaysApply: true
 - Don't use expressions where the operation doesn't change the value.
 - Don't destructure props inside JSX components in Solid projects.
 - Make sure Promise-like statements are handled appropriately.
-- Don't use __dirname and __filename in the global scope.
+- Don't use **dirname and **filename in the global scope.
 - Prevent import cycles.
 - Don't define React components inside other components.
 - Don't use event handlers on non-interactive elements.
@@ -219,7 +219,7 @@ alwaysApply: true
 - Don't use control characters and escape sequences that match control characters in regular expression literals.
 - Don't use debugger.
 - Don't assign directly to document.cookie.
-- Don't import next/document outside of pages/_document.jsx in Next.js projects.
+- Don't import next/document outside of pages/\_document.jsx in Next.js projects.
 - Use `===` and `!==`.
 - Don't use duplicate case labels.
 - Don't use duplicate class members.
@@ -240,7 +240,7 @@ alwaysApply: true
 - Don't allow assignments to native objects and read-only global variables.
 - Use Number.isFinite instead of global isFinite.
 - Use Number.isNaN instead of global isNaN.
-- Don't use the next/head module in pages/_document.js on Next.js projects.
+- Don't use the next/head module in pages/\_document.js on Next.js projects.
 - Don't use implicit any type on variable declarations.
 - Don't assign to imported bindings.
 - Don't use irregular whitespace characters.
@@ -275,3 +275,70 @@ alwaysApply: true
 - Use the namespace keyword instead of the module keyword to declare TypeScript namespaces.
 - Make sure to use the digits argument with Number#toFixed().
 - Make sure to use the "use strict" directive in script files.
+
+## Ultracite, Biome, and MCP Usage
+
+### Formatting and Linting
+
+- Use Ultracite (Biome) for formatting and linting. It runs automatically on save in VS Code and can be triggered via CLI.
+- Format code: `npx ultracite format` (auto-fixes and formats code)
+- Lint code: `npx ultracite lint` (checks for issues, does not fix)
+- Unsafe fixes: `npx ultracite format --unsafe`
+- Recommended package.json scripts:
+  ```json
+  {
+    "scripts": {
+      "lint": "npx ultracite lint",
+      "format": "npx ultracite format",
+      "format:unsafe": "npx ultracite format --unsafe"
+    }
+  }
+  ```
+
+### Astro-Specific Configuration
+
+- **noUnusedImports**: Disabled for `.astro` files in `biome.jsonc` because Biome can't understand that frontmatter imports are used in the template section.
+- **useFilenamingConvention**: Disabled for `.astro` files to allow PascalCase naming (e.g., `Hero.astro`, `FluentGlowHeading.astro`).
+- Configuration in `biome.jsonc`:
+  ```json
+  {
+    "overrides": [
+      {
+        "includes": ["*.astro", "**/*.astro"],
+        "linter": {
+          "rules": {
+            "correctness": {
+              "noUnusedImports": "off"
+            },
+            "style": {
+              "useFilenamingConvention": "off"
+            }
+          }
+        }
+      }
+    ]
+  }
+  ```
+
+### MCP Usage
+
+- MCP rules are enforced via Ultracite. See [Ultracite Rules](https://www.ultracite.ai/rules) for the full list.
+- MCP server can be configured in `mcp.json` for advanced code analysis and automation.
+- Example MCP server config:
+  ```json
+  {
+    "servers": {
+      "ultracite": {
+        "command": "npx",
+        "args": ["-y", "mcp-remote", "https://www.ultracite.ai/api/mcp/http"]
+      }
+    }
+  }
+  ```
+- For more details, visit [Ultracite Usage](https://www.ultracite.ai/usage).
+
+### Editor Integration
+
+- Biome/Ultracite auto-formats and applies lint fixes on save and paste in VS Code.
+- Remaining issues are shown in the Problems panel for manual review.
+- Quick fixes are available via code lenses/lightbulb suggestions.

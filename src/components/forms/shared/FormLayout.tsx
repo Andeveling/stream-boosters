@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 
 interface FormLayoutProps {
   title: string;
@@ -7,9 +7,9 @@ interface FormLayoutProps {
 
 export const FormLayout: React.FC<FormLayoutProps> = ({ title, children }) => (
   <div className="w-full">
-    <div className="flex items-center gap-3 mb-6">
-      <div className="w-1 h-8 bg-gradient-to-b from-brand-pink to-brand-purple rounded-full"></div>
-      <h2 className="text-2xl font-bold bg-gradient-to-r from-brand-pink to-brand-purple bg-clip-text text-transparent">
+    <div className="mb-6 flex items-center gap-3">
+      <div className="h-8 w-1 rounded-full bg-gradient-to-b from-brand-pink to-brand-purple" />
+      <h2 className="bg-gradient-to-r from-brand-pink to-brand-purple bg-clip-text font-bold text-2xl text-transparent">
         {title}
       </h2>
     </div>

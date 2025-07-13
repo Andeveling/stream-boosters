@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { campaignSchema, type CampaignFormValues } from './schemas/campaignSchema';
-import { FormField } from '../shared/FormField';
+import type React from 'react';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { FormButton } from '../shared/FormButton';
+import { FormField } from '../shared/FormField';
 import { FormLayout } from '../shared/FormLayout';
-import { useFormSubmission } from '../shared/useFormSubmission';
 import { Notification } from '../shared/Notification';
+import { useFormSubmission } from '../shared/useFormSubmission';
+import {
+  type CampaignFormValues,
+  campaignSchema,
+} from './schemas/campaignSchema';
 
 export const CampaignForm: React.FC = () => {
   const [showNotification, setShowNotification] = useState(false);
-  
+
   const {
     register,
     handleSubmit,
@@ -22,18 +26,19 @@ export const CampaignForm: React.FC = () => {
     mode: 'onBlur',
   });
 
-  const { isLoading, isSuccess, isError, error, submitForm, resetState } = useFormSubmission({
-    endpoint: '/campaign_submit.php',
-    onSuccess: (data) => {
-      console.log('Formulario de campaña enviado exitosamente:', data);
-      setShowNotification(true);
-      reset();
-    },
-    onError: (error) => {
-      console.error('Error al enviar formulario de campaña:', error);
-      setShowNotification(true);
-    }
-  });
+  const { isLoading, isSuccess, isError, error, submitForm, resetState } =
+    useFormSubmission({
+      endpoint: '/campaign_submit.php',
+      onSuccess: (data) => {
+        console.log('Formulario de campaña enviado exitosamente:', data);
+        setShowNotification(true);
+        reset();
+      },
+      onError: (error) => {
+        console.error('Error al enviar formulario de campaña:', error);
+        setShowNotification(true);
+      },
+    });
 
   const onSubmit = async (data: CampaignFormValues) => {
     try {
@@ -51,56 +56,56 @@ export const CampaignForm: React.FC = () => {
 
   return (
     <FormLayout title="Campaña personalizada">
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <FormField
+          error={errors.campaignName}
           label="Nombre de la campaña"
           name="campaignName"
-          value={watch('campaignName') || ''}
           onChange={register('campaignName').onChange}
-          error={errors.campaignName}
           placeholder="Nombre descriptivo de tu campaña"
+          value={watch('campaignName') || ''}
         />
         <FormField
+          as="textarea"
+          error={errors.objectives}
           label="Objetivos de la campaña"
           name="objectives"
-          as="textarea"
-          value={watch('objectives') || ''}
           onChange={register('objectives').onChange}
-          error={errors.objectives}
           placeholder="Describe los objetivos principales de la campaña"
+          value={watch('objectives') || ''}
         />
         <FormField
+          error={errors.targetAudience}
           label="Público objetivo"
           name="targetAudience"
-          value={watch('targetAudience') || ''}
           onChange={register('targetAudience').onChange}
-          error={errors.targetAudience}
           placeholder="Ejemplo: gamers, jóvenes de 18-25 años, etc."
+          value={watch('targetAudience') || ''}
         />
         <FormField
+          error={errors.duration}
           label="Duración de la campaña"
           name="duration"
-          value={watch('duration') || ''}
           onChange={register('duration').onChange}
-          error={errors.duration}
           placeholder="Ejemplo: 2 semanas, 1 mes, etc."
+          value={watch('duration') || ''}
         />
         <FormField
+          error={errors.budget}
           label="Presupuesto"
           name="budget"
-          value={watch('budget') || ''}
           onChange={register('budget').onChange}
-          error={errors.budget}
           placeholder="Opcional - Presupuesto estimado"
+          value={watch('budget') || ''}
         />
         <FormField
+          as="textarea"
+          error={errors.specialRequirements}
           label="Requisitos especiales"
           name="specialRequirements"
-          as="textarea"
-          value={watch('specialRequirements') || ''}
           onChange={register('specialRequirements').onChange}
-          error={errors.specialRequirements}
           placeholder="Opcional - Cualquier requisito específico"
+          value={watch('specialRequirements') || ''}
         />
         <FormButton disabled={isLoading}>
           {isLoading ? 'Enviando...' : 'Enviar'}
@@ -110,21 +115,21 @@ export const CampaignForm: React.FC = () => {
       {/* Notificaciones */}
       {showNotification && isSuccess && (
         <Notification
-          type="success"
-          title="¡Campaña enviada correctamente!"
           message="Procesaremos tu solicitud y te contactaremos pronto."
           onClose={handleCloseNotification}
+          title="¡Campaña enviada correctamente!"
+          type="success"
         />
       )}
 
       {showNotification && isError && (
         <Notification
-          type="error"
-          title="Error al enviar la campaña"
           message={error || 'Por favor, inténtalo de nuevo.'}
           onClose={handleCloseNotification}
+          title="Error al enviar la campaña"
+          type="error"
         />
       )}
     </FormLayout>
   );
-}
+};

@@ -11,7 +11,10 @@
     "build:local": "rimraf dist && astro build && cp src/php/* dist/",
     "copy:xampp": "cp -r dist/* /opt/lampp/htdocs/stream-boosters/",
     "test": "vitest",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "lint": "npx ultracite lint",
+    "format": "npx ultracite format",
+    "format:unsafe": "npx ultracite format --unsafe"
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",

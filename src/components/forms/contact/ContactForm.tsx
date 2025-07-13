@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { contactSchema, type ContactFormValues } from './schemas/contactSchema';
-import { FormField } from '../shared/FormField';
-import { FormSelect } from '../shared/FormSelect';
+import type React from 'react';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { FormButton } from '../shared/FormButton';
+import { FormField } from '../shared/FormField';
 import { FormLayout } from '../shared/FormLayout';
-import { useFormSubmission } from '../shared/useFormSubmission';
+import { FormSelect } from '../shared/FormSelect';
 import { Notification } from '../shared/Notification';
+import { useFormSubmission } from '../shared/useFormSubmission';
+import { type ContactFormValues, contactSchema } from './schemas/contactSchema';
 
 const projectTypes = [
   { value: 'marca', label: 'Marca' },
@@ -17,7 +18,7 @@ const projectTypes = [
 
 export const ContactForm: React.FC = () => {
   const [showNotification, setShowNotification] = useState(false);
-  
+
   const {
     register,
     handleSubmit,
@@ -29,18 +30,19 @@ export const ContactForm: React.FC = () => {
     mode: 'onBlur',
   });
 
-  const { isLoading, isSuccess, isError, error, submitForm, resetState } = useFormSubmission({
-    endpoint: '/contact_submit.php',
-    onSuccess: (data) => {
-      console.log('Formulario de contacto enviado exitosamente:', data);
-      setShowNotification(true);
-      reset();
-    },
-    onError: (error) => {
-      console.error('Error al enviar formulario de contacto:', error);
-      setShowNotification(true);
-    }
-  });
+  const { isLoading, isSuccess, isError, error, submitForm, resetState } =
+    useFormSubmission({
+      endpoint: '/contact_submit.php',
+      onSuccess: (data) => {
+        console.log('Formulario de contacto enviado exitosamente:', data);
+        setShowNotification(true);
+        reset();
+      },
+      onError: (error) => {
+        console.error('Error al enviar formulario de contacto:', error);
+        setShowNotification(true);
+      },
+    });
 
   const onSubmit = async (data: ContactFormValues) => {
     try {
@@ -58,57 +60,57 @@ export const ContactForm: React.FC = () => {
 
   return (
     <FormLayout title="Contacto inicial">
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <FormField
+          error={errors.name}
           label="Nombre"
           name="name"
-          value={watch('name') || ''}
           onChange={register('name').onChange}
-          error={errors.name}
           placeholder="Tu nombre completo"
+          value={watch('name') || ''}
         />
         <FormField
+          error={errors.email}
           label="Email"
           name="email"
+          onChange={register('email').onChange}
+          placeholder="ejemplo@email.com"
           type="email"
           value={watch('email') || ''}
-          onChange={register('email').onChange}
-          error={errors.email}
-          placeholder="ejemplo@email.com"
         />
         <FormField
+          error={errors.company}
           label="Empresa"
           name="company"
-          value={watch('company') || ''}
           onChange={register('company').onChange}
-          error={errors.company}
           placeholder="Opcional"
+          value={watch('company') || ''}
         />
         <FormSelect
+          error={errors.projectType}
           label="Tipo de proyecto"
           name="projectType"
-          value={watch('projectType') || ''}
           onChange={register('projectType').onChange}
           options={projectTypes}
-          error={errors.projectType}
           placeholder="Selecciona una opción"
+          value={watch('projectType') || ''}
         />
         <FormField
+          error={errors.budget}
           label="Presupuesto estimado"
           name="budget"
-          value={watch('budget') || ''}
           onChange={register('budget').onChange}
-          error={errors.budget}
           placeholder="Opcional"
+          value={watch('budget') || ''}
         />
         <FormField
+          as="textarea"
+          error={errors.description}
           label="Descripción breve"
           name="description"
-          as="textarea"
-          value={watch('description') || ''}
           onChange={register('description').onChange}
-          error={errors.description}
           placeholder="Describe tu proyecto"
+          value={watch('description') || ''}
         />
         <FormButton disabled={isLoading}>
           {isLoading ? 'Enviando...' : 'Enviar'}
@@ -118,21 +120,21 @@ export const ContactForm: React.FC = () => {
       {/* Notificaciones */}
       {showNotification && isSuccess && (
         <Notification
-          type="success"
-          title="¡Formulario enviado correctamente!"
           message="Nos pondremos en contacto contigo pronto."
           onClose={handleCloseNotification}
+          title="¡Formulario enviado correctamente!"
+          type="success"
         />
       )}
 
       {showNotification && isError && (
         <Notification
-          type="error"
-          title="Error al enviar el formulario"
           message={error || 'Por favor, inténtalo de nuevo.'}
           onClose={handleCloseNotification}
+          title="Error al enviar el formulario"
+          type="error"
         />
       )}
     </FormLayout>
   );
-}
+};

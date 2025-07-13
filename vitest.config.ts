@@ -13,19 +13,19 @@ export default getViteConfig({
         '**/dist/**',
         '**/build/**',
         '**/*.config.*',
-        '**/coverage/**'
+        '**/coverage/**',
       ],
       thresholds: {
         global: {
           branches: 80,
           functions: 80,
           lines: 80,
-          statements: 80
-        }
-      }
+          statements: 80,
+        },
+      },
     },
     // Configuración específica para formularios y componentes React
-    testTimeout: 10000,
-    hookTimeout: 10000,
+    testTimeout: 10_000,
+    hookTimeout: 10_000,
   },
 });

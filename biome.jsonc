@@ -1,6 +1,22 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
-  "extends": [
-    "ultracite"
+  "extends": ["ultracite"],
+  "files": {
+    "ignoreUnknown": true
+  },
+  "overrides": [
+    {
+      "includes": ["*.astro", "**/*.astro"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUnusedImports": "off"
+          },
+          "style": {
+            "useFilenamingConvention": "off"
+          }
+        }
+      }
+    }
   ]
 }

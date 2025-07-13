@@ -4,37 +4,37 @@ interface Props {
    * Heading level (h1-h6)
    */
   level?: 1 | 2 | 3 | 4 | 5 | 6;
-  
+
   /**
    * Size variant independent of heading level
    */
   size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl';
-  
+
   /**
    * Glow effect variant
    */
   glow?: 'none' | 'subtle' | 'medium' | 'intense';
-  
+
   /**
    * Animation variant
    */
   animation?: 'none' | 'fade-in' | 'slide-up' | 'type-effect' | 'glow-pulse';
-  
+
   /**
    * Gradient variant for text
    */
   gradient?: 'primary' | 'secondary' | 'rainbow' | 'none';
-  
+
   /**
    * Text alignment
    */
   align?: 'left' | 'center' | 'right';
-  
+
   /**
    * Animation delay in milliseconds
    */
   delay?: number;
-  
+
   /**
    * Additional CSS classes
    */
@@ -49,7 +49,7 @@ const {
   gradient = 'none',
   align = 'center',
   delay = 0,
-  class: className = ''
+  class: className = '',
 } = Astro.props as Props;
 
 // Mobile-first responsive size classes following Tailwind CSS best practices
@@ -62,7 +62,7 @@ const sizeClasses = {
   '3xl': 'text-4xl sm:text-5xl md:text-6xl lg:text-7xl',
   '4xl': 'text-5xl sm:text-6xl md:text-7xl lg:text-8xl',
   '5xl': 'text-6xl sm:text-7xl md:text-8xl lg:text-9xl',
-  '6xl': 'text-7xl sm:text-8xl md:text-9xl lg:text-[10rem]'
+  '6xl': 'text-7xl sm:text-8xl md:text-9xl lg:text-[10rem]',
 };
 
 // Glow classes
@@ -70,7 +70,7 @@ const glowClasses = {
   none: '',
   subtle: 'drop-shadow-glow-subtle',
   medium: 'drop-shadow-glow-medium',
-  intense: 'drop-shadow-glow-intense'
+  intense: 'drop-shadow-glow-intense',
 };
 
 // Animation classes
@@ -79,22 +79,25 @@ const animationClasses = {
   'fade-in': 'animate-fade-in',
   'slide-up': 'animate-slide-up',
   'type-effect': 'animate-type-effect',
-  'glow-pulse': 'animate-glow-pulse'
+  'glow-pulse': 'animate-glow-pulse',
 };
 
 // Gradient classes
 const gradientClasses = {
-  primary: 'bg-gradient-to-r from-brand-pink to-brand-purple bg-clip-text text-transparent',
-  secondary: 'bg-gradient-to-r from-brand-purple to-brand-cyan bg-clip-text text-transparent',
-  rainbow: 'bg-gradient-to-r from-brand-pink via-brand-cyan to-brand-purple bg-clip-text text-transparent',
-  none: 'text-text-light'
+  primary:
+    'bg-gradient-to-r from-brand-pink to-brand-purple bg-clip-text text-transparent',
+  secondary:
+    'bg-gradient-to-r from-brand-purple to-brand-cyan bg-clip-text text-transparent',
+  rainbow:
+    'bg-gradient-to-r from-brand-pink via-brand-cyan to-brand-purple bg-clip-text text-transparent',
+  none: 'text-text-light',
 };
 
 // Alignment classes
 const alignClasses = {
   left: 'text-left',
   center: 'text-center',
-  right: 'text-right'
+  right: 'text-right',
 };
 
 const headingClasses = [
@@ -105,8 +108,10 @@ const headingClasses = [
   animationClasses[animation],
   gradientClasses[gradient],
   alignClasses[align],
-  className
-].filter(Boolean).join(' ');
+  className,
+]
+  .filter(Boolean)
+  .join(' ');
 
 const Element = `h${level}` as keyof HTMLElementTagNameMap;
 ---

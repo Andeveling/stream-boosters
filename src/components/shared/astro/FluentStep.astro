@@ -4,27 +4,27 @@ interface Props {
    * Step icon name
    */
   icon: string;
-  
+
   /**
    * Step number (displays as overlay)
    */
   number: number;
-  
+
   /**
    * Step title
    */
   title: string;
-  
+
   /**
    * Step description
    */
   description: string;
-  
+
   /**
    * Animation delay in milliseconds
    */
   delay?: number;
-  
+
   /**
    * Step variant for styling
    */
@@ -37,16 +37,17 @@ const {
   title,
   description,
   delay = 0,
-  variant = 'default'
+  variant = 'default',
 } = Astro.props as Props;
 
-import { Icon } from "astro-icon/components";
+import { Icon } from 'astro-icon/components';
 
 // Variant classes
 const variantClasses = {
   default: 'bg-brand-dark border-brand-card',
   glass: 'bg-brand-card/30 backdrop-blur-sm border-brand-card/50',
-  elevated: 'bg-gradient-to-br from-brand-dark to-brand-darker border-brand-purple/20 shadow-2xl shadow-brand-purple/10'
+  elevated:
+    'bg-gradient-to-br from-brand-dark to-brand-darker border-brand-purple/20 shadow-2xl shadow-brand-purple/10',
 };
 
 const cardClasses = [
@@ -56,7 +57,7 @@ const cardClasses = [
   'hover:border-brand-purple/50',
   'hover:shadow-xl hover:shadow-brand-purple/20',
   'animate-fade-in',
-  variantClasses[variant]
+  variantClasses[variant],
 ].join(' ');
 ---
 

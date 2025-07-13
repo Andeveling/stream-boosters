@@ -4,17 +4,17 @@ interface Props {
    * Number of floating particles
    */
   count?: number;
-  
+
   /**
    * Animation speed variant
    */
   speed?: 'slow' | 'medium' | 'fast';
-  
+
   /**
    * Particle colors
    */
   colors?: ('pink' | 'purple' | 'cyan')[];
-  
+
   /**
    * Particle sizes
    */
@@ -25,7 +25,7 @@ const {
   count = 8,
   speed = 'medium',
   colors = ['pink', 'purple', 'cyan'],
-  sizes = ['sm', 'md', 'lg']
+  sizes = ['sm', 'md', 'lg'],
 } = Astro.props as Props;
 
 // Generate random particles
@@ -38,25 +38,25 @@ const particles = Array.from({ length: count }, (_, i) => ({
   startX: Math.random() * 100,
   startY: Math.random() * 100,
   endX: Math.random() * 100,
-  endY: Math.random() * 100
+  endY: Math.random() * 100,
 }));
 
 const colorClasses = {
   pink: 'bg-brand-pink',
   purple: 'bg-brand-purple',
-  cyan: 'bg-brand-cyan'
+  cyan: 'bg-brand-cyan',
 };
 
 const sizeClasses = {
   sm: 'w-1 h-1',
   md: 'w-2 h-2',
-  lg: 'w-3 h-3'
+  lg: 'w-3 h-3',
 };
 
 const speedClasses = {
   slow: 'animate-float-slow',
   medium: 'animate-float-medium',
-  fast: 'animate-float-fast'
+  fast: 'animate-float-fast',
 };
 ---
 

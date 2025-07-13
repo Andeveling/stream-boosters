@@ -1,17 +1,17 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 export interface SubmissionState {
-  isLoading: boolean
-  isSuccess: boolean
-  isError: boolean
-  error: string | null
-  data: any | null
+  isLoading: boolean;
+  isSuccess: boolean;
+  isError: boolean;
+  error: string | null;
+  data: any | null;
 }
 
 export interface UseFormSubmissionOptions {
-  endpoint: string
-  onSuccess?: (data: any) => void
-  onError?: (error: string) => void
+  endpoint: string;
+  onSuccess?: (data: any) => void;
+  onError?: (error: string) => void;
 }
 
 export function useFormSubmission(options: UseFormSubmissionOptions) {
@@ -20,8 +20,8 @@ export function useFormSubmission(options: UseFormSubmissionOptions) {
     isSuccess: false,
     isError: false,
     error: null,
-    data: null
-  })
+    data: null,
+  });
 
   const resetState = () => {
     setState({
@@ -29,17 +29,17 @@ export function useFormSubmission(options: UseFormSubmissionOptions) {
       isSuccess: false,
       isError: false,
       error: null,
-      data: null
-    })
-  }
+      data: null,
+    });
+  };
 
   const submitForm = async (formData: any) => {
-    setState(prev => ({
+    setState((prev) => ({
       ...prev,
       isLoading: true,
       isError: false,
-      error: null
-    }))
+      error: null,
+    }));
 
     try {
       const response = await fetch(options.endpoint, {
@@ -47,17 +47,19 @@ export function useFormSubmission(options: UseFormSubmissionOptions) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
-      })
+        body: JSON.stringify(formData),
+      });
 
-      const result = await response.json()
+      const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.message || `Error HTTP: ${response.status}`)
+        throw new Error(result.message || `Error HTTP: ${response.status}`);
       }
 
       if (result.status !== 'success') {
-        throw new Error(result.message || 'Error en el procesamiento del formulario')
+        throw new Error(
+          result.message || 'Error en el procesamiento del formulario'
+        );
       }
 
       setState({
@@ -65,33 +67,33 @@ export function useFormSubmission(options: UseFormSubmissionOptions) {
         isSuccess: true,
         isError: false,
         error: null,
-        data: result.data
-      })
+        data: result.data,
+      });
 
-      options.onSuccess?.(result.data)
-      
-      return result
+      options.onSuccess?.(result.data);
 
+      return result;
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Error desconocido'
-      
+      const errorMessage =
+        error instanceof Error ? error.message : 'Error desconocido';
+
       setState({
         isLoading: false,
         isSuccess: false,
         isError: true,
         error: errorMessage,
-        data: null
-      })
+        data: null,
+      });
 
-      options.onError?.(errorMessage)
-      
-      throw error
+      options.onError?.(errorMessage);
+
+      throw error;
     }
-  }
+  };
 
   return {
     ...state,
     submitForm,
-    resetState
-  }
+    resetState,
+  };
 }
