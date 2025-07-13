@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "clean": "rimraf dist",
-    "build:local": "rimraf dist && astro build && cp src/php/* dist/",
+    "build:local": "rimraf dist && astro build && cp src/php/* dist/ && cp .env dist/",
     "copy:xampp": "cp -r dist/* /opt/lampp/htdocs/stream-boosters/",
     "test": "vitest",
     "test:ui": "vitest --ui",
