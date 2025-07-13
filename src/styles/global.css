@@ -736,4 +736,84 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  /* ============================================
+   * HERO SECTION & HEADER INTEGRATION
+   * Proper layout integration between fixed header and hero section
+   * ============================================ */
+
+  /* Header height variables for consistent spacing */
+  :root {
+    --header-height: 4rem; /* 64px - adjust based on actual header height */
+    --header-height-mobile: 3.5rem; /* 56px - mobile header height */
+  }
+
+  /* Hero section integration with fixed header */
+  .hero-with-header {
+    /* Account for fixed header height */
+    min-height: calc(100vh - var(--header-height-mobile));
+    min-height: calc(100dvh - var(--header-height-mobile)); /* Dynamic viewport */
+    padding-top: var(--header-height-mobile);
+  }
+
+  /* Desktop header integration */
+  @media (min-width: 768px) {
+    .hero-with-header {
+      min-height: calc(100vh - var(--header-height));
+      min-height: calc(100dvh - var(--header-height));
+      padding-top: var(--header-height);
+    }
+  }
+
+  /* Hero content adjustment for proper centering */
+  .hero-with-header .layer-content {
+    /* Remove conflicting min-height and adjust centering */
+    min-height: auto;
+    justify-content: center;
+    /* Compensate for header by adjusting the centering */
+    padding-top: 0;
+  }
+
+  /* Scroll indicator positioning with header */
+  .hero-with-header .scroll-indicator {
+    /* Ensure scroll indicator is positioned relative to viewport, not header */
+    bottom: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .hero-with-header .scroll-indicator {
+      bottom: 1.5rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-with-header .scroll-indicator {
+      bottom: 2rem;
+    }
+  }
+
+  /* Header z-index to ensure it stays on top */
+  header {
+    z-index: 100; /* Higher than hero layers */
+  }
+
+  /* Smooth scroll offset for navigation links */
+  html {
+    scroll-padding-top: var(--header-height-mobile);
+  }
+
+  @media (min-width: 768px) {
+    html {
+      scroll-padding-top: var(--header-height);
+    }
+  }
+
+  /* Enhanced mobile navigation integration */
+  @media (max-width: 767px) {
+    /* Mobile menu dropdown positioning */
+    #mobile-menu {
+      top: calc(var(--header-height-mobile) - 1px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+  }
 }
