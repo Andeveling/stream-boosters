@@ -8,17 +8,14 @@ import FluentText from "../shared/astro/FluentText.astro"
 
 <FluentSection
   id='hero'
-  backgroundVariant='default'
+  backgroundVariant='hero-gradient'
   animation='none'
   padding='none'
   align='center'
-  class='relative min-h-screen flex items-center bg-hero-radial overflow-hidden hero-full-width hero-with-header'
+  class='relative min-h-screen flex items-center overflow-hidden hero-full-width hero-with-header'
 >
   <!-- Enhanced Background Effects - Performance optimized -->
   <div class='absolute inset-0 layer-background'>
-    <!-- Simplified gradient background -->
-    <div class='absolute inset-0 bg-gradient-to-br from-brand-darker via-brand-dark to-brand-darker opacity-95'></div>
-
     <!-- Background image without blur for better performance -->
     <div class='absolute inset-0 bg-cover bg-center opacity-3' style="background-image: url('/src/assets/background.svg');"></div>
   </div>

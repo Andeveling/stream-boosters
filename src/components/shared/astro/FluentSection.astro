@@ -1,6 +1,5 @@
 ---
 import type { HTMLAttributes } from "astro/types"
-import { Icon } from "astro-icon/components"
 
 interface Props extends HTMLAttributes<"section"> {
   /**
@@ -11,7 +10,7 @@ interface Props extends HTMLAttributes<"section"> {
   /**
    * Background pattern variant for Fluent Design
    */
-  backgroundVariant?: "default" | "gradient" | "glass" | "abstract" | "geometric"
+  backgroundVariant?: "hero-gradient" | "solid-dark" | "solid-darker" | "glass" | "abstract" | "geometric" | "transparent"
 
   /**
    * Animation variant for section entrance
@@ -29,21 +28,67 @@ interface Props extends HTMLAttributes<"section"> {
   align?: "left" | "center" | "right"
 }
 
-const { id, backgroundVariant = "default", animation = "fade-in", padding = "lg", align = "center", class: className = "", ...props } = Astro.props as Props
+const { id, backgroundVariant = "transparent", animation = "fade-in", padding = "lg", align = "center", class: className = "", ...props } = Astro.props as Props
 
-// Background variant classes - Optimized for performance
+// Background variant classes - Centralized background system
 const backgroundClasses = {
-  default: "bg-transparent",
-  gradient: "bg-gradient-to-br from-brand-darker via-brand-dark to-brand-darker",
-  glass: "bg-brand-card/20", // Removed backdrop-blur for performance
-  abstract: "bg-gradient-to-tr from-brand-purple/3 via-transparent to-brand-pink/3", // Reduced opacity
-  geometric: "bg-gradient-radial from-brand-cyan/3 via-brand-purple/2 to-transparent", // Reduced opacity
+  "hero-gradient": "", // Will be handled by background layer
+  "solid-dark": "", // Will be handled by background layer  
+  "solid-darker": "", // Will be handled by background layer
+  glass: "", // Will be handled by background layer
+  abstract: "", // Will be handled by background layer
+  geometric: "", // Will be handled by background layer
+  transparent: "bg-transparent", // No background layer needed
+}
+
+// Background layers for each variant
+const getBackgroundLayer = (variant: string) => {
+  switch (variant) {
+    case "hero-gradient":
+      return `
+        <div class='absolute inset-0 -z-10'>
+          <div class='absolute inset-0 bg-gradient-to-br from-brand-darker via-brand-dark to-brand-darker opacity-95'></div>
+        </div>
+      `;
+    case "solid-dark":
+      return `
+        <div class='absolute inset-0 -z-10'>
+          <div class='absolute inset-0 bg-brand-dark'></div>
+        </div>
+      `;
+    case "solid-darker":
+      return `
+        <div class='absolute inset-0 -z-10'>
+          <div class='absolute inset-0 bg-brand-darker'></div>
+        </div>
+      `;
+    case "glass":
+      return `
+        <div class='absolute inset-0 -z-10'>
+          <div class='absolute inset-0 bg-brand-card/20'></div>
+        </div>
+      `;
+    case "abstract":
+      return `
+        <div class='absolute inset-0 -z-10'>
+          <div class='absolute inset-0 bg-gradient-to-tr from-brand-purple/3 via-transparent to-brand-pink/3'></div>
+        </div>
+      `;
+    case "geometric":
+      return `
+        <div class='absolute inset-0 -z-10'>
+          <div class='absolute inset-0 bg-gradient-radial from-brand-cyan/3 via-brand-purple/2 to-transparent'></div>
+        </div>
+      `;
+    default:
+      return "";
+  }
 }
 
 // Animation classes
 const animationClasses = {
   "fade-in": "animate-fade-in",
-  "slide-up": "animate-slide-up",
+  "slide-up": "animate-slide-up", 
   "scale-in": "animate-scale-in",
   none: "",
 }
@@ -52,7 +97,7 @@ const animationClasses = {
 const paddingClasses = {
   none: "",
   sm: "py-12 md:py-16",
-  md: "py-16 md:py-24",
+  md: "py-16 md:py-24", 
   lg: "py-20 md:py-32",
   xl: "py-28 md:py-40",
 }
@@ -65,10 +110,10 @@ const alignClasses = {
 }
 
 const sectionClasses = [
-  "relative w-full min-h-0", // Removed overflow-hidden for better performance
+  "relative w-full min-h-0",
   backgroundClasses[backgroundVariant],
   animationClasses[animation],
-  paddingClasses[padding],
+  paddingClasses[padding], 
   alignClasses[align],
   className,
 ]
@@ -77,7 +122,10 @@ const sectionClasses = [
 ---
 
 <section {id} class={sectionClasses} data-padding={padding} {...props}>
-  <!-- Content Layer - Simplified structure -->
+  <!-- Background Layer - Centralized and standardized -->
+  <Fragment set:html={getBackgroundLayer(backgroundVariant)} />
+  
+  <!-- Content Layer - Transparent slots -->
   <div class='relative w-full mx-auto'>
     <slot />
   </div>

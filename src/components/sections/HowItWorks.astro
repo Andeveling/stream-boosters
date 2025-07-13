@@ -1,97 +1,50 @@
 ---
-import FluentHeading from '../shared/astro/FluentHeading.astro';
-// How It Works section for the landing page
-import FluentSection from '../shared/astro/FluentSection.astro';
-import FluentStep from '../shared/astro/FluentStep.astro';
-import FluentText from '../shared/astro/FluentText.astro';
+import FluentHeading from "../shared/astro/FluentHeading.astro"
+import FluentSection from "../shared/astro/FluentSection.astro"
+import FluentStep from "../shared/astro/FluentStep.astro"
+import FluentText from "../shared/astro/FluentText.astro"
 
 const steps = [
   {
-    icon: 'material-symbols:upload-file-outline-rounded',
-    title: 'Paso 1: Selecciona tu paquete',
-    description:
-      'Cuéntanos los detalles de tu proyecto Escoge un plan y presupuesto que mejor se adapte a tu campaña.',
+    icon: "material-symbols:upload-file-outline-rounded",
+    title: "Paso 1: Selecciona tu paquete",
+    description: "Cuéntanos los detalles de tu proyecto Escoge un plan y presupuesto que mejor se adapte a tu campaña.",
   },
   {
-    icon: 'material-symbols:groups-outline-rounded',
-    title: 'Paso 2: Seleccionamos Streamers',
-    description:
-      'Te brindaremos una selección de streamers que mejor se adapten a tus condiciones.',
+    icon: "material-symbols:groups-outline-rounded",
+    title: "Paso 2: Seleccionamos Streamers",
+    description: "Te brindaremos una selección de streamers que mejor se adapten a tus condiciones.",
   },
   {
-    icon: 'material-symbols:rocket-launch-outline-rounded',
-    title: 'Paso 3: Tu Marca al Aire',
-    description:
-      'Coordinamos y lanzamos la campaña, dándote seguimiento personalizado y métricas en tiempo real.',
+    icon: "material-symbols:rocket-launch-outline-rounded",
+    title: "Paso 3: Tu Marca al Aire",
+    description: "Coordinamos y lanzamos la campaña, dándote seguimiento personalizado y métricas en tiempo real.",
   },
-];
+]
 ---
 
-<FluentSection
-  id="how-it-works"
-  backgroundVariant="gradient"
-  depth="medium"
-  animation="slide-up"
-  padding="lg"
-  align="center"
-  backgroundIcons={[
-    {
-      name: "material-symbols:trending-up-rounded",
-      position: "top-right",
-      size: "sm",
-      color: "purple",
-      rotation: 15,
-      opacity: 0.05,
-      blur: true
-    },
-    {
-      name: "material-symbols:groups-rounded",
-      position: "bottom-left",
-      size: "sm",
-      color: "cyan",
-      rotation: -10,
-      opacity: 0.05,
-      blur: true
-    }
-  ]}
->
+<FluentSection id='how-it-works' backgroundVariant='solid-dark' animation='slide-up' padding='lg' align='center'>
   <!-- Section Header -->
-  <div class="text-center mb-16">
-    <FluentHeading
-      level={2}
-      size="3xl"
-      gradient="none"
-      align="center"
-      class="mb-4"
-    >
-      ¿Cómo funciona?
-    </FluentHeading>
-    
-    <FluentText
-      size="base"
-      variant="muted"
-      align="center"
-      maxWidth="lg"
-      margin="none"
-    >
-      En solo 3 pasos, tu proyecto estará en vivo.
-    </FluentText>
+  <div class='text-center mb-16'>
+    <FluentHeading level={2} size='3xl' gradient='none' align='center' class='mb-4'> ¿Cómo funciona? </FluentHeading>
+
+    <FluentText size='base' variant='muted' align='center' maxWidth='lg' margin='none'> En solo 3 pasos, tu proyecto estará en vivo. </FluentText>
   </div>
-  
+
   <!-- Steps Grid -->
-  <div class="grid md:grid-cols-3 gap-8 text-center relative">
-    <!-- Connection Line (decorative) -->
-    <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-brand-purple/30 via-brand-pink/50 to-brand-cyan/30 transform -translate-y-1/2 h-1" />
-    
-    {steps.map((step, index) => (
-      <FluentStep
-        icon={step.icon}
-        number={index + 1}
-        title={step.title}
-        description={step.description}
-        delay={index * 150}
-        variant="elevated"
-      />
-    ))}
+  <div class='relative flex flex-col md:grid md:grid-cols-3 gap-8 md:gap-10 px-2 sm:px-4 md:px-0 w-full max-w-6xl mx-auto z-10'>
+    {/* Línea decorativa detrás de las tarjetas, solo en desktop */}
+    <div
+      class='hidden md:block absolute top-1/2 left-0 w-full h-1 pointer-events-none z-0'
+      style='background: linear-gradient(90deg, rgba(136,58,255,0.10) 0%, rgba(255,0,128,0.18) 50%, rgba(0,255,255,0.10) 100%); filter: blur(1.5px);'
+    >
+    </div>
+    {
+      steps.map((step, index) => (
+        <div class='relative z-10 flex-1 flex justify-center'>
+          <FluentStep icon={step.icon} number={index + 1} title={step.title} description={step.description} delay={index * 150} variant='elevated' />
+        </div>
+      ))
+    }
   </div>
 </FluentSection>
