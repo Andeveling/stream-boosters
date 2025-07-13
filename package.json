@@ -13,7 +13,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write ./src/**/*.{js,jsx,ts,tsx,json,md}"
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
